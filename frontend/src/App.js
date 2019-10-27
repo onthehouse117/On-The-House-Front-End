@@ -8,24 +8,26 @@ import {
   Switch,
   Redirect
 } from "react-router-dom";
-import Home from "./components/Home.js";
-import NavBar from "./components/NavBar.js";
-import SubLease from "./components/SubLease.js";
+import Home from "./components/Home";
+import NavBar from "./components/NavBar";
+import SubLease from "./components/SubLease";
+import LoginForm from "./components/LoginForm";
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <DocumentTitle title="On The House"></DocumentTitle>
-        <Router>
-          <NavBar />
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/SubLease" component={SubLease} />
-            <Redirect to="/" />
-          </Switch>
-        </Router>
-      </div>
+      <Router>
+        <div className="App">
+          <DocumentTitle title="On The House"></DocumentTitle>
+            <NavBar />
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route exact path="/users/login" component={LoginForm} />
+              <Route exact path="/SubLease" component={SubLease} />
+              <Redirect to="/" />
+            </Switch>
+        </div>
+      </Router>
     );
   }
 }

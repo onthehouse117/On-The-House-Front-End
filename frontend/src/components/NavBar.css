@@ -1,0 +1,60 @@
+#userImage {
+    /* circle border */
+    border: 5px solid rgba(25, 221, 19, 0.753); 
+    display: inline-block;
+    border-radius: 50%;
+    width: 50px;
+    height: 40px;
+
+    /* Dynamic username/image */
+    font-size: 0.3rem;
+    text-align: center;
+
+    /* align to right corner */
+    position:absolute;
+    right: 0px;
+    margin-right: 0px;
+}
+
+#userImage:hover {
+    cursor: pointer;
+}
+
+#loginButton {
+    position:absolute;
+        right: 75px;
+    margin-right: 5px;
+}
+
+.navbar-color {
+    background: transparent;   /*rgba(3, 49, 152, 0.966) */
+}
+
+@media (min-width: 992px) {
+    .navbar-brand {
+        margin-right: 3rem;
+    }
+    .nav-link {
+        margin: 0 15px 0;
+    }
+}
+
+@media (min-width: 1500px) {
+
+    .navbar-brand {
+        margin-right: 8rem;
+    }
+    .nav-link {
+        margin: 0 5.5rem 0;
+    }
+}
+
+@media (min-width: 1800px) {
+
+    .navbar-brand {
+        margin-right: 8rem;
+    }
+    .nav-link {
+        margin: 0 7.5rem 0;
+    }
+}
