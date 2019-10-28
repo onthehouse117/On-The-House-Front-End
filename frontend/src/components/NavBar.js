@@ -1,20 +1,14 @@
 import React, { Component, useState } from "react";
 import { connect } from "react-redux";
 import styles from "./NavBar.css";
-// import "./NavBar.css";
 import {
-  Button,
   Collapse,
   Navbar,
   NavbarToggler,
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem
+  NavLink
  } from 'reactstrap';
 
 
@@ -41,14 +35,6 @@ const NavBar = (props) => {
     </div>
   );
   }
-
-// class NavBar extends Component {
-//   render() {
-//     return (
-//       <Button color="danger">Danger!</Button>
-//     );
-//   }
-// }
 
 
 const mapStatetoProps = state => ({

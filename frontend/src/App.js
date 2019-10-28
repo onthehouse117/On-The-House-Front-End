@@ -8,7 +8,6 @@ import {
   Switch,
   Redirect
 } from "react-router-dom";
-import Home from "./components/Home";
 import NavBar from "./components/NavBar";
 import SubLease from "./components/SubLease";
 import LoginForm from "./components/LoginForm";
