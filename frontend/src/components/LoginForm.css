@@ -11,6 +11,11 @@
     margin-top: 100px;
 }
 
+.errorMessage {
+    color: red;
+    
+}
+
 .contain {
     padding: 20px;
     background-color: white;
