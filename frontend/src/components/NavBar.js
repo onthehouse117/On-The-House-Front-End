@@ -30,7 +30,7 @@ const NavBar = (props) => {
         <NavbarToggler onClick={toggle}><span className="navbar-toggler-icon"></span></NavbarToggler>
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto mt-2 mt-lg-0" navbar>
-            <NavItem className="active"><NavLink href="/">Home</NavLink></NavItem>
+            <NavItem className="active"><NavLink className='nl' href="/">Home</NavLink></NavItem>
             <NavItem><NavLink href="/About">About</NavLink></NavItem>
             <NavItem><NavLink href="/Communities">Contact</NavLink></NavItem>
             <NavItem><NavLink id="loginButton" href="/users/login">Sign In</NavLink></NavItem>

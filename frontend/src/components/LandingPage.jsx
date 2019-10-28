@@ -10,19 +10,21 @@ import {
   Redirect
 } from "react-router-dom";
 
-import NavBar from "./LandingPage/NavBar.jsx";
-import Carousel from "./LandingPage/Carousel.jsx";
+// import NavBar from "./NavBar";
+import Carousel from "../LandingPage/Carousel.jsx";
 
-class App extends Component {
+class LandingPage extends Component {
+  state = {
+    username: ''
+  }
+
   render() {
     return (
       <div>
-                      
-        <NavBar />
         <Carousel />
       </div>
     );
   }
 }
 
-export default App;
+export default LandingPage;

@@ -12,6 +12,7 @@ import Home from "./components/Home";
 import NavBar from "./components/NavBar";
 import SubLease from "./components/SubLease";
 import LoginForm from "./components/LoginForm";
+import LandingPage from "./components/LandingPage";
 
 class App extends Component {
   render() {
@@ -21,7 +22,7 @@ class App extends Component {
           <DocumentTitle title="On The House"></DocumentTitle>
             <NavBar />
             <Switch>
-              <Route exact path="/" component={Home} />
+              <Route exact path="/" component={LandingPage} />
               <Route exact path="/users/login" component={LoginForm} />
               <Route exact path="/SubLease" component={SubLease} />
               <Redirect to="/" />

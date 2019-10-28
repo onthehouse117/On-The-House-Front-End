@@ -19,6 +19,14 @@ const styles = {
 };
 
 class LoginForm extends Component {
+    state = {
+      email: '',
+      password: '',
+      userHasToken: false,
+      verified: false,
+      userTokens: [],
+      emailError: ""
+    }
     render() {
       return (
         <div className='styles'>
