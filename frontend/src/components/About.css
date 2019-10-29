@@ -1,36 +1,20 @@
-#jum {
-  display: block;
-  margin: 80px;
-  text-align: center;
-  color: #90ee90;
+#header-title {
+  color: whitesmoke;
 }
-#h2 {
-  color: #90ee90;
+#header-subtitle {
+  color: whitesmoke;
 }
-#htwo {
-  color: #90ee90;
-}
-#top {
-  background: #1abc9c;
-  color: black;
-  height: 300px;
+#header-bar {
+  background: #3365FF;
+  height: 14em;
   width: 100%;
   margin: auto;
+  margin-top: 4em;
+  border-top: .1em solid black;
   text-align: center;
-  vertical-align: middle;
-  font-family: Garamont;
 }
-#bot {
-  color: black;
-  height: 200px;
-  width: 80%;
+#header-block-text {
   text-align: center;
-  margin: auto;
-  margin-top: 20px;
-}
-#header {
-  text-align: center;
-  vertical-align: middle;
   display: inline-block;
   position: relative;
   top: 50%;
@@ -38,18 +22,10 @@
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
 }
-#head {
-  text-align: center;
-  margin: auto;
+#body-text {
   color: black;
-  margin: auto;
-  vertical-align: middle;
-}
-#p {
+  width: 75%;
   text-align: center;
   margin: auto;
-  vertical-align: center;
-  margin: auto;
-  padding: 20 px;
-  font-family: Garamont;
+  margin-top: 20px;
 }
