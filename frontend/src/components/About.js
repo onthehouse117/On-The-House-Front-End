@@ -17,9 +17,8 @@ class About extends Component {
           Our goal in creating "On The House" was to solve a common problem
           facing the student population of UCI. We knew that students
           were tired of having to tediously search through third party sites
-          to be able to search and post their subleases
-          By using these services UCI students and faculty will now be able to easily search and create posts for their
-          subleases.
+          to be able to search and post their subleases.
+          By using our services UCI students and faculty will now be able to easily search and create posts for subleases.
         </div>
       </div>
     );
