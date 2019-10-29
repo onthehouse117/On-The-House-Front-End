@@ -7,7 +7,7 @@ class LandingPage extends Component {
   render() {
     return (
       <div id = "carousel">
-        <Carousel/>>
+        <Carousel/>
       </div>
     );
   }
