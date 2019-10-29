@@ -12,6 +12,7 @@ import NavBar from "./components/NavBar";
 import SubLease from "./components/SubLease";
 import LoginForm from "./components/LoginForm";
 import LandingPage from "./components/LandingPage";
+import About from "./components/About";
 
 class App extends Component {
   render() {
@@ -19,13 +20,14 @@ class App extends Component {
       <Router>
         <div className="App">
           <DocumentTitle title="On The House"></DocumentTitle>
-            <NavBar />
-            <Switch>
-              <Route exact path="/" component={LandingPage} />
-              <Route exact path="/users/login" component={LoginForm} />
-              <Route exact path="/SubLease" component={SubLease} />
-              <Redirect to="/" />
-            </Switch>
+          <NavBar />
+          <Switch>
+            <Route exact path="/" component={LandingPage} />
+            <Route exact path="/About" component={About} />
+            <Route exact path="/users/login" component={LoginForm} />
+            <Route exact path="/SubLease" component={SubLease} />
+            <Redirect to="/" />
+          </Switch>
         </div>
       </Router>
     );
