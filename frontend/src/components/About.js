@@ -7,10 +7,10 @@ class About extends Component {
       <div>
         <div id="header-bar">
           <div id="header-block-text">
-            <h2 id = "header-title">Meet "On The House"</h2>
-            <h5 id = "header-subtitle">
-              A Handtailored Service To Help UCI Students With Housing Needs
-            </h5>
+            <h1 id = "header-title">Meet "On The House"</h1>
+            <h4 id = "header-subtitle">
+              A Tailored Service To Help UCI Students With Housing Needs
+            </h4>
           </div>
         </div>
         <div id="body-text">

@@ -12,33 +12,33 @@ import './Carousel.css';
 const items = [
   {
     src:
-      "https://scontent-lax3-1.xx.fbcdn.net/v/t1.0-9/46368189_10155820237185906_6751427953516609536_n.jpg?_nc_cat=106&_nc_oc=AQlPTscv5zSJzF9UqkOHtARTodhST64CYBB5Sr5hpmhIqOvMSDzFj_PZ6gkXGvvqtPw&_nc_ht=scontent-lax3-1.xx&oh=b21ef0f2720cf8c248848d3cf492faf4&oe=5E1E6283",
+      "http://ktgy.com/wp-content/uploads/2017/08/Plaza-Verde-UCI-American-Campus-Communities-Undergraduate-Student-Housing-KTGY-16-2000x1335.jpg",
     altText: "Plaza Verde",
     caption: "Plaza Verde"
   },
   {
     src:
-      "https://scontent-lax3-1.xx.fbcdn.net/v/t1.0-9/46432635_10155820236750906_4016135674091536384_n.jpg?_nc_cat=110&_nc_oc=AQnlLcbTumwHDu2o9HGIMxlIFZwUdx5fiJDs9wiNEmImTCKBhhs_d5iX6xYHaWrmK1I&_nc_ht=scontent-lax3-1.xx&oh=57a9348134a161dc7fa304d5dd76d6f0&oe=5E22BFF6",
+      "http://ktgy.com/wp-content/uploads/2015/11/UC-Irvine-Puerta-del-Sol_00-5_-2000x1260.jpg",
     altText: "Peurta Del Sol",
     caption: "Peurta Del Sol"
   },
   {
     src:
-      "https://scontent-lax3-1.xx.fbcdn.net/v/t1.0-9/46311956_10155820236635906_7449249736982265856_n.jpg?_nc_cat=108&_nc_oc=AQn9DmbbdgESFOSeiNAzy78ANZCPq8CqulznFbNCn9VPeLJrvZ_tdu7XcFrxsC2ys5E&_nc_ht=scontent-lax3-1.xx&oh=7efb6dbb8f9ebd620cb83f8061e396f9&oe=5E5249C7",
+      "https://static.wixstatic.com/media/6098a4_dd706b2c3a1f4495960ef27a7b581b6c.jpg",
     altText: "Vista Del Campo Norte",
     caption: "Vista Del Campo Norte"
   },
   {
     src:
-      "https://scontent-lax3-1.xx.fbcdn.net/v/t1.0-9/46348673_10155820236850906_5855840677169987584_n.jpg?_nc_cat=111&_nc_oc=AQmURCCJnWLs4bslT4qDKps7F26d2XkRf36-NavFjN2jw4SSdA13xXp3bAtJbqvkAno&_nc_ht=scontent-lax3-1.xx&oh=9f22316c8ee5b72105713d785228af33&oe=5E51E9F5",
+      "http://ktgy.com/wp-content/uploads/2015/11/UC-Irvine-Camino-del-Sol_00-4-2000x1332.jpg",
     altText: "Camino Del Sol",
     caption: "Camino Del Sol"
   },
   {
     src:
-      "https://scontent-lax3-1.xx.fbcdn.net/v/t1.0-9/46303967_10155820237045906_8091344590365261824_o.jpg?_nc_cat=111&_nc_oc=AQkvlnk54DYQFN7YiYQPzZUWkEtJpO_6z0fS4bPoP4PjfD5IyFjG3ZcVMO1KQhLKDJU&_nc_ht=scontent-lax3-1.xx&oh=a420426a29c07315521c5f667f7750bd&oe=5E4D31E4",
+      "https://static.wixstatic.com/media/47443b_3504201c6bec4f37a93314ae1e356b2c.jpg",
     altText: "Vista Del Campo",
-    caption: "Camino Del Sol"
+    caption: "Vista Del Campo"
   },
 ];
 
