@@ -12,6 +12,7 @@ import{
     Row,
     Col,
     Button,
+    Alert
   } from 'reactstrap';
 
 import { register } from '../actions/authActions';
@@ -40,6 +41,27 @@ class SignUpForm extends Component {
         error: PropTypes.object.isRequired,
         register: PropTypes.func.isRequired
     }
+
+    componentDidUpdate(prevProps) {
+      const { error } = this.props;
+      if(error !== prevProps.error)
+      {
+        //register error
+        if(error.id === 'REGISTER_FAIL') {
+          if (error.msg.name === "MongoError")
+          {
+            this.setState({msg: "Email already exists!"});
+          }
+          else {
+            this.setState({msg: error.msg.message});
+          }
+        }
+
+        else {
+          this.setState( {msg: null});
+        }
+      }
+    };
 
     onChange = e => {
       console.log(typeof(e.target.value))
@@ -90,6 +112,7 @@ class SignUpForm extends Component {
                 <Col md='4' className='contain'>
                   <h1 id='idH1'>Register to On The House</h1>
                   {errorMessage}
+                  {this.state.msg ? <Alert color="danger">{ this.state.msg }</Alert> : null}
                   <Form onSubmit={this.onSubmit}>
                     <FormGroup row> 
                       <Col>
