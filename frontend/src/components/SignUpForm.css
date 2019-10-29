@@ -11,9 +11,16 @@
     margin-top: 100px;
 }
 
+
+.pwHint {
+    margin: 4px 0 2px;
+    font-size: 10px;
+    margin-bottom: 16px!important;
+    color: #586069
+}
+
 .errorMessage {
     color: red;
-
 }
 
 .contain {
@@ -24,4 +31,9 @@
     -webkit-box-shadow: 1px 1px 4px -1px rgba(0,0,0,0.76); 
     box-shadow: 1px 1px 4px -1px rgba(0,0,0,0.76);
     
+}
+
+
+#travBut {
+    margin-bottom: 100px;
 }

@@ -11,13 +11,21 @@ import {
 import NavBar from "./components/NavBar";
 import SubLease from "./components/SubLease";
 import LoginForm from "./components/LoginForm";
-//import SignupForm from "./components/SignupForm";
+import SignUpForm from "./components/SignUpForm";
 import LandingPage from "./components/LandingPage";
 import About from "./components/About";
 
-class App extends Component {
+import { loadUser } from './actions/authActions';
+import store from './store';
+import { Provider } from "react-redux";
+
+class App extends Component { 
+  componentDidMount() {
+    store.dispatch(loadUser());
+  } 
   render() {
     return (
+      <Provider store={store}>
       <Router>
         <div className="App">
           <DocumentTitle title="On The House"></DocumentTitle>
@@ -25,13 +33,14 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={LandingPage} />
             <Route exact path="/About" component={About} />
-            <Route exact path="/users/login" component={LoginForm} />
-
+            <Route exact path="/users/signup" component={SignUpForm} />
+            <Route exact path="/users/loginpage" component={LoginForm} />
             <Route exact path="/SubLease" component={SubLease} />
             <Redirect to="/" />
           </Switch>
         </div>
       </Router>
+      </Provider>
     );
   }
 }

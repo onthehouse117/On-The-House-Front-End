@@ -27,8 +27,8 @@ const NavBar = (props) => {
             <NavItem className="active"><NavLink className='nl' href="/">Home</NavLink></NavItem>
             <NavItem><NavLink href="/About">About</NavLink></NavItem>
             <NavItem><NavLink href="/Communities">Contact</NavLink></NavItem>
-            <NavItem><NavLink id="loginButton" href="/users/login">Sign In</NavLink></NavItem>
-            <NavItem><NavLink id="userImage">Dynamic User</NavLink></NavItem>
+            <NavItem><NavLink id="loginButton" href="/users/loginpage">Sign In</NavLink></NavItem>
+            <NavItem><NavLink id="signUpButton" href="/users/signup">Sign Up</NavLink></NavItem>
           </Nav>
         </Collapse>
       </Navbar> 

@@ -1,14 +1,14 @@
-#userImage {
+#signUpButton {
     /* circle border */
-    border: 5px solid rgba(25, 221, 19, 0.753); 
+    /* border: 5px solid rgba(25, 221, 19, 0.753); 
     display: inline-block;
     border-radius: 50%;
     width: 50px;
     height: 40px;
 
     /* Dynamic username/image */
-    font-size: 0.3rem;
-    text-align: center;
+    /* font-size: 0.3rem;
+    text-align: center; */ 
 
     /* align to right corner */
     position:absolute;
@@ -16,7 +16,7 @@
     margin-right: 0px;
 }
 
-#userImage:hover {
+#signUpButton:hover {
     cursor: pointer;
 }
 

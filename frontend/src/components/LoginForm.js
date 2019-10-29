@@ -26,19 +26,16 @@ const initialState = {
   showErrorMessage: false,
   userHasToken: false,
   verified: false,
-
 };
+
 class LoginForm extends Component {
     state = initialState;
 
     validateCases = () => {
-      let emailError="";
-      let passwordError ='';
      
       if (!this.state.email.includes('@uci.edu') || this.state.password.length < 8)
       {      
         console.log('invalid email');
-        emailError ='invalid email';
         this.setState({showErrorMessage: true});
         console.log(this.state.showErrorMessage);
         return false;
@@ -89,13 +86,13 @@ class LoginForm extends Component {
                   <FormGroup row> 
                     <Col>
                       <Label className='d-flex justify-content-start' for="uciEmail">Email</Label>
-                      <Input type="email" name="email" value={this.state.name} id="uciEmail" onChange={this.handleInputChange} placeholder="Enter UCI email" />
+                      <Input type="email" name="email" value={this.state.name} id="uciEmail" onChange={this.handleInputChange} placeholder="Enter UCI email" required/>
                     </Col>
                   </FormGroup>
                   <FormGroup row> 
                     <Col>
                       <Label className='d-flex justify-content-start' for="userPassword">Password</Label>
-                      <Input type="password" name="password" value={this.state.password} id="userPassword" onChange={this.handleInputChange} placeholder="Enter password"/> 
+                      <Input type="password" name="password" value={this.state.password} id="userPassword" onChange={this.handleInputChange} placeholder="Enter password" required/> 
                       {/* value={this.state.password} */}
                     </Col>
                   </FormGroup>
