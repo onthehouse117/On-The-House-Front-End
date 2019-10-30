@@ -46,10 +46,13 @@ export const register = ({ firstName, lastName, DOB, email, password})  => dispa
     console.log(body);
 
     axios.post('/users', body, config)
-        .then(res => dispatch({
+        .then(res => {
+            dispatch({
             type: REGISTER_SUCCESS,
             payload: res.data
-        }))
+        })
+        console.log(`data is  ${JSON.stringify(res.data)}`);
+        })
         .catch(err => {
             console.log(err);
             dispatch(returnErrors(err.response.data, err.response.status, 'REGISTER_FAIL'));

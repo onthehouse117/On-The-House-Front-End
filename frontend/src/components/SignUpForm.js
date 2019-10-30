@@ -17,7 +17,6 @@ import{
 
 import { register } from '../actions/authActions';
 
-
 const styles = {
     marginTop: '150px',
 };
@@ -39,27 +38,32 @@ class SignUpForm extends Component {
     static propTypes = {
         isAuthenticated: PropTypes.bool,
         error: PropTypes.object.isRequired,
-        register: PropTypes.func.isRequired
+        register: PropTypes.func.isRequired,
     }
 
     componentDidUpdate(prevProps) {
-      const { error } = this.props;
+      const { error, isAuthenticated } = this.props;
       if(error !== prevProps.error)
       {
         //register error
         if(error.id === 'REGISTER_FAIL') {
           if (error.msg.name === "MongoError")
           {
-            this.setState({msg: "Email already exists!"});
+            this.setState({msg: "User already exists!"});
           }
           else {
             this.setState({msg: error.msg.message});
           }
         }
-
         else {
           this.setState( {msg: null});
         }
+      }
+
+      //If user authenticated, redirect to verify page.
+      if(isAuthenticated) {
+        const { history } = this.props;
+        history.push('/verification');
       }
     };
 
@@ -76,22 +80,21 @@ class SignUpForm extends Component {
     }
 
     onSubmit = e => {
-        e.preventDefault();
+      e.preventDefault();
 
-        const { firstName, lastName, DOB, email, password } = this.state;
+      const { firstName, lastName, DOB, email, password } = this.state;
 
-        //New user created
-        const newUser = {
-            firstName,
-            lastName,
-            DOB,
-            email,
-            password
-        };
+      //New user created
+      const newUser = {
+          firstName,
+          lastName,
+          DOB,
+          email,
+          password
+      };
 
-        //Send new user object to register action and JSON request body
-        this.props.register(newUser);
-
+      //Send new user object to register action and JSON request body
+      this.props.register(newUser);
     }
 
 
@@ -161,6 +164,7 @@ class SignUpForm extends Component {
 const mapStatetoProps = state => ({
     // TEMPLATE
     // propYouWantInserted : state.ItemName,
+    authAction: state.auth,
     isAuthenticated: state.auth.isAuthenticated,
     error: state.error
 
