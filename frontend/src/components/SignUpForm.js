@@ -1,6 +1,6 @@
-import React, { Component, useState } from "react";
-import { connect } from "react-redux";
-import "./SignUpForm.css";
+import React, { Component, useState } from 'react';
+import { connect } from 'react-redux';
+import './SignUpForm.css';
 import PropTypes from 'prop-types';
 import{
   Form, 
@@ -39,30 +39,6 @@ class SignUpForm extends Component {
     error: PropTypes.object.isRequired,
     register: PropTypes.func.isRequired,
   }
-
-
-  // validateCases = () => {
-  //   if (!this.state.firstName) {
-  //     console.log("no first name inputed");
-  //     this.setState({ showErrorMessage: true });
-  //     return false;
-  //   } else if (!this.state.lastName) {
-  //     console.log("no last name inputed");
-  //     this.setState({ showErrorMessage: true });
-  //     return false;
-  //   } else if (!this.state.email.includes("@uci.edu")) {
-  //     console.log("invalid email");
-  //     this.setState({ showErrorMessage: true });
-  //     console.log(this.state.showErrorMessage);
-  //     return false;
-  //   } else if (!this.state.password || this.state.password.length < 8) {
-  //     console.log("no password inputed");
-  //     this.setState({ showErrorMessage: true });
-  //     return false;
-  //   } /*else if( )
-  //     this.state.showErrorMessage = false;
-  //     return true;*/
-  // };
 
   componentDidUpdate(prevProps) {
     const { error, isAuthenticated } = this.props;
