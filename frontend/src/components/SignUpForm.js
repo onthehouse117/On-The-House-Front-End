@@ -34,7 +34,6 @@ class SignUpForm extends Component {
     emailErrorBorder: '',
     passwordErrorBorder: '',
     userTokens: [],
-    userHasError: true,
     userHasToken: false,
     verified: false
   }
