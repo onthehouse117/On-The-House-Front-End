@@ -1,6 +1,6 @@
-import React, { Component, useState } from "react";
-import { connect } from "react-redux";
-import "./SignUpForm.css";
+import React, { Component, useState } from 'react';
+import { connect } from 'react-redux';
+import './SignUpForm.css';
 import PropTypes from 'prop-types';
 import{
   Form, 
@@ -24,12 +24,16 @@ class SignUpForm extends Component {
   state = {
     firstName: '',
     lastName: '',
-    DOB: null,
+    DOB: '',
     email: '',
     password: '',
     msg: null,
+    firstNameErrorBorder: '',
+    lastNameErrorBorder: '',
+    dobErrorBorder: '',
+    emailErrorBorder: '',
+    passwordErrorBorder: '',
     userTokens: [],
-    showErrorMessage: false,
     userHasToken: false,
     verified: false
   }
@@ -39,30 +43,6 @@ class SignUpForm extends Component {
     error: PropTypes.object.isRequired,
     register: PropTypes.func.isRequired,
   }
-
-
-  // validateCases = () => {
-  //   if (!this.state.firstName) {
-  //     console.log("no first name inputed");
-  //     this.setState({ showErrorMessage: true });
-  //     return false;
-  //   } else if (!this.state.lastName) {
-  //     console.log("no last name inputed");
-  //     this.setState({ showErrorMessage: true });
-  //     return false;
-  //   } else if (!this.state.email.includes("@uci.edu")) {
-  //     console.log("invalid email");
-  //     this.setState({ showErrorMessage: true });
-  //     console.log(this.state.showErrorMessage);
-  //     return false;
-  //   } else if (!this.state.password || this.state.password.length < 8) {
-  //     console.log("no password inputed");
-  //     this.setState({ showErrorMessage: true });
-  //     return false;
-  //   } /*else if( )
-  //     this.state.showErrorMessage = false;
-  //     return true;*/
-  // };
 
   componentDidUpdate(prevProps) {
     const { error, isAuthenticated } = this.props;
@@ -74,9 +54,9 @@ class SignUpForm extends Component {
         {
           this.setState({msg: "User already exists!"});
         }
-        else {
-          this.setState({msg: error.msg.message});
-        }
+        // else {
+        //   this.setState({msg: error.msg.message});
+        // }
       }
       else {
         this.setState( {msg: null});
@@ -90,6 +70,45 @@ class SignUpForm extends Component {
     }
   };
 
+  //Checks if all required fields have inputs. If so, then the submit button will be enabled.
+  requiredFieldsFilled() {
+    const { firstName, lastName, DOB, email, password } = this.state;
+    // console.log(`fields filled is ${firstName.length > 0 && lastName.length > 0 && DOB.length > 0 && email.length > 0 && password.length > 0}, lengths are ${firstName.length} ${lastName.length} ${DOB.length} ${email.length } ${password.length}`);
+    return firstName.length > 0 && lastName.length > 0 && DOB.length === undefined && email.length > 0 && password.length > 0;
+  }
+
+
+  validateCase()
+  {
+    //Email must include @uci.edu
+    if (this.state.email.split("@")[1] !== "uci.edu")
+    {
+      this.setState({msg: "Email must be UCI email."});
+      return false;
+    }
+    //Password cannot contain 'password'
+    if (this.state.password.toLowerCase().includes("password"))
+    {
+      this.setState({msg: "Password cannot contain keyword: 'password'"});
+      return false;
+    }
+    //Minimum requirements for password
+    const regex = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^\w\s]).{8,}$/;
+    if (!regex.test(this.state.password))
+    {
+      this.setState({msg: "Password must meet the following requirements:\n Minimum 8 characters including at least 1 digit, 1 uppercase letter, 1 lowercase letter, and 1 special character"});
+      return false;
+    }
+    //Check if age is over 13
+    const now = new Date();
+    if (now.getFullYear() - this.state.DOB.getFullYear() < 13) {
+      this.setState({msg: "Must be at least 13 years old to register."});
+      return false;
+    }
+    return true;
+
+  };
+
   onChange = e => {
     console.log(typeof(e.target.value))
     this.setState({ [e.target.name]: e.target.value});
@@ -97,14 +116,17 @@ class SignUpForm extends Component {
 
   onChangeDate = e =>{
     const d = new Date(e.target.value);
-    // console.log(`d is ${d}`);
-    console.log(e.target.name);
+    // console.log(`d is ${typeof(d)}`);
+    // console.log(e.target.name);
     this.setState({ [e.target.name]: d});
   }
 
   onSubmit = e => {
     e.preventDefault();
 
+    //Set Error message to null.
+    this.setState({msg: null});
+    const valid = this.validateCase();
     const { firstName, lastName, DOB, email, password } = this.state;
 
     //New user created
@@ -117,19 +139,14 @@ class SignUpForm extends Component {
     };
 
     //Send new user object to register action and JSON request body
-    this.props.register(newUser);
+    if (valid) {
+      this.props.register(newUser);
+    }
   }
 
 
   render() {
-    let errorMessage = null;
-    if (this.state.showErrorMessage) {
-      errorMessage = ( 
-        <div className='errorMessage'>
-          *Invalid email or password
-        </div>
-      );
-    }
+    const submitButtonEnable = this.requiredFieldsFilled();
     return (
       <div className='styles'>
         <Container>
@@ -138,7 +155,7 @@ class SignUpForm extends Component {
             <Col md='4'>
               <div className='contain'>
                 <h1 id='idH1'>Register to On The House</h1>
-                {errorMessage}
+                {/* {this.state.errorMessage} */}
                 {this.state.msg ? <Alert color="danger">{ this.state.msg }</Alert> : null}
                 <Form onSubmit={this.onSubmit}>
                   <FormGroup row> 
@@ -162,18 +179,18 @@ class SignUpForm extends Component {
                   <FormGroup row> 
                   <Col>
                       <Label className='d-flex justify-content-start' for="uciEmail">Email</Label>
-                      <Input type="email" name="email" value={this.state.name} id="uciEmail" onChange={this.onChange} placeholder="Enter UCI email" />
+                      <Input type="email" name="email" id="uciEmail" onChange={this.onChange} placeholder="Enter UCI email" />
                   </Col>
                   </FormGroup>
                   <FormGroup row> 
                   <Col>
                       <Label className='d-flex justify-content-start' for="userPassword">Password</Label>
-                      <Input type="password" name="password" value={this.state.password} id="userPassword" onChange={this.onChange} placeholder="Enter password" /> 
+                      <Input type="password" name="password" id="userPassword" onChange={this.onChange} placeholder="Enter password" /> 
                       <p class="pwHint">Must contain at least one upper case letter, one lower case letter, one number, and one special character</p>
                       {/* value={this.state.password} */}
                   </Col>
                   </FormGroup>
-                  <Button type='submit' className='d-flex justify-content-start' action="/">Register</Button>
+                  <Button type='submit' className='d-flex justify-content-start' disabled={!submitButtonEnable} action="/">Register</Button>
                 </Form>
               </div>
               <a href="/users/loginpage" style={{margintop: '5rem'}}>Already a user? Sign In</a>

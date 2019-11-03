@@ -27,7 +27,7 @@
 }
 
 .nav-link:hover {
-    color: white !important;
+    text-decoration: underline!important;
 }
 .navbar-color {
     background: transparent;   /*rgba(3, 49, 152, 0.966) */
