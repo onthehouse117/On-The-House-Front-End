@@ -23,6 +23,10 @@
     color: red;
 }
 
+.errorBorder {
+    border: 1px solid red!important;
+}
+
 .contain {
     padding: 20px;
     background-color: white;
