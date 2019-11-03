@@ -126,6 +126,8 @@ class SignUpForm extends Component {
 
     //Set Error message to null.
     this.setState({msg: null, dobErrorBorder: '', dobErrorMessage: '', emailErrorBorder: '', emailErrorMessage: '', passwordErrorBorder: '', passwordErrorMessage: ''});
+
+    //Check if user inputs are valid 
     const valid = this.validateCases();
     const { firstName, lastName, DOB, email, password } = this.state;
 
