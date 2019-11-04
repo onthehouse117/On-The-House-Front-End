@@ -83,6 +83,7 @@ class SignUpForm extends Component {
 
   validateCases() {
     //Email must include @uci.edu
+    // this.state.email.includes("@uci.edu") || this.state.password.length <8
     if (this.state.email.split("@")[1] !== "uci.edu") {
       this.setState({
         msg: "Email must be UCI email.",
