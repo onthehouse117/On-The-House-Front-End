@@ -1,5 +1,6 @@
 import React, { Component, useState } from 'react';
 import { connect } from 'react-redux';
+import { clearErrors } from '../actions/errorActions';
 import './SignUpForm.css';
 import PropTypes from 'prop-types';
 import{
@@ -34,15 +35,13 @@ class SignUpForm extends Component {
     emailErrorMessage: '',
     passwordErrorBorder: '',
     passwordErrorMessage: '',
-    userTokens: [],
-    userHasToken: false,
-    verified: false
   }
 
   static propTypes = {
     isAuthenticated: PropTypes.bool,
     error: PropTypes.object.isRequired,
     register: PropTypes.func.isRequired,
+    clearErrors: PropTypes.func.isRequired
   }
 
   componentDidUpdate(prevProps) {
@@ -58,9 +57,6 @@ class SignUpForm extends Component {
         // else {
         //   this.setState({msg: error.msg.message});
         // }
-      }
-      else {
-        this.setState( {msg: null});
       }
     }
 
@@ -125,6 +121,7 @@ class SignUpForm extends Component {
     e.preventDefault();
 
     //Set Error message to null.
+    this.props.clearErrors();
     this.setState({msg: null, dobErrorBorder: '', dobErrorMessage: '', emailErrorBorder: '', emailErrorMessage: '', passwordErrorBorder: '', passwordErrorMessage: ''});
 
     //Check if user inputs are valid 
@@ -157,7 +154,6 @@ class SignUpForm extends Component {
             <Col md='4'>
               <div className='contain'>
                 <h1 id='idH1'>Register to On The House</h1>
-                {/* {this.state.errorMessage} */}
                 {this.state.msg ? <Alert color="danger">{ this.state.msg }</Alert> : null}
                 <Form onSubmit={this.onSubmit}>
                   <FormGroup row> 
@@ -175,21 +171,20 @@ class SignUpForm extends Component {
                   <FormGroup row> 
                   <Col>
                       <Label className={`d-flex justify-content-start ${this.state.dobErrorMessage}`} for="enteredDate">Date of Birth</Label>
-                      <Input className={this.state.dobErrorBorder} type="date" name="DOB" id="enteredDate" onChange={this.onChangeDate} />
+                      <Input className={this.state.dobErrorBorder} type="date" name="DOB" id="enteredDate" onChange={this.onChangeDate}/>
                   </Col>
                   </FormGroup>
                   <FormGroup row> 
                   <Col>
                       <Label className={`d-flex justify-content-start ${this.state.emailErrorMessage}`} for="uciEmail">Email</Label>
-                      <Input type="email" className={this.state.emailErrorBorder} name="email" id="uciEmail" onChange={this.onChange} placeholder="Enter UCI email" />
+                      <Input type="email" className={this.state.emailErrorBorder} name="email" id="uciEmail" onChange={this.onChange} placeholder="Enter UCI email"/>
                   </Col>
                   </FormGroup>
                   <FormGroup row> 
                   <Col>
                       <Label className={`d-flex justify-content-start ${this.state.passwordErrorMessage}`} for="userPassword">Password</Label>
-                      <Input className={this.state.passwordErrorBorder} type="password" name="password" id="userPassword" onChange={this.onChange} placeholder="Enter password" /> 
+                      <Input className={this.state.passwordErrorBorder} type="password" name="password" id="userPassword" onChange={this.onChange} placeholder="Enter password"/> 
                       <p class="pwHint">Must contain at least one upper case letter, one lower case letter, one number, and one special character</p>
-                      {/* value={this.state.password} */}
                   </Col>
                   </FormGroup>
                   <Button type='submit' className='d-flex justify-content-start' disabled={!submitButtonEnable} action="/">Register</Button>
@@ -223,5 +218,5 @@ const mapDispatchToProps = state => ({
 export default connect(
   mapStatetoProps,
 //   mapDispatchToProps,
-  { register }
+  { register, clearErrors }
 )(SignUpForm);

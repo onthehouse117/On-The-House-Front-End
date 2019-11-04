@@ -1,7 +1,7 @@
-import React, { Component, useState } from "react";
+import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
-import styles from "./NavBar.css";
 import PropTypes from 'prop-types';
+import styles from "./NavBar.css";
 import {
   Collapse,
   Navbar,
@@ -11,40 +11,59 @@ import {
   NavItem,
   NavLink
  } from 'reactstrap';
-import { logout } from '../actions/authActions';
+import SignOut from './SignOut';
+import { Link } from 'react-router-dom';
 
 //Reactstrap implementation.  Can switch off to either props or class component depending on dynamic content.
-const NavBar = (props) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const toggle = () => setIsOpen(!isOpen);
+class NavBar extends Component { 
+  state = {
+    isOpen: false,
+  };
 
-  return (
-    <div className={styles.top}>
-      <Navbar className="navbar navbar-expand-lg navbar-light fixed-top navbar-color">
-        <NavbarBrand className="navBrand" href="/">On The House Logo</NavbarBrand>
-        <NavbarToggler onClick={toggle}><span className="navbar-toggler-icon"></span></NavbarToggler>
-        <Collapse isOpen={isOpen} navbar>
-          <Nav className="mr-auto mt-2 mt-lg-0" navbar>
-            <NavItem className="active"><NavLink className='nl' href="/">Home</NavLink></NavItem>
-            <NavItem><NavLink href="/About">About</NavLink></NavItem>
-            <NavItem><NavLink href="/Communities">Contact</NavLink></NavItem>
-            <NavItem><NavLink id="loginButton" href="/users/loginpage">Sign In</NavLink></NavItem>
-            <NavItem><NavLink id="signUpButton" href="/users/signup">Sign Up</NavLink></NavItem>
-            <NavItem><NavLink onClick={props.logout}>Sign Out</NavLink></NavItem>
-          </Nav>
-        </Collapse>
-      </Navbar> 
-    </div>
-  );
+  static propTypes = {
+    auth: PropTypes.object.isRequired
   }
 
-NavBar.propTypes = {
-  logout: PropTypes.func.isRequired
+  toggle = () => this.setState({isOpen: !this.state.isOpen});
+
+  render () {
+    const {isAuthenticated, user } = this.props.auth;
+
+    const userLinks = (
+      <Fragment>
+        <SignOut></SignOut>
+      </Fragment>
+    )
+
+    const guestLinks = (
+      <Fragment>
+        <NavItem><NavLink id="signUpButton" href="/users/signup">Sign Up</NavLink></NavItem>
+      </Fragment>
+    )
+
+    return (
+      <div>
+        <Navbar className="navbar navbar-expand-lg navbar-light fixed-top navbar-color">
+          <NavbarBrand className="navBrand" tag={Link} to='/'>On The House Logo</NavbarBrand>
+          <NavbarToggler onClick={this.toggle}><span className="navbar-toggler-icon"></span></NavbarToggler>
+          <Collapse isOpen={this.state.isOpen} navbar>
+            <Nav className="mr-auto mt-2 mt-lg-0" navbar>
+              <NavItem className="active"><NavLink className='nl' tag={Link} to='/'>Home</NavLink></NavItem>
+              <NavItem><NavLink tag={Link} to='/About'>About</NavLink></NavItem>
+              <NavItem><NavLink tag={Link} to='/'>Contact</NavLink></NavItem>
+              { isAuthenticated ? userLinks : guestLinks}
+            </Nav>
+          </Collapse>
+        </Navbar> 
+      </div>
+    );
+  }
 }
 
-const mapStatetoProps = state => ({
+const mapStateToProps = state => ({
     // TEMPLATE
     // propYouWantInserted : state.ItemName,
+    auth: state.auth
 });
 
 const mapDispatchToProps = state => ({
@@ -54,7 +73,6 @@ const mapDispatchToProps = state => ({
 });
 
 export default connect(
-  mapStatetoProps,
-  { logout }
+  mapStateToProps,
   // mapDispatchToProps
 )(NavBar);
