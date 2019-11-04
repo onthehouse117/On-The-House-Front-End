@@ -10,7 +10,8 @@ import {
   Container,
   Row,
   Col,
-  Button
+  Button,
+  Alert
 } from "reactstrap";
 import axios from "axios";
 
@@ -22,9 +23,13 @@ const initialState = {
   email: "",
   password: "",
   userTokens: [],
-  showErrorMessage: false,
+  //showErrorMessage: false,
   userHasToken: false,
-  verified: false
+  verified: false,
+  emailErrorBorder: "",
+  emailErrorMessage: "",
+  passwordErrorBorder: "",
+  passwordErrorMessage: ""
 };
 
 class LoginForm extends Component {
@@ -38,19 +43,36 @@ class LoginForm extends Component {
 
   validateCases = () => {
     if (
-      !this.state.email.includes("@uci.edu") ||
-      this.state.password.length < 8
+      this.state.email.split("@")[1] !== "uci.edu"
+      //this.state.password.length < 8
     ) {
       console.log("invalid email");
-      this.setState({ showErrorMessage: true });
-      console.log(this.state.showErrorMessage);
-      return false;
-    } else if (!this.state.password) {
-      console.log("no password inputed");
-      this.setState({ showErrorMessage: true });
+      this.setState({
+        msg: "Email must be UCI email.",
+        emailErrorBorder: "errorBorder",
+        emailErrorMessage: "errorMessage"
+      });
+      //console.log(this.state.showErrorMessage);
       return false;
     }
-    this.state.showErrorMessage = false;
+    const regex = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^\w\s]).{8,}$/;
+    if (!regex.test(this.state.password)) {
+      this.setState({
+        msg:
+          "Password must meet the following requirements:\n Minimum 8 characters including at least 1 digit, 1 uppercase letter, 1 lowercase letter, and 1 special character",
+        passwordErrorBorder: "errorBorder",
+        passwordErrorMessage: "errorMessage"
+      });
+      /*else if (!this.state.password) {
+      console.log("no password inputed");
+      this.setState({ msg: "Password cannot contain keyword: 'password'",
+      passwordErrorBorder: "errorBorder",
+      passwordErrorMessage: "errorMessage"});
+      return false;
+    }*/
+      //this.state.showErrorMessage = false;
+      return false;
+    }
     return true;
   };
 
@@ -63,6 +85,16 @@ class LoginForm extends Component {
 
   submitHandler = e => {
     e.preventDefault();
+    this.setState({
+      msg: null,
+      email: "",
+      password: "",
+      emailErrorBorder: "",
+      emailErrorMessage: "",
+      passwordErrorBorder: "",
+      passwordErrorMessage: ""
+    });
+
     const valid = this.validateCases();
     if (valid) {
       {
@@ -76,11 +108,11 @@ class LoginForm extends Component {
   render() {
     let errorMessage = null;
     const submitButtonEnable = this.requiredFieldsFilled();
-    if (this.state.showErrorMessage) {
+    /*if (this.state.showErrorMessage) {
       errorMessage = (
         <div className="errorMessage">*Invalid email or password</div>
       );
-    }
+    }*/
     return (
       <div className="styles">
         <Container>
@@ -89,11 +121,16 @@ class LoginForm extends Component {
             <Col md="4" className="contain">
               <h1 id="idH1">Sign in to On The House</h1>
               {errorMessage}
+              {this.state.msg ? (
+                <Alert color="danger">{this.state.msg}</Alert>
+              ) : null}
               <Form onSubmit={this.submitHandler}>
                 <FormGroup row>
                   <Col>
                     <Label
-                      className="d-flex justify-content-start"
+                      className={
+                        "d-flex justify-content-start ${this.state.emailErrorMessage}"
+                      }
                       for="uciEmail"
                     >
                       Email
@@ -102,6 +139,7 @@ class LoginForm extends Component {
                       type="email"
                       name="email"
                       value={this.state.name}
+                      className={this.state.emailErrorBorder}
                       id="uciEmail"
                       onChange={this.handleInputChange}
                       placeholder="Enter UCI email"
@@ -112,7 +150,7 @@ class LoginForm extends Component {
                 <FormGroup row>
                   <Col>
                     <Label
-                      className="d-flex justify-content-start"
+                      className={`d-flex justify-content-start ${this.state.passwordErrorMessage}`}
                       for="userPassword"
                     >
                       Password
@@ -121,6 +159,7 @@ class LoginForm extends Component {
                       type="password"
                       name="password"
                       value={this.state.password}
+                      className={this.state.passwordErrorBorder}
                       id="userPassword"
                       onChange={this.handleInputChange}
                       placeholder="Enter password"
