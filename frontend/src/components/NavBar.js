@@ -9,7 +9,12 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink
+  NavLink,
+  UncontrolledDropdown,
+  Dropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem
  } from 'reactstrap';
 import SignOut from './SignOut';
 import { Link } from 'react-router-dom';
@@ -18,20 +23,27 @@ import { Link } from 'react-router-dom';
 class NavBar extends Component { 
   state = {
     isOpen: false,
+    dropdownOpen: false,
   };
 
   static propTypes = {
     auth: PropTypes.object.isRequired
   }
 
-  toggle = () => this.setState({isOpen: !this.state.isOpen});
+  toggle = () => this.setState({isOpen: !this.state.isOpen, dropdownOpen: !this.state.dropdownOpen});
 
   render () {
     const {isAuthenticated, user } = this.props.auth;
 
     const userLinks = (
-      <Fragment>
-        <SignOut></SignOut>
+      <Fragment id='contentPosition'>
+        <UncontrolledDropdown nav inNavbar>
+          <DropdownToggle nav caret><span id="dynamicUserGreeting">{ user ? `Hi ${user.firstName} ${user.lastName}` : ``}</span></DropdownToggle>
+            <DropdownMenu className="dropdown-menu-right">
+              <DropdownItem><SignOut></SignOut></DropdownItem>
+            </DropdownMenu>
+        </UncontrolledDropdown>
+        {/* <NavItem><span id="dynamicUserGreeting">{ user ? `Welcome ${user.firstName} ${user.lastName}` : ``}</span></NavItem> */}
       </Fragment>
     )
 

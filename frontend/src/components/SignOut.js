@@ -16,7 +16,7 @@ export class SignOut extends Component {
     }
     render() {
         return(
-            <NavItem><NavLink id="userLoggedInButton" onClick={this.props.logout} tag={Link} to='/'>Sign Out</NavLink></NavItem> 
+            <NavLink id="userLoggedInButton" onClick={this.props.logout} tag={Link} to='/'>Sign Out</NavLink>
         );
     }
 }
