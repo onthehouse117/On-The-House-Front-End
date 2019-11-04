@@ -30,7 +30,6 @@ class App extends Component {
       <Router>
         <div className="App">
           <DocumentTitle title="On The House"></DocumentTitle>
-          <NavBar />
           <Switch>
             <Route exact path="/" component={LandingPage} />
             <Route exact path="/About" component={About} />

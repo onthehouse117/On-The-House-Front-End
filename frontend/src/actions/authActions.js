@@ -60,6 +60,14 @@ export const register = ({ firstName, lastName, DOB, email, password})  => dispa
         });
 };
 
+//User Logout
+export const logout = () => {
+    console.log("Successfully logged out!");
+    return {
+        type: LOGOUT_SUCCESS
+    }
+}
+
 export const tokenConfig = getState => {
     // Get token
     const token = getState().auth.token;

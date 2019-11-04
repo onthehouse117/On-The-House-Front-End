@@ -1,6 +1,7 @@
 import React, { Component, useState } from "react";
 import { connect } from "react-redux";
 import styles from "./NavBar.css";
+import PropTypes from 'prop-types';
 import {
   Collapse,
   Navbar,
@@ -10,7 +11,7 @@ import {
   NavItem,
   NavLink
  } from 'reactstrap';
-
+import { logout } from '../actions/authActions';
 
 //Reactstrap implementation.  Can switch off to either props or class component depending on dynamic content.
 const NavBar = (props) => {
@@ -29,6 +30,7 @@ const NavBar = (props) => {
             <NavItem><NavLink href="/Communities">Contact</NavLink></NavItem>
             <NavItem><NavLink id="loginButton" href="/users/loginpage">Sign In</NavLink></NavItem>
             <NavItem><NavLink id="signUpButton" href="/users/signup">Sign Up</NavLink></NavItem>
+            <NavItem><NavLink onClick={props.logout}>Sign Out</NavLink></NavItem>
           </Nav>
         </Collapse>
       </Navbar> 
@@ -36,6 +38,9 @@ const NavBar = (props) => {
   );
   }
 
+NavBar.propTypes = {
+  logout: PropTypes.func.isRequired
+}
 
 const mapStatetoProps = state => ({
     // TEMPLATE
@@ -50,5 +55,6 @@ const mapDispatchToProps = state => ({
 
 export default connect(
   mapStatetoProps,
-  mapDispatchToProps
+  { logout }
+  // mapDispatchToProps
 )(NavBar);

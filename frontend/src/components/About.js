@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import "./About.css";
+import NavBar from './NavBar';
 
 class About extends Component {
   render() {
     return (
       <div>
+        <NavBar></NavBar>
         <div id="header-bar">
           <div id="header-block-text">
             <h1 id = "header-title">Meet "On The House"</h1>
