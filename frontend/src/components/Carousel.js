@@ -19,8 +19,8 @@ const items = [
   {
     src:
       "http://ktgy.com/wp-content/uploads/2015/11/UC-Irvine-Puerta-del-Sol_00-5_-2000x1260.jpg",
-    altText: "Peurta Del Sol",
-    caption: "Peurta Del Sol"
+    altText: "Puerta Del Sol",
+    caption: "Puerta Del Sol"
   },
   {
     src:
