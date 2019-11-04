@@ -10,7 +10,8 @@ import{
   Input,
   Container,
   Col,
-  Button
+  Button,
+  Alert
 } from "reactstrap";
 
 import { register } from "../actions/authActions";
@@ -167,36 +168,14 @@ class SignUpForm extends Component {
                 <Form onSubmit={this.onSubmit}>
                   <FormGroup row> 
                     <Col>
-                      <Label
-                        className="d-flex justify-content-start"
-                        for="firstName"
-                      >
-                        First Name
-                      </Label>
-                      <Input
-                        type="text"
-                        name="firstName"
-                        id="firstName"
-                        onChange={this.onChange}
-                        placeholder="First Name"
-                      />
+                      <Label className="d-flex justify-content-start" for="firstName">First Name</Label>
+                      <Input type="text" name="firstName" id="firstName" onChange={this.onChange} placeholder="First Name" />
                     </Col>
                   </FormGroup>
                   <FormGroup row>
                     <Col>
-                      <Label
-                        className="d-flex justify-content-start"
-                        for="lastName"
-                      >
-                        Last Name
-                      </Label>
-                      <Input
-                        type="text"
-                        name="lastName"
-                        id="lastName"
-                        // onChange={this.onChange}
-                        placeholder="Last Name"
-                      />
+                      <Label className="d-flex justify-content-start" for="lastName">Last Name</Label>
+                      <Input type="text" name="lastName" id="lastName" onChange={this.onChange} placeholder="Last Name" />
                     </Col>
                   </FormGroup>
                   <FormGroup row> 
