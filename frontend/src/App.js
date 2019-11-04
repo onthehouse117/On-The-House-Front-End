@@ -39,7 +39,7 @@ class App extends Component {
             <Route exact path="/verification" component={VerificationPage} />
             <Route exact path="/users/loginpage" component={LoginForm} />
             <Route exact path="/SubLease" component={SubLease} />
-            <Router exact path="/posttable" component={PostTable} />
+            <Route exact path="/posttable" component={PostTable} />
             <Redirect to="/" />
           </Switch>
         </div>
