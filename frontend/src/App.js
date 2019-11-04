@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import DocumentTitle from "react-document-title";
 import "./App.css";
-import "./style.css";
+// import "./style.css";
 import {
   BrowserRouter as Router,
   Route,
@@ -13,6 +13,7 @@ import SubLease from "./components/SubLease";
 import LoginForm from "./components/LoginForm";
 import SignUpForm from "./components/SignUpForm";
 import LandingPage from "./components/LandingPage";
+import PostTable from "./components/PostTable";
 import About from "./components/About";
 import VerificationPage from "./components/VerificationPage/VerificationPage";
 import VerificationStatus from "./components/VerificationPage/VerificationStatus";
@@ -39,6 +40,7 @@ class App extends Component {
             <Route path="/verify" component={VerificationStatus} />
             <Route exact path="/users/loginpage" component={LoginForm} />
             <Route exact path="/SubLease" component={SubLease} />
+            <Route exact path="/posttable" component={PostTable} />
             <Redirect to="/" />
           </Switch>
         </div>

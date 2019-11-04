@@ -9,17 +9,11 @@ import{
   Label,
   Input,
   Container,
-  Row,
   Col,
-  Button,
-  Alert
-  } from 'reactstrap';
+  Button
+} from "reactstrap";
 
-import { register } from '../actions/authActions';
-
-const styles = {
-  marginTop: '150px'
-};
+import { register } from "../actions/authActions";
 
 class SignUpForm extends Component {
   state = {
@@ -142,12 +136,27 @@ class SignUpForm extends Component {
       this.props.register(newUser);
     }
   };
-
+  constructor() {
+    super();
+    this.state = {
+      firstName: "",
+      lastName: "",
+      DOB: null,
+      email: "",
+      password: "",
+      msg: null,
+      userTokens: [],
+      showErrorMessage: false,
+      userHasToken: false,
+      verified: false,
+      errorMsg: ""
+    };
+  }
 
   render() {
     const submitButtonEnable = this.requiredFieldsFilled();
     return (
-      <div className='styles'>
+      <div className="styles">
         <Container>
           <div className='row'>
             <Col md='4'></Col>
@@ -158,14 +167,36 @@ class SignUpForm extends Component {
                 <Form onSubmit={this.onSubmit}>
                   <FormGroup row> 
                     <Col>
-                      <Label className='d-flex justify-content-start' for="firstName">First Name</Label>
-                      <Input type="text" name="firstName" id="firstName" onChange={this.onChange} placeholder="First Name" />
+                      <Label
+                        className="d-flex justify-content-start"
+                        for="firstName"
+                      >
+                        First Name
+                      </Label>
+                      <Input
+                        type="text"
+                        name="firstName"
+                        id="firstName"
+                        onChange={this.onChange}
+                        placeholder="First Name"
+                      />
                     </Col>
                   </FormGroup>
-                  <FormGroup row> 
+                  <FormGroup row>
                     <Col>
-                      <Label className='d-flex justify-content-start' for="lastName">Last Name</Label>
-                      <Input type="text" name="lastName" id="lastName" onChange={this.onChange} placeholder="Last Name" />
+                      <Label
+                        className="d-flex justify-content-start"
+                        for="lastName"
+                      >
+                        Last Name
+                      </Label>
+                      <Input
+                        type="text"
+                        name="lastName"
+                        id="lastName"
+                        // onChange={this.onChange}
+                        placeholder="Last Name"
+                      />
                     </Col>
                   </FormGroup>
                   <FormGroup row> 
@@ -190,29 +221,30 @@ class SignUpForm extends Component {
                   <Button type='submit' className='d-flex justify-content-start' disabled={!submitButtonEnable} action="/">Register</Button>
                 </Form>
               </div>
-              <a href="/users/loginpage" style={{margintop: '5rem'}}>Already a user? Sign In</a>
+              <a href="/users/loginpage" style={{ margintop: "5rem" }}>
+                Already a user? Sign In
+              </a>
             </Col>
-            <Col xs='4'></Col>
+            <Col xs="4"></Col>
           </div>
         </Container>
       </div>
-    )
+    );
   }
 }
 
 const mapStatetoProps = state => ({
-    // TEMPLATE
-    // propYouWantInserted : state.ItemName,
-    authAction: state.auth,
-    isAuthenticated: state.auth.isAuthenticated,
-    error: state.error
-
+  // TEMPLATE
+  // propYouWantInserted : state.ItemName,
+  authAction: state.auth,
+  isAuthenticated: state.auth.isAuthenticated,
+  error: state.error
 });
 
 const mapDispatchToProps = state => ({
-    // TEMPLATE
-    // dispatchName: Parameter =>
-    //   dispatch({ type: "ActionName", Parameter }),
+  // TEMPLATE
+  // dispatchName: Parameter =>
+  //   dispatch({ type: "ActionName", Parameter }),
 });
 
 export default connect(
