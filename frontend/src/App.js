@@ -15,6 +15,7 @@ import SignUpForm from "./components/SignUpForm";
 import LandingPage from "./components/LandingPage";
 import About from "./components/About";
 import VerificationPage from "./components/VerificationPage/VerificationPage";
+import VerificationStatus from "./components/VerificationPage/VerificationStatus";
 
 import { loadUser } from './actions/authActions';
 import store from './store';
@@ -35,6 +36,7 @@ class App extends Component {
             <Route exact path="/About" component={About} />
             <Route exact path="/users/signup" component={SignUpForm} />
             <Route exact path="/verification" component={VerificationPage} />
+            <Route path="/verify" component={VerificationStatus} />
             <Route exact path="/users/loginpage" component={LoginForm} />
             <Route exact path="/SubLease" component={SubLease} />
             <Redirect to="/" />

@@ -7,7 +7,8 @@ import {
     LOGIN_FAIL,
     LOGOUT_SUCCESS,
     REGISTER_SUCCESS,
-    REGISTER_FAIL
+    REGISTER_FAIL,
+    VERIFICATION_SUCCESS
 } from './actionTypes';
 import { returnErrors } from './errorActions'
 
@@ -95,6 +96,14 @@ export const logout = () => {
     console.log("Successfully logged out!");
     return {
         type: LOGOUT_SUCCESS
+    }
+}
+
+//Check verification status of user
+export const verify = () => {
+    console.log("verifying user");
+    return {
+        type: VERIFICATION_SUCCESS
     }
 }
 
