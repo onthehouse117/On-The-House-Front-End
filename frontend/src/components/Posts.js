@@ -37,14 +37,14 @@ export default class Posts extends Component {
     try {
       axios.get("/posts/5dbf90a47da5730017d799bb", config).then(res => {
         this.setState({
-          _id: res.data._id,
-          title: res.data.title,
-          description: res.data.description,
-          community: res.data.community,
-          author: res.data.author,
-          comments: res.data.comments,
-          createdAt: res.data.createdAt,
-          updatedAt: res.data.updatedAt,
+          _id: res.data.post._id,
+          title: res.data.post.title,
+          description: res.data.post.description,
+          community: res.data.post.community,
+          author: res.data.post.author,
+          comments: res.data.post.comments,
+          createdAt: res.data.post.createdAt,
+          updatedAt: res.data.post.updatedAt,
         });
       });
     } catch (e) {
