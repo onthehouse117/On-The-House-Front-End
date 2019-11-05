@@ -35,6 +35,11 @@
 }
 
 
+#usrName{
+    position:absolute;
+    right: 0px;
+    bottom: 0px;
+}
 
 .nav-link:hover {
     text-decoration: underline!important;

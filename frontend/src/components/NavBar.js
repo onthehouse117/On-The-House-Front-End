@@ -49,15 +49,17 @@ class NavBar extends Component {
     const {isAuthenticated, user } = this.props.auth;
 
     const userLinks = (
-      <Fragment id='contentPosition'>
-        <UncontrolledDropdown nav inNavbar>
-          <DropdownToggle nav caret><span id="dynamicUserGreeting">{ user ? `Hi ${user.firstName} ${user.lastName}` : ``}</span></DropdownToggle>
-            <DropdownMenu className="dropdown-menu-right">
-              <DropdownItem><SignOut></SignOut></DropdownItem>
-            </DropdownMenu>
-        </UncontrolledDropdown>
-        {/* <NavItem><span id="dynamicUserGreeting">{ user ? `Welcome ${user.firstName} ${user.lastName}` : ``}</span></NavItem> */}
-      </Fragment>
+      <NavbarBrand id="usrName">
+        <Fragment id='contentPosition'>
+          <UncontrolledDropdown nav inNavbar>
+            <DropdownToggle nav caret><span id="dynamicUserGreeting">{ user ? `Hi ${user.firstName} ${user.lastName}` : ``}</span></DropdownToggle>
+              <DropdownMenu className="dropdown-menu-right">
+                <DropdownItem><SignOut></SignOut></DropdownItem>
+              </DropdownMenu>
+          </UncontrolledDropdown>
+          {/* <NavItem><span id="dynamicUserGreeting">{ user ? `Welcome ${user.firstName} ${user.lastName}` : ``}</span></NavItem> */}
+        </Fragment>
+      </NavbarBrand>
     )
 
     const guestLinks = (
