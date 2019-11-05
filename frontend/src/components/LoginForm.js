@@ -43,11 +43,17 @@ class LoginForm extends Component {
       }
     }
 
-    //If user authenticated, redirect to verify page.
-    if(isAuthenticated) {
+    //If user authenticated, redirect to posts page.  Else, keep the user at the home page.
+    if(isAuthenticated && this.props.userObject.verified)
+    {
       const { history } = this.props;
       history.push('/PostTable');
     }
+    else if(isAuthenticated)
+    {
+      const { history } = this.props;
+      history.push('/');
+    }  
   };
 
   //Checks if all required fields have inputs. If so, then the submit button will be enabled.
@@ -118,7 +124,8 @@ const mapStatetoProps = state => ({
     // propYouWantInserted : state.ItemName,
     authAction: state.auth,
     isAuthenticated: state.auth.isAuthenticated,
-    error: state.error
+    error: state.error,
+    userObject: state.auth.user
 
 });
 
