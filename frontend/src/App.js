@@ -4,7 +4,7 @@ import "./App.css";
 import { loadUser } from './actions/authActions';
 import store from './store';
 import { Provider } from "react-redux";
-import AllRouters from "./Routers";
+import AllRouters from "./routers/Routers";
 
 class App extends Component { 
   componentDidMount() {
