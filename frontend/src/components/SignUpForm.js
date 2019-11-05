@@ -137,22 +137,6 @@ class SignUpForm extends Component {
       this.props.register(newUser);
     }
   };
-  constructor() {
-    super();
-    this.state = {
-      firstName: "",
-      lastName: "",
-      DOB: null,
-      email: "",
-      password: "",
-      msg: null,
-      userTokens: [],
-      showErrorMessage: false,
-      userHasToken: false,
-      verified: false,
-      errorMsg: ""
-    };
-  }
 
   render() {
     const submitButtonEnable = this.requiredFieldsFilled();
