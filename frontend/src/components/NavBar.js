@@ -34,8 +34,8 @@ class NavBar extends Component {
   toggle = () => this.setState({isOpen: !this.state.isOpen, dropdownOpen: !this.state.dropdownOpen});
 
   listenScrollEvent = e => {
-    if (window.scrollY > 100) {
-      this.setState({color: 'black-nav'})
+    if (window.scrollY > 50) {
+      this.setState({color: 'color-transition-nav'})
     } else {
       this.setState({color: 'transparent-nav'})
     }
