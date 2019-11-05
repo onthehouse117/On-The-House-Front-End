@@ -48,6 +48,7 @@ class NavBar extends Component {
   render () {
     const {isAuthenticated, user } = this.props.auth;
 
+    //If user is logged in, their name will show up.  
     const userLinks = (
       <NavbarBrand id="usrName">
         <Fragment id='contentPosition'>
@@ -62,6 +63,7 @@ class NavBar extends Component {
       </NavbarBrand>
     )
 
+    //Guests who visit OnTheHouse will only see a sign up/sign in button.
     const guestLinks = (
       <Fragment>
         <NavItem><NavLink id="signUpButton" tag={Link} to='/users/signup'>Sign Up</NavLink></NavItem>
