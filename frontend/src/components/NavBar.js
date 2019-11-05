@@ -24,6 +24,7 @@ class NavBar extends Component {
   state = {
     isOpen: false,
     dropdownOpen: false,
+    color: ''
   };
 
   static propTypes = {
@@ -31,6 +32,18 @@ class NavBar extends Component {
   }
 
   toggle = () => this.setState({isOpen: !this.state.isOpen, dropdownOpen: !this.state.dropdownOpen});
+
+  listenScrollEvent = e => {
+    if (window.scrollY > 100) {
+      this.setState({color: 'black-nav'})
+    } else {
+      this.setState({color: 'transparent-nav'})
+    }
+  }
+
+  componentDidMount() {
+    window.addEventListener('scroll', this.listenScrollEvent)
+  }
 
   render () {
     const {isAuthenticated, user } = this.props.auth;
@@ -49,13 +62,13 @@ class NavBar extends Component {
 
     const guestLinks = (
       <Fragment>
-        <NavItem><NavLink id="signUpButton" href="/users/signup">Sign Up</NavLink></NavItem>
+        <NavItem><NavLink id="signUpButton" tag={Link} to='/users/signup'>Sign Up</NavLink></NavItem>
       </Fragment>
     )
 
     return (
       <div>
-        <Navbar className="navbar navbar-expand-lg navbar-light fixed-top navbar-color">
+        <Navbar className={`navbar navbar-expand-lg navbar-light fixed-top ${this.state.color}`}>
           <NavbarBrand className="navBrand" tag={Link} to='/'>On The House Logo</NavbarBrand>
           <NavbarToggler onClick={this.toggle}><span className="navbar-toggler-icon"></span></NavbarToggler>
           <Collapse isOpen={this.state.isOpen} navbar>
