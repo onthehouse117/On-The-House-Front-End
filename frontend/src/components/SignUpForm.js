@@ -143,7 +143,7 @@ class SignUpForm extends Component {
     const submitButtonEnable = this.requiredFieldsFilled();
     return (
       <div className="styles">
-        {/* <NavBar/> */}
+        { <NavBar/> }
         <Container>
           <div className='row'>
             <Col md='4'></Col>

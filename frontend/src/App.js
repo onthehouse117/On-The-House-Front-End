@@ -14,6 +14,7 @@ import LoginForm from "./components/LoginForm";
 import SignUpForm from "./components/SignUpForm";
 import LandingPage from "./components/LandingPage";
 import PostTable from "./components/PostTable";
+import Posts from "./components/Posts";
 import About from "./components/About";
 import VerificationPage from "./components/VerificationPage/VerificationPage";
 import VerificationStatus from "./components/VerificationPage/VerificationStatus";
@@ -41,6 +42,7 @@ class App extends Component {
             <Route exact path="/users/loginpage" component={LoginForm} />
             <Route exact path="/SubLease" component={SubLease} />
             <Route exact path="/posttable" component={PostTable} />
+            <Route exact path="/post" component={Posts} />
             <Redirect to="/" />
           </Switch>
         </div>
