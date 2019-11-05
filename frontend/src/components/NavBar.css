@@ -19,7 +19,12 @@
 #signUpButton:hover {
     cursor: pointer;
 }
+#usrName{
+    position:absolute;
+    right: 0px;
+    bottom: 0px;
 
+}
 #loginButton {
     position:absolute;
     right: 75px;
