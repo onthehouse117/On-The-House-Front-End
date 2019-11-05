@@ -17,6 +17,7 @@ import NavBar from './NavBar';
 
 import { register } from "../actions/authActions";
 
+
 class SignUpForm extends Component {
   state = {
     firstName: '',
