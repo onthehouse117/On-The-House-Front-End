@@ -14,6 +14,7 @@ import{
   Alert
 } from "reactstrap";
 import NavBar from './NavBar';
+import { Link } from 'react-router-dom';
 
 import { register } from "../actions/authActions";
 

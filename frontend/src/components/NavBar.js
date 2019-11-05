@@ -62,7 +62,7 @@ class NavBar extends Component {
 
     const guestLinks = (
       <Fragment>
-        <NavItem><NavLink id="signUpButton" href="/users/signup">Sign Up</NavLink></NavItem>
+        <NavItem><NavLink id="signUpButton" tag={Link} to='/users/signup'>Sign Up</NavLink></NavItem>
       </Fragment>
     )
 
