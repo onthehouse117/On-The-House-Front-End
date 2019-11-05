@@ -7,7 +7,8 @@ import {
     LOGOUT_SUCCESS,
     REGISTER_SUCCESS,
     REGISTER_FAIL,
-    VERIFICATION_SUCCESS
+    VERIFICATION_SUCCESS,
+    USER_CONFIRMED_VERIFICATION
 } from '../actions/actionTypes';
 
 const initialState = {
@@ -60,6 +61,11 @@ export default function(state = initialState, action) {
                 isAuthenticated: false,
                 isLoading: false,
                 bypassVerify: null
+            }
+        case USER_CONFIRMED_VERIFICATION:
+            return {
+                ...state,
+                bypassVerify: false
             }
         default:
             return state;
