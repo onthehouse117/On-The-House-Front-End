@@ -188,9 +188,7 @@ class SignUpForm extends Component {
                   <Button type='submit' className='d-flex justify-content-start' disabled={!submitButtonEnable} action="/">Register</Button>
                 </Form>
               </div>
-              <a href="/users/loginpage" style={{ margintop: "5rem" }}>
-                Already a user? Sign In
-              </a>
+              <span style={{ margintop: "5rem" }}><Link to='/users/loginpage'>Already a user? Sign In</Link></span>
             </Col>
             <Col xs="4"></Col>
           </div>
