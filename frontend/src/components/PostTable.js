@@ -5,6 +5,13 @@ import image from "../images/image.jpg";
 import "../posts.css";
 import axios from "axios";
 import NavBar from './NavBar';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useRouteMatch
+} from "react-router-dom";
 
 var imgStyle = {
   width: "130px"
@@ -51,9 +58,11 @@ class PostTable extends Component {
               <Media style={imgStyle} object src={image} alt="No Image" />
             </Media>
             <Media body>
-              <Media heading>
-                {item["title"]}
-              </Media>
+              <Link>
+                <Media heading>
+                  {item["title"]}
+                </Media>
+              </Link>
               {item["description"]}
             </Media>
           </Media>

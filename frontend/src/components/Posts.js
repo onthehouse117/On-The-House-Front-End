@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Media } from "reactstrap";
+import { Media, Container, Row, Col } from "reactstrap";
 import image from "../images/image.jpg";
 import "../posts.css";
 import axios from "axios";
@@ -14,10 +14,10 @@ import {
 } from "react-router-dom";
 
 var imgStyle = {
-  width: "130px"
+  width: "500px"
 };
 
-export default class  Posts extends Component {
+export default class Posts extends Component {
   state = {
     posts: []
   };
@@ -53,22 +53,42 @@ export default class  Posts extends Component {
       <div className="Post-Page">
         { <NavBar/> }
         {this.state.posts.map(item => (
+        <Container>
+          <Row>
+            <Media heading>
+                {item["title"]}
+            </Media>
+          </Row>
+          <Row>
+            <Col><Media left> 
+              <Media style={imgStyle} object src={image} alt="No Image" />
+              </Media>
+            </Col>
+            <Col>2 of 3</Col>
+            <Col>3 of 3</Col>
+          </Row>
+        </Container>
+        ))}
+
+        {/* {this.state.posts.map(item => (
           <Media className="Post">
             <Media left> 
               <Media style={imgStyle} object src={image} alt="No Image" />
             </Media>
             <Media body>
-              <Link>
-                <Media heading>
-                  {item["title"]}
-                </Media>
-              </Link>
-              {item["description"]}
+            <Link>
+              <Media heading>
+                {item["title"]}
+              </Media>
+            </Link>
+            {item["description"]}
             </Media>
           </Media>
-        ))}
-        }
+        ))} */}
+        
       </div>
+
+
     );
   }
 }
