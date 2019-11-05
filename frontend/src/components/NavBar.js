@@ -62,7 +62,7 @@ class NavBar extends Component {
             <Nav className="mr-auto mt-2 mt-lg-0" navbar>
               <NavItem className="active"><NavLink className='nl' tag={Link} to='/'>Home</NavLink></NavItem>
               <NavItem><NavLink tag={Link} to='/About'>About</NavLink></NavItem>
-              <NavItem><NavLink href="/PostTable">Posts</NavLink></NavItem>              
+              <NavItem><NavLink tag={Link} to='/PostTable'>Posts</NavLink></NavItem>              
               { isAuthenticated ? userLinks : guestLinks}
             </Nav>
           </Collapse>
