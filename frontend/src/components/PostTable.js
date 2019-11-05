@@ -57,8 +57,8 @@ class PostTable extends Component {
             <Media left> 
               <Media style={imgStyle} object src={image} alt="No Image" />
             </Media>
-            <Media body>
-              <Link>
+            <Media body className="Post-Text">
+              <Link onClick = {item["_id"]}>
                 <Media heading>
                   {item["title"]}
                 </Media>
@@ -67,7 +67,7 @@ class PostTable extends Component {
             </Media>
           </Media>
         ))}
-        }
+        
       </div>
     );
   }

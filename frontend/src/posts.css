@@ -1,12 +1,17 @@
 .Post {
-    margin: 25px 0 25px 20px;
+    margin: 1em 0 1em .85em;
+}
+
+.Post-Text {
+    text-align: left;
+    margin-left: 25px
 }
 
 .Post-Page {
-    margin: 80px 0 0 0;
+    margin: 5em 0 0 0;
 }
 
 .PostDiv {
-    margin: 80px 0 0 0;
+    margin: 5em 0 0 0;
 }
 

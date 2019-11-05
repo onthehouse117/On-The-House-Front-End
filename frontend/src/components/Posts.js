@@ -5,90 +5,78 @@ import image from "../images/image.jpg";
 import "../posts.css";
 import axios from "axios";
 import NavBar from './NavBar';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useRouteMatch
-} from "react-router-dom";
 
 var imgStyle = {
-  width: "500px"
+  width: "25em"
 };
 
 export default class Posts extends Component {
   state = {
-    posts: []
+    _id: '',
+    title: '',
+    description: '',
+    community: '',
+    author: '',
+    comments: [],
+    createdAt: '',
+    updatedAt: ''
   };
 
   componentDidMount() {
-    console.log("IN COMP DID MOUNT");
     const config = {
       headers: {
         "Content-type": "application/json",
         "Access-Control-Allow-Origin": "*",
         crossDomain: true,
         Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZGJmNzUzZDdiNTkyZDY2MTk4NzNiMjEiLCJpYXQiOjE1NzI4Mjg0Nzd9.7kMNuw32T88iXJvBflgqNLRwNUKTBD8KtPdvOPJzpN0"
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZGMwZTlhMWVhOTM3NDAwMTc4N2ZjNTkiLCJpYXQiOjE1NzI5MzMyMzV9.tlH3nc4_Jv-ZIfN-8ZwOofPwIzyJuz5ddTZRbuzIZU8"
       }
     };
 
     const body = JSON.stringify({});
     try {
-      axios.post("/posts/getPosts", body, config).then(res => {
-        console.log("about to srt posts", res);
+      axios.get("/posts/5dbf90a47da5730017d799bb", config).then(res => {
         this.setState({
-          posts: res.data
+          _id: res.data._id,
+          title: res.data.title,
+          description: res.data.description,
+          community: res.data.community,
+          author: res.data.author,
+          comments: res.data.comments,
+          createdAt: res.data.createdAt,
+          updatedAt: res.data.updatedAt,
         });
       });
     } catch (e) {
       console.log(e);
     }
-    console.log("posts:", this.state.posts);
   }
 
   render() {
     return (
       <div className="Post-Page">
         { <NavBar/> }
-        {this.state.posts.map(item => (
         <Container>
           <Row>
             <Media heading>
-                {item["title"]}
+                {this.state.title}
             </Media>
           </Row>
           <Row>
             <Col><Media left> 
-              <Media style={imgStyle} object src={image} alt="No Image" />
+              <Media style={imgStyle} object src={image} alt="No Image"/>
               </Media>
             </Col>
-            <Col>2 of 3</Col>
-            <Col>3 of 3</Col>
+            <Col></Col>
+            <Col></Col>
+          </Row>
+          <Row>
+            <Col>{this.state.description}</Col>
+            <Col></Col>
+            <Col></Col>
           </Row>
         </Container>
-        ))}
-
-        {/* {this.state.posts.map(item => (
-          <Media className="Post">
-            <Media left> 
-              <Media style={imgStyle} object src={image} alt="No Image" />
-            </Media>
-            <Media body>
-            <Link>
-              <Media heading>
-                {item["title"]}
-              </Media>
-            </Link>
-            {item["description"]}
-            </Media>
-          </Media>
-        ))} */}
-        
       </div>
-
-
     );
   }
 }
