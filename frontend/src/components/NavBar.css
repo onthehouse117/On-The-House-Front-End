@@ -35,12 +35,22 @@
 }
 
 
+
 .nav-link:hover {
     text-decoration: underline!important;
 }
 .navbar-color {
-    background: transparent;   /*rgba(3, 49, 152, 0.966) */
+    background: #ffffff;   /*rgba(3, 49, 152, 0.966) */
 }
+
+.black-nav {
+    background: rgb(207, 204, 204);
+}
+
+.transparent-nav {
+    background: transparent;
+}
+
 
 @media (min-width: 992px) {
     .navbar-brand {
