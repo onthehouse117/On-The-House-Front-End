@@ -55,7 +55,7 @@ class PostTable extends Component {
         {this.state.posts.map(item => (
           <Media className="Post">
             <Media left> 
-              <Media style={imgStyle} object src={image} alt="No Image" />
+              <Media style={imgStyle} object src={image} alt="No Image" id = "thumbnail"/>
             </Media>
             <Media body className="Post-Text">
               <Link onClick = {item["_id"]}>
