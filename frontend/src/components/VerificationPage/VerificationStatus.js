@@ -6,12 +6,9 @@ import { verify } from '../../actions/authActions';
 class VerificationStatus extends Component {
     componentDidMount() {
         console.log(this.props);
-        console.log(this.props.location.search.split('=')[1]);
         const userToken = this.props.location.search.split('=')[1];
         const tokenToRequest = 'Bearer ' + userToken;
         this.props.verify(tokenToRequest);
-
-
     }
     render() { 
         const styles = {
@@ -30,7 +27,6 @@ class VerificationStatus extends Component {
                         <div>
                             <h1>Verification status pending</h1>
                             <Link to='/'>Return to Homepage</Link>
-                            {/* <a href="/">Click this to go back home (Going to work on implemention: user must be verified to access posts)</a> */}
                         </div>
                 }
              </div> 
