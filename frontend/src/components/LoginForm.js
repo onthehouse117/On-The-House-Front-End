@@ -46,7 +46,7 @@ class LoginForm extends Component {
     //If user authenticated, redirect to verify page.
     if(isAuthenticated) {
       const { history } = this.props;
-      history.push('/');
+      history.push('/post');
     }
   };
 
