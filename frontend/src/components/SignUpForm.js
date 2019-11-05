@@ -13,6 +13,7 @@ import{
   Button,
   Alert
 } from "reactstrap";
+import NavBar from './NavBar';
 
 import { register } from "../actions/authActions";
 
@@ -142,6 +143,7 @@ class SignUpForm extends Component {
     const submitButtonEnable = this.requiredFieldsFilled();
     return (
       <div className="styles">
+        {/* <NavBar/> */}
         <Container>
           <div className='row'>
             <Col md='4'></Col>

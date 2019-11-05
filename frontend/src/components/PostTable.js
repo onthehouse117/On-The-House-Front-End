@@ -4,6 +4,8 @@ import { Media } from "reactstrap";
 import image from "../images/image.jpg";
 import "../posts.css";
 import axios from "axios";
+import NavBar from './NavBar';
+
 var imgStyle = {
   width: "130px"
 };
@@ -42,6 +44,7 @@ class PostTable extends Component {
   render() {
     return (
       <div className="PostDiv">
+        <NavBar />
         {this.state.posts.map(item => (
           <Media className="Post">
             <Media left> 
