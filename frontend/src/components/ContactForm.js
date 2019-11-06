@@ -164,9 +164,6 @@ class ContactForm extends Component {
                                     {/* <Button type='submit' className='d-flex justify-content-start' disabled={!submitButtonEnable} action="/" block>Send email</Button> */}
                                 </Form>
                             </div>
-                            <a href="/users/loginpage" style={{ margintop: "5rem" }}>
-                                Already a user? Sign In
-              </a>
                         </Col>
                         <Col xs="4"></Col>
                     </div>
