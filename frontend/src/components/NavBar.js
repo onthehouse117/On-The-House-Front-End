@@ -50,8 +50,8 @@ class NavBar extends Component {
 
     //If user is logged in, their name will show up.  
     const userLinks = (
-      <NavbarBrand id="usrName">
-        <Fragment id='contentPosition'>
+      <Fragment>
+        <div id="usrName">
           <UncontrolledDropdown nav inNavbar>
             <DropdownToggle nav caret><span id="dynamicUserGreeting">{ user ? `Hi ${user.firstName} ${user.lastName}` : ``}</span></DropdownToggle>
               <DropdownMenu className="dropdown-menu-right">
@@ -59,8 +59,8 @@ class NavBar extends Component {
               </DropdownMenu>
           </UncontrolledDropdown>
           {/* <NavItem><span id="dynamicUserGreeting">{ user ? `Welcome ${user.firstName} ${user.lastName}` : ``}</span></NavItem> */}
-        </Fragment>
-      </NavbarBrand>
+        </div>
+      </Fragment>
     )
 
     //Guests who visit OnTheHouse will only see a sign up/sign in button.

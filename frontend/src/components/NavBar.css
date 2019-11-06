@@ -39,9 +39,10 @@
 
 
 #usrName{
+    display: inline-block;
     position:absolute;
     right: 0px;
-    bottom: 0px;
+    margin-right: -70px;
 }
 
 .nav-link:hover {
