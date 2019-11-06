@@ -66,7 +66,7 @@ class NavBar extends Component {
     //Guests who visit OnTheHouse will only see a sign up/sign in button.
     const guestLinks = (
       <Fragment>
-        <NavItem><NavLink id="signUpButton" tag={Link} to='/users/signup'>Sign Up</NavLink></NavItem>
+        <NavItem><NavLink id="signInButton" tag={Link} to='/users/loginpage'>Sign In</NavLink></NavItem>
       </Fragment>
     )
 
