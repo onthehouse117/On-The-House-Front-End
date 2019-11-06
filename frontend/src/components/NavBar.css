@@ -19,12 +19,7 @@
 #signUpButton:hover {
     cursor: pointer;
 }
-#usrName{
-    position:absolute;
-    right: 0px;
-    bottom: 0px;
 
-}
 #loginButton {
     position:absolute;
     right: 75px;
@@ -40,12 +35,27 @@
 }
 
 
+#usrName{
+    position:absolute;
+    right: 0px;
+    bottom: 0px;
+}
+
 .nav-link:hover {
     text-decoration: underline!important;
 }
 .navbar-color {
-    background: transparent;   /*rgba(3, 49, 152, 0.966) */
+    background: #ffffff;   /*rgba(3, 49, 152, 0.966) */
 }
+
+.color-transition-nav {
+    background: rgb(207, 204, 204);
+}
+
+.transparent-nav {
+    background: transparent;
+}
+
 
 @media (min-width: 992px) {
     .navbar-brand {

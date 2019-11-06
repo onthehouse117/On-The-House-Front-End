@@ -100,11 +100,34 @@ export const logout = () => {
 }
 
 //Check verification status of user
-export const verify = () => {
+export const verify = (userToken) => dispatch => {
     console.log("verifying user");
-    return {
-        type: VERIFICATION_SUCCESS
-    }
+    const config = {
+        headers: {
+            "Content-type": "application/json",
+            'Access-Control-Allow-Origin': '*',
+            'crossDomain': true,
+            Authorization: userToken
+        }
+    };
+    
+    //Request Body
+    const body = JSON.stringify({});
+
+    console.log(`attempting to verify with token ${body}`);
+
+    axios.post('/users/verify', body, config)
+        .then(res => {
+            dispatch({
+            type: VERIFICATION_SUCCESS,
+            payload: res.data,
+        })
+        console.log(`data is  ${JSON.stringify(res.data)}`);
+        })
+        .catch(err => {
+            console.log(err);
+
+        });
 }
 
 export const tokenConfig = getState => {

@@ -1,8 +1,26 @@
 .Post {
-    margin: 25px 0 25px 20px;
+    margin-left: 1em;
+    margin-right: 1em;
+    border-style: solid;
+    border-width: 1px;
+    
 }
 
+#thumbnail{
+    border-right: solid;
+    border-width: 1px;
+}
+
+.Post-Text {
+    text-align: left;
+    margin-left: 1.5em
+}
+
+.Post-Page {
+    margin: 5em 0 0 0;
+}
 
 .PostDiv {
-    margin: 80px 0 0 0;
+    margin: 5em 0 0 0;
 }
+

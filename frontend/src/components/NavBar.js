@@ -24,6 +24,7 @@ class NavBar extends Component {
   state = {
     isOpen: false,
     dropdownOpen: false,
+    color: ''
   };
 
   static propTypes = {
@@ -32,11 +33,24 @@ class NavBar extends Component {
 
   toggle = () => this.setState({ isOpen: !this.state.isOpen, dropdownOpen: !this.state.dropdownOpen });
 
+  listenScrollEvent = e => {
+    if (window.scrollY > 50) {
+      this.setState({ color: 'color-transition-nav' })
+    } else {
+      this.setState({ color: 'transparent-nav' })
+    }
+  }
+
+  componentDidMount() {
+    window.addEventListener('scroll', this.listenScrollEvent)
+  }
+
   render() {
     const { isAuthenticated, user } = this.props.auth;
 
+    //If user is logged in, their name will show up.  
     const userLinks = (
-      <NavbarBrand className="usrName" id="usrName">
+      <NavbarBrand id="usrName">
         <Fragment id='contentPosition'>
           <UncontrolledDropdown nav inNavbar>
             <DropdownToggle nav caret><span id="dynamicUserGreeting">{user ? `Hi ${user.firstName} ${user.lastName}` : ``}</span></DropdownToggle>
@@ -49,22 +63,24 @@ class NavBar extends Component {
       </NavbarBrand>
     )
 
+    //Guests who visit OnTheHouse will only see a sign up/sign in button.
     const guestLinks = (
       <Fragment>
-        <NavItem><NavLink id="signUpButton" href="/users/signup">Sign Up</NavLink></NavItem>
+        <NavItem><NavLink id="signUpButton" tag={Link} to='/users/signup'>Sign Up</NavLink></NavItem>
       </Fragment>
     )
 
     return (
       <div>
-        <Navbar className="navbar navbar-expand-lg navbar-light fixed-top navbar-color">
+        <Navbar className={`navbar navbar-expand-lg navbar-light fixed-top ${this.state.color}`}>
           <NavbarBrand className="navBrand" tag={Link} to='/'>On The House Logo</NavbarBrand>
           <NavbarToggler onClick={this.toggle}><span className="navbar-toggler-icon"></span></NavbarToggler>
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="mr-auto mt-2 mt-lg-0" navbar>
               <NavItem className="active"><NavLink className='nl' tag={Link} to='/'>Home</NavLink></NavItem>
               <NavItem><NavLink tag={Link} to='/About'>About</NavLink></NavItem>
-              <NavItem><NavLink tag={Link} to='/'>Contact</NavLink></NavItem>
+              <NavItem><NavLink tag={Link} to='/PostTable'>Posts</NavLink></NavItem>
+              <NavItem><NavLink tag={Link} to='/ContactForm'>Contact</NavLink></NavItem>
               {isAuthenticated ? userLinks : guestLinks}
             </Nav>
           </Collapse>

@@ -1,24 +1,35 @@
 import React, { Component } from "react";
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { verify } from '../../actions/authActions';
 
 class VerificationStatus extends Component {
     componentDidMount() {
         console.log(this.props);
-        console.log(this.props.location.search.split('=')[1]);
         const userToken = this.props.location.search.split('=')[1];
+        const tokenToRequest = 'Bearer ' + userToken;
+        this.props.verify(tokenToRequest);
     }
     render() { 
         const styles = {
             marginTop: '150px'
         };
+
+        const verifiedRedirect = (
+            <div>
+                <Redirect to="/" />
+            </div>
+        )
+        console.log(`After verification, isAuthenticated is now ${this.props.isAuthenticated}`);
         return (
             <div style= {styles}>
-                <h1>Verification has been successful!</h1>
-                <Link to='/'>Return to Homepage</Link>
-                {/* <a href="/">Click this to go back home (Going to work on implemention: user must be verified to access posts)</a> */}
-            </div>
+                {this.props.bypassVerify ? verifiedRedirect :
+                        <div>
+                            <h1>Verification status pending</h1>
+                            <Link to='/'>Return to Homepage</Link>
+                        </div>
+                }
+             </div> 
         )
     };
 }
@@ -27,6 +38,7 @@ const mapStatetoProps = state => ({
     // TEMPLATE
     // propYouWantInserted : state.ItemName,
     authAction: state.auth,
+    bypassVerify: state.auth.bypassVerify,
     isAuthenticated: state.auth.isAuthenticated,
     error: state.error
 

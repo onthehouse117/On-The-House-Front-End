@@ -4,6 +4,15 @@ import { Media } from "reactstrap";
 import image from "../images/image.jpg";
 import "../posts.css";
 import axios from "axios";
+import NavBar from './NavBar';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useRouteMatch
+} from "react-router-dom";
+
 var imgStyle = {
   width: "130px"
 };
@@ -42,20 +51,23 @@ class PostTable extends Component {
   render() {
     return (
       <div className="PostDiv">
+        <NavBar />
         {this.state.posts.map(item => (
           <Media className="Post">
             <Media left> 
-              <Media style={imgStyle} object src={image} alt="No Image" />
+              <Media style={imgStyle} object src={image} alt="No Image" id = "thumbnail"/>
             </Media>
-            <Media body>
-              <Media heading>
-                {item["title"]}
-              </Media>
+            <Media body className="Post-Text">
+              <Link onClick = {item["_id"]}>
+                <Media heading>
+                  {item["title"]}
+                </Media>
+              </Link>
               {item["description"]}
             </Media>
           </Media>
         ))}
-        }
+        
       </div>
     );
   }

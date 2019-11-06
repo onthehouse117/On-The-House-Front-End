@@ -13,8 +13,11 @@ import{
   Button,
   Alert
 } from "reactstrap";
+import NavBar from './NavBar';
+import { Link } from 'react-router-dom';
 
 import { register } from "../actions/authActions";
+
 
 class SignUpForm extends Component {
   state = {
@@ -142,6 +145,7 @@ class SignUpForm extends Component {
     const submitButtonEnable = this.requiredFieldsFilled();
     return (
       <div className="styles">
+        { <NavBar/> }
         <Container>
           <div className='row'>
             <Col md='4'></Col>
@@ -184,9 +188,7 @@ class SignUpForm extends Component {
                   <Button type='submit' className='d-flex justify-content-start' disabled={!submitButtonEnable} action="/">Register</Button>
                 </Form>
               </div>
-              <a href="/users/loginpage" style={{ margintop: "5rem" }}>
-                Already a user? Sign In
-              </a>
+              <span style={{ margintop: "5rem" }}><Link to='/users/loginpage'>Already a user? Sign In</Link></span>
             </Col>
             <Col xs="4"></Col>
           </div>

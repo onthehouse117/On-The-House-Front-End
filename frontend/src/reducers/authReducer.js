@@ -7,12 +7,14 @@ import {
     LOGOUT_SUCCESS,
     REGISTER_SUCCESS,
     REGISTER_FAIL,
-    VERIFICATION_SUCCESS
+    VERIFICATION_SUCCESS,
+    USER_CONFIRMED_VERIFICATION
 } from '../actions/actionTypes';
 
 const initialState = {
     token: localStorage.getItem('token'),
     isAuthenticated: null,
+    bypassVerify: null,
     isLoading: false,
     user: null
 };
@@ -22,7 +24,7 @@ export default function(state = initialState, action) {
         case USER_LOADING:
             return {
                 ...state,
-                isLoading: true
+                isLoading: true,
             };
         case USER_LOADED:
             return {
@@ -39,7 +41,14 @@ export default function(state = initialState, action) {
                 ...action.payload,
                 isAuthenticated: true,
                 isLoading: false,
+                bypassVerify: null
             };
+        case VERIFICATION_SUCCESS:
+            return {
+                ...state,
+                bypassVerify: true,
+                isLoading: false
+            }
         case AUTH_ERROR:
         case LOGIN_FAIL:
         case LOGOUT_SUCCESS:
@@ -50,9 +59,14 @@ export default function(state = initialState, action) {
                 token: null,
                 user: null,
                 isAuthenticated: false,
-                isLoading: false
+                isLoading: false,
+                bypassVerify: null
             }
-        case VERIFICATION_SUCCESS:
+        case USER_CONFIRMED_VERIFICATION:
+            return {
+                ...state,
+                bypassVerify: false
+            }
         default:
             return state;
     }
