@@ -15,12 +15,12 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem
- } from 'reactstrap';
+} from 'reactstrap';
 import SignOut from './SignOut';
 import { Link } from 'react-router-dom';
 
 //Reactstrap implementation.  Can switch off to either props or class component depending on dynamic content.
-class NavBar extends Component { 
+class NavBar extends Component {
   state = {
     isOpen: false,
     dropdownOpen: false,
@@ -31,13 +31,13 @@ class NavBar extends Component {
     auth: PropTypes.object.isRequired
   }
 
-  toggle = () => this.setState({isOpen: !this.state.isOpen, dropdownOpen: !this.state.dropdownOpen});
+  toggle = () => this.setState({ isOpen: !this.state.isOpen, dropdownOpen: !this.state.dropdownOpen });
 
   listenScrollEvent = e => {
     if (window.scrollY > 50) {
-      this.setState({color: 'color-transition-nav'})
+      this.setState({ color: 'color-transition-nav' })
     } else {
-      this.setState({color: 'transparent-nav'})
+      this.setState({ color: 'transparent-nav' })
     }
   }
 
@@ -45,18 +45,18 @@ class NavBar extends Component {
     window.addEventListener('scroll', this.listenScrollEvent)
   }
 
-  render () {
-    const {isAuthenticated, user } = this.props.auth;
+  render() {
+    const { isAuthenticated, user } = this.props.auth;
 
     //If user is logged in, their name will show up.  
     const userLinks = (
       <NavbarBrand id="usrName">
         <Fragment id='contentPosition'>
           <UncontrolledDropdown nav inNavbar>
-            <DropdownToggle nav caret><span id="dynamicUserGreeting">{ user ? `Hi ${user.firstName} ${user.lastName}` : ``}</span></DropdownToggle>
-              <DropdownMenu className="dropdown-menu-right">
-                <DropdownItem><SignOut></SignOut></DropdownItem>
-              </DropdownMenu>
+            <DropdownToggle nav caret><span id="dynamicUserGreeting">{user ? `Hi ${user.firstName} ${user.lastName}` : ``}</span></DropdownToggle>
+            <DropdownMenu className="dropdown-menu-right">
+              <DropdownItem><SignOut></SignOut></DropdownItem>
+            </DropdownMenu>
           </UncontrolledDropdown>
           {/* <NavItem><span id="dynamicUserGreeting">{ user ? `Welcome ${user.firstName} ${user.lastName}` : ``}</span></NavItem> */}
         </Fragment>
@@ -79,26 +79,27 @@ class NavBar extends Component {
             <Nav className="mr-auto mt-2 mt-lg-0" navbar>
               <NavItem className="active"><NavLink className='nl' tag={Link} to='/'>Home</NavLink></NavItem>
               <NavItem><NavLink tag={Link} to='/About'>About</NavLink></NavItem>
-              <NavItem><NavLink tag={Link} to='/PostTable'>Posts</NavLink></NavItem>              
-              { isAuthenticated ? userLinks : guestLinks}
+              <NavItem><NavLink tag={Link} to='/PostTable'>Posts</NavLink></NavItem>
+              <NavItem><NavLink tag={Link} to='/ContactForm'>Contact</NavLink></NavItem>
+              {isAuthenticated ? userLinks : guestLinks}
             </Nav>
           </Collapse>
-        </Navbar> 
+        </Navbar>
       </div>
     );
   }
 }
 
 const mapStateToProps = state => ({
-    // TEMPLATE
-    // propYouWantInserted : state.ItemName,
-    auth: state.auth
+  // TEMPLATE
+  // propYouWantInserted : state.ItemName,
+  auth: state.auth
 });
 
 const mapDispatchToProps = state => ({
-    // TEMPLATE
-    // dispatchName: Parameter =>
-    //   dispatch({ type: "ActionName", Parameter }),
+  // TEMPLATE
+  // dispatchName: Parameter =>
+  //   dispatch({ type: "ActionName", Parameter }),
 });
 
 export default connect(

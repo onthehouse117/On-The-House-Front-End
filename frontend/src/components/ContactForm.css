@@ -1,0 +1,43 @@
+#idH1 {
+    display: block;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: #333;
+    margin: 2rem 5rem;
+}
+
+.styles {
+    margin-top: 100px;
+}
+
+
+.mHint {
+    margin: 4px 0 2px;
+    font-size: 10px;
+    margin-bottom: 16px!important;
+    color: #586069
+}
+
+.msgMessage {
+    color: red;
+}
+
+.msgBorder {
+    border: 1px solid red!important;
+}
+
+.contain {
+    padding: 20px;
+    background-color: white;
+    border: 1px solid #d8dee2;
+    border-radius: 8px;
+    -webkit-box-shadow: 1px 1px 4px -1px rgba(0,0,0,0.76); 
+    box-shadow: 1px 1px 4px -1px rgba(0,0,0,0.76);
+    
+}
+
+
+#travBut {
+    margin-bottom: 100px;
+}
