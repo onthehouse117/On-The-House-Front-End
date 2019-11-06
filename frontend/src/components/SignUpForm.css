@@ -1,14 +1,4 @@
-#idH1 {
-    display: block;
-    text-align: center;
-    font-size: 2rem;
-    font-weight: 300;
-    color: #333;
-    margin-top: 1.7rem;
-    margin-bottom: 3rem;
-    margin-left: 5rem;
-    margin-right: 5rem;
-}
+
 
 .styles {
     margin-top: 100px;
@@ -31,6 +21,7 @@
 }
 
 .contain {
+    margin-left: 30px;
     padding: 20px;
     background-color: white;
     border: 1px solid #d8dee2;

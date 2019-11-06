@@ -151,7 +151,6 @@ class SignUpForm extends Component {
             <Col md='2'></Col>
             <Col md='8'>
               <div className='contain'>
-                <h1 id='idH1'>Register To On The House</h1>
                 {this.state.msg ? <Alert color="danger">{ this.state.msg }</Alert> : null}
                 <Form onSubmit={this.onSubmit}>
                   <FormGroup row> 
@@ -185,7 +184,7 @@ class SignUpForm extends Component {
                       <p class="pwHint">Must contain at least one upper case letter, one lower case letter, one number, and one special character</p>
                   </Col>
                   </FormGroup>
-                  <Button type='submit' className='d-flex justify-content-start' disabled={!submitButtonEnable} action="/">Register</Button>
+                  <Button type='submit' className='d-flex justify-content-start' disabled={!submitButtonEnable} action="/">Sign Up</Button>
                 </Form>
               </div>
             </Col>

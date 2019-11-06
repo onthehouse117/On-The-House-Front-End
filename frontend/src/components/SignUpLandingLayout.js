@@ -14,9 +14,9 @@ class SignUpLandingLayout extends Component {
                     <Row>
                         <Col md="5">
                             <h1 id="othHeaderTitle">Looking for Housemates?</h1>
-                            <h5 style={{fontWeight: '400', marginBottom: '3rem'}}>On The House makes it easier to connect with peers who are in need of housing.</h5>
-                            <h5 style={{fontWeight: '400', marginBottom: '3rem'}}>Currently the #1 source to accommodate housing for UCI students!</h5>
-                            <h5 style={{fontWeight: '400'}}>"Thanks to On The House, my subleasing process has been made easier!" -Current UCI grad student</h5>
+                            <h5 style={{fontWeight: '400', fontSize: '1.1rem', marginBottom: '2rem'}}>On The House makes it easier to connect with peers who are in need of housing.</h5>
+                            <h5 style={{fontWeight: '400', fontSize: '1.1rem', marginBottom: '2rem'}}>Currently the #1 source to accommodate housing for UCI students!</h5>
+                            <h5 style={{fontWeight: '400', fontSize: '1.1rem'}}>"Thanks to On The House, my subleasing process has been made easier!" -Current UCI grad student</h5>
                             
                         </Col>
                         <Col md="7">
