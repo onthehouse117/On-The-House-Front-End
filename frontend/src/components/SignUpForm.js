@@ -148,10 +148,10 @@ class SignUpForm extends Component {
         { <NavBar/> }
         <Container>
           <div className='row'>
-            <Col md='4'></Col>
-            <Col md='4'>
+            <Col md='2'></Col>
+            <Col md='8'>
               <div className='contain'>
-                <h1 id='idH1'>Register to On The House</h1>
+                <h1 id='idH1'>Register To On The House</h1>
                 {this.state.msg ? <Alert color="danger">{ this.state.msg }</Alert> : null}
                 <Form onSubmit={this.onSubmit}>
                   <FormGroup row> 
@@ -188,9 +188,8 @@ class SignUpForm extends Component {
                   <Button type='submit' className='d-flex justify-content-start' disabled={!submitButtonEnable} action="/">Register</Button>
                 </Form>
               </div>
-              <span style={{ margintop: "5rem" }}><Link to='/users/loginpage'>Already a user? Sign In</Link></span>
             </Col>
-            <Col xs="4"></Col>
+            <Col md="2"></Col>
           </div>
         </Container>
       </div>

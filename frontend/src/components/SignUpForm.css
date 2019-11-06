@@ -1,10 +1,13 @@
 #idH1 {
     display: block;
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: 300;
     color: #333;
-    margin: 2rem 5rem;
+    margin-top: 1.7rem;
+    margin-bottom: 3rem;
+    margin-left: 5rem;
+    margin-right: 5rem;
 }
 
 .styles {

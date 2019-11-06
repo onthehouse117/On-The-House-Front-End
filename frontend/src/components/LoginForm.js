@@ -93,7 +93,7 @@ class LoginForm extends Component {
           <div className='row'>
             <Col md='4'></Col>
             <Col md='4' className='contain'>
-              <h1 id='idH1'>Sign in to On The House</h1>
+              <h1 id='idH2'>Sign in to On The House</h1>
               {this.state.msg ? <Alert color="danger">{ this.state.msg }</Alert> : null}
               <Form onSubmit={this.onSubmit}>
                 <FormGroup row> 

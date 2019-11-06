@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from 'react-redux';
 import './LandingPage.css';
 import Carousel from "../components/Carousel";
+import SignUpLandingLayout from './SignUpLandingLayout';
 import NavBar from './NavBar';
 import{
   Alert
@@ -22,6 +23,7 @@ class LandingPage extends Component {
         <NavBar></NavBar>
         <div id = "carousel">
           <Carousel/>
+          <SignUpLandingLayout />
         </div>
         {this.props.authAction.bypassVerify ? <Alert id="verifySuccessAlert" onClick={this.props.handleOnClick} color="success">{ "Your account is now verified! (click this to close)" }</Alert>: null};
       </div>
