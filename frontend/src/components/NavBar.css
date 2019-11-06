@@ -1,3 +1,10 @@
+/* .navbar-nav > li > a, .navbar-brand {
+    height: 30px;
+} */
+
+/* .navbar {min-height:45px !important;}  */
+
+
 #signInButton {
     /* circle border */
     border: 2px solid #3a9424;
@@ -10,7 +17,7 @@
     margin-right: 0px;
 }
 
-#signUpButton:hover {
+#signInButton:hover {
     cursor: pointer;
     background-color: #3a9424; /*rgb(245, 237, 237); */
     transition: .6s;
@@ -55,28 +62,37 @@
 
 @media (min-width: 992px) {
     .navbar-brand {
-        margin-right: 3rem;
+        margin-right: 5rem!important;
     }
     .nav-link {
-        margin: 0 15px 0;
+        margin: 0 4rem 0;
     }
 }
 
-@media (min-width: 1500px) {
-
+@media (min-width: 1200px) {
     .navbar-brand {
-        margin-right: 8rem;
+        margin-right: 5.5rem!important;
     }
     .nav-link {
         margin: 0 5.5rem 0;
     }
 }
 
-@media (min-width: 1800px) {
+@media (min-width: 1500px) {
+
     .navbar-brand {
-        margin-right: 8rem;
+        margin-right: 8rem!important;
     }
     .nav-link {
-        margin: 0 7.5rem 0;
+        margin: 0 8.5rem 0;
+    }
+}
+
+@media (min-width: 1800px) {
+    .navbar-brand {
+        margin-right: 9rem!important;
+    }
+    .nav-link {
+        margin: 0 11rem 0;
     }
 }
