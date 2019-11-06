@@ -23,20 +23,20 @@ class ContactForm extends Component {
         firstName: '',
         lastName: '',
         email: '',
+        message: '',
         msg: null,
         emailErrorBorder: '',
         emailErrorMessage: '',
         msgErrorBorder: '',
-        msgErrorMessage: '',
-        mmsg: ''
+        msgErrorMessage: ''
     }
 
-    static propTypes = {
+    /*static propTypes = {
         isAuthenticated: PropTypes.bool,
         error: PropTypes.object.isRequired,
         register: PropTypes.func.isRequired,
         clearErrors: PropTypes.func.isRequired
-    }
+    }*/
 
     /*componentDidUpdate(prevProps) {
         const { error, isAuthenticated } = this.props;
@@ -61,7 +61,7 @@ class ContactForm extends Component {
 
     //Checks if all required fields have inputs. If so, then the submit button will be enabled.
     requiredFieldsFilled() {
-        const { firstName, lastName, email, password } = this.state;
+        const { firstName, lastName, email, message } = this.state;
         // console.log(`fields filled is ${firstName.length > 0 && lastName.length > 0 && DOB.length > 0 && email.length > 0 && password.length > 0}, lengths are ${firstName.length} ${lastName.length} ${DOB.length} ${email.length } ${password.length}`);
         return firstName.length > 0 && lastName.length > 0 && email.length > 0; //&& mmsg.length > 0;
     }
@@ -83,13 +83,6 @@ class ContactForm extends Component {
         this.setState({ [e.target.name]: e.target.value });
     };
 
-    /*onChangeDate = e => {
-        const d = new Date(e.target.value);
-        // console.log(`d is ${typeof(d)}`);
-        // console.log(e.target.name);
-        this.setState({ [e.target.name]: d });
-    }*/
-
     onSubmit = e => {
         e.preventDefault();
 
@@ -99,14 +92,14 @@ class ContactForm extends Component {
 
         //Check if user inputs are valid 
         const valid = this.validateCases();
-        const { firstName, lastName, email, password } = this.state;
+        const { firstName, lastName, email, message } = this.state;
 
         //New user created
         const newUser = {
             firstName,
             lastName,
             email,
-            // mmsg
+            message
         };
 
         //Send new user object to register action and JSON request body
@@ -119,11 +112,13 @@ class ContactForm extends Component {
         const submitButtonEnable = this.requiredFieldsFilled();
         return (
             <div className="styles">
+                {<NavBar />}
                 <Container>
                     <div className='row'>
                         <Col md='4'></Col>
                         <Col md='4'>
                             <div className='contain'>
+                                <NavBar></NavBar>
                                 <h1 id='idH1'>Contact Us</h1>
                                 {this.state.msg ? <Alert color="danger">{this.state.msg}</Alert> : null}
                                 <Form onSubmit={this.onSubmit}>
@@ -145,21 +140,13 @@ class ContactForm extends Component {
                                             <Input type="email" className={this.state.emailErrorBorder} name="email" id="uciEmail" onChange={this.onChange} placeholder="Enter UCI email" />
                                         </Col>
                                     </FormGroup>
-                                    //////////////////////
                                     <FormGroup row>
-                                        <Col sm={10}>
-                                            <Label className={`d-flex justify-content-start ${this.state.msgErrorMessage}`} for="userTest">Messsage</Label>
-                                            <Input className={this.state.msgErrorBorder} type="textarea" name="text" id="userText" onChange={this.onChange} placeholder="Enter message" />
+                                        <Col>
+                                            <Label className={`d-flex justify-content-start ${this.state.msgErrorMessage}`} for="message">Messsage</Label>
+                                            <Input className={this.state.msgErrorBorder} type="textarea" name="message" id="message" onChange={this.onChange} placeholder="Enter message" />
                                             <p class="mHint">Message must not exceed 1000 characters.</p>
                                         </Col>
                                     </FormGroup>
-                                    <FormGroup row>
-                                        <Label for="exampleText" sm={2}>Text Area</Label>
-                                        <Col sm={10}>
-                                            <Input type="textarea" name="text" id="exampleText" />
-                                        </Col>
-                                    </FormGroup>
-                                    ////////////////////////
                                     <Button type='submit' disabled={!submitButtonEnable} action="/" block>Send email</Button>
                                     {/* <Button type='submit' className='d-flex justify-content-start' disabled={!submitButtonEnable} action="/" block>Send email</Button> */}
                                 </Form>
