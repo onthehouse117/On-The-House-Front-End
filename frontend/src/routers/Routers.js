@@ -32,8 +32,6 @@ class AllRouters extends Component {
             <Switch>
             <Route exact path="/" component={LandingPage} />
             <Route exact path="/About" component={About} />
-            <Route exact path="/users/signup" component={SignUpForm} />
-            <Route exact path="/verification" component={VerificationPage} />
             <Route path="/verify" component={VerificationStatus} />
             <Route exact path="/users/loginpage" component={LoginForm} />
             <Route exact path="/SubLease" component={SubLease} />

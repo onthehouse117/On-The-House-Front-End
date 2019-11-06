@@ -9,7 +9,8 @@ import{
 } from "reactstrap";
 
 import {
-  USER_CONFIRMED_VERIFICATION
+  USER_CONFIRMED_VERIFICATION, 
+  USER_DISMISSED_VERIFICATION_WARNING
 } from '../actions/actionTypes';
 
 class LandingPage extends Component {
@@ -25,7 +26,7 @@ class LandingPage extends Component {
           <Carousel/>
           <SignUpLandingLayout />
         </div>
-        {this.props.authAction.bypassVerify ? <Alert id="verifySuccessAlert" onClick={this.props.handleOnClick} color="success">{ "Your account is now verified! (click this to close)" }</Alert>: null};
+        {this.props.authAction.bypassVerify ? <Alert id="verifySuccessAlert" onClick={this.props.handleOnClickBypassVerify} color="success">{ "Your account is now verified! (click this to close)" }</Alert>: null};
       </div>
     );
   }
@@ -42,7 +43,8 @@ const mapDispatchToProps = dispatch => ({
   // TEMPLATE
   // dispatchName: Parameter =>
   //   dispatch({ type: "ActionName", Parameter }),
-  handleOnClick: () => dispatch({type: USER_CONFIRMED_VERIFICATION})
+
+  handleOnClickBypassVerify: () => dispatch({type: USER_CONFIRMED_VERIFICATION})
 });
 
 export default connect(

@@ -3,6 +3,12 @@ import { connect } from 'react-redux';
 import './SignUpLandingLayout.css';
 import { Container, Row, Col } from 'reactstrap';
 import SignUpForm from "./SignUpForm.js";
+import{
+    Alert
+  } from "reactstrap";
+  import {
+    USER_DISMISSED_VERIFICATION_WARNING
+  } from '../actions/actionTypes';
 
 class SignUpLandingLayout extends Component { 
     render () {
@@ -27,6 +33,11 @@ class SignUpLandingLayout extends Component {
                         <Col style={{marginBottom: '2rem'}} md="12"></Col>
                     </Row>
                 </Container>
+                <Row>
+                    <Col sm="12">
+                        {this.props.authAction.showVerificationWarning? <Alert id="showVerifyWarningAlert" onClick={this.props.handleOnClickShowVerifyMessage} color="warning">{ "Check your email for a confirmation link. (click this to close)" }</Alert>: null};
+                    </Col>
+                </Row>
             </div>
         </div>
       );
@@ -36,17 +47,15 @@ class SignUpLandingLayout extends Component {
   const mapStateToProps = state => ({
       // TEMPLATE
       // propYouWantInserted : state.ItemName,
-      auth: state.auth
+      authAction: state.auth,
   });
   
-  const mapDispatchToProps = state => ({
-      // TEMPLATE
-      // dispatchName: Parameter =>
-      //   dispatch({ type: "ActionName", Parameter }),
+  const mapDispatchToProps = dispatch => ({
+    handleOnClickShowVerifyMessage: () => dispatch({type: USER_DISMISSED_VERIFICATION_WARNING})
   });
   
   export default connect(
     mapStateToProps,
-    // mapDispatchToProps
+    mapDispatchToProps
   )(SignUpLandingLayout);
 

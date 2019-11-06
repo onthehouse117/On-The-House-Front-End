@@ -57,12 +57,6 @@ class SignUpForm extends Component {
         // }
       }
     }
-
-    //If user authenticated, redirect to verify page.
-    if(isAuthenticated) {
-      const { history } = this.props;
-      history.push('/verification');
-    }
   };
 
   //Checks if all required fields have inputs. If so, then the submit button will be enabled.
@@ -184,11 +178,11 @@ class SignUpForm extends Component {
                       <p class="pwHint">Must contain at least one upper case letter, one lower case letter, one number, and one special character</p>
                   </Col>
                   </FormGroup>
-                  <Button type='submit' className='d-flex justify-content-start' disabled={!submitButtonEnable} action="/">Sign Up</Button>
+                  <Button type='submit' className='d-flex justify-content-start' disabled={!submitButtonEnable} action="/">Register</Button>
                 </Form>
               </div>
             </Col>
-            <Col md="2"></Col>
+            <Col xs="2"></Col>
           </div>
         </Container>
       </div>

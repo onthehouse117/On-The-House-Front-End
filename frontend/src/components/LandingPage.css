@@ -1,7 +1,9 @@
 #carousel {
   margin: 4em 0;
 }
-
+#showVerifyWarningAlert {
+  cursor: pointer;
+}
 #verifySuccessAlert:hover {
   cursor: pointer;
 }

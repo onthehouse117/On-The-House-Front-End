@@ -8,13 +8,15 @@ import {
     REGISTER_SUCCESS,
     REGISTER_FAIL,
     VERIFICATION_SUCCESS,
-    USER_CONFIRMED_VERIFICATION
+    USER_CONFIRMED_VERIFICATION,
+    USER_DISMISSED_VERIFICATION_WARNING
 } from '../actions/actionTypes';
 
 const initialState = {
     token: localStorage.getItem('token'),
     isAuthenticated: null,
     bypassVerify: null,
+    showVerificationWarning: false,
     isLoading: false,
     user: null
 };
@@ -34,7 +36,6 @@ export default function(state = initialState, action) {
                 user: action.payload
             }
         case LOGIN_SUCCESS:
-        case REGISTER_SUCCESS:
             localStorage.setItem('token', action.payload.token);
             return {
                 ...state,
@@ -42,6 +43,16 @@ export default function(state = initialState, action) {
                 isAuthenticated: true,
                 isLoading: false,
                 bypassVerify: null
+            };
+        case REGISTER_SUCCESS:
+            localStorage.setItem('token', action.payload.token);
+            return {
+                ...state,
+                ...action.payload,
+                isAuthenticated: true,
+                isLoading: false,
+                bypassVerify: null,
+                showVerificationWarning: true
             };
         case VERIFICATION_SUCCESS:
             return {
@@ -66,6 +77,11 @@ export default function(state = initialState, action) {
             return {
                 ...state,
                 bypassVerify: false
+            }
+        case USER_DISMISSED_VERIFICATION_WARNING:
+            return {
+                ...state,
+                showVerificationWarning: false
             }
         default:
             return state;
