@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Media, Container, Row, Col } from "reactstrap";
 import image from "../images/image.jpg";
-import "../posts.css";
+import "./posts.css";
 import axios from "axios";
-import NavBar from './NavBar';
+import NavBar from "./NavBar";
 
 var imgStyle = {
   width: "25em"
@@ -12,14 +12,14 @@ var imgStyle = {
 
 export default class Posts extends Component {
   state = {
-    _id: '',
-    title: '',
-    description: '',
-    community: '',
-    author: '',
+    _id: "",
+    title: "",
+    description: "",
+    community: "",
+    author: "",
     comments: [],
-    createdAt: '',
-    updatedAt: ''
+    createdAt: "",
+    updatedAt: ""
   };
 
   componentDidMount() {
@@ -44,7 +44,7 @@ export default class Posts extends Component {
           author: res.data.post.author,
           comments: res.data.post.comments,
           createdAt: res.data.post.createdAt,
-          updatedAt: res.data.post.updatedAt,
+          updatedAt: res.data.post.updatedAt
         });
       });
     } catch (e) {
@@ -55,16 +55,15 @@ export default class Posts extends Component {
   render() {
     return (
       <div className="Post-Page">
-        { <NavBar/> }
+        {<NavBar />}
         <Container>
           <Row>
-            <Media heading>
-                {this.state.title}
-            </Media>
+            <Media heading>{this.state.title}</Media>
           </Row>
           <Row>
-            <Col><Media left> 
-              <Media style={imgStyle} object src={image} alt="No Image"/>
+            <Col>
+              <Media left>
+                <Media style={imgStyle} object src={image} alt="No Image" />
               </Media>
             </Col>
             <Col></Col>

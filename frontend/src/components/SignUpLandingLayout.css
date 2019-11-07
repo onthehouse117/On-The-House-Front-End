@@ -1,12 +1,12 @@
-#othHeaderTitle  {
-    display: block;
-    font-family: 'Nunito', sans-serif;
-    font-size: 4rem;
-    margin: 175px 0 3rem 3rem;
-    margin-left: 0;
-    margin-right: 3rem;
+#othHeaderTitle {
+  display: block;
+  font-family: "Nunito", sans-serif;
+  font-size: 4rem;
+  margin: 175px 0 3rem 3rem;
+  margin-left: 0;
+  margin-right: 3rem;
 }
 
 #SignUpLandingContainer {
-    background-color: #f3f7f7;
+  background-color: #f3f7f7;
 }

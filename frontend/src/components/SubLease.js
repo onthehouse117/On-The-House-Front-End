@@ -7,17 +7,15 @@ class SubLease extends Component {
   }
 }
 
-
-
 const mapStatetoProps = state => ({
-    // TEMPLATE
-    // propYouWantInserted : state.ItemName,
+  // TEMPLATE
+  // propYouWantInserted : state.ItemName,
 });
 
 const mapDispatchToProps = state => ({
-    // TEMPLATE
-    // dispatchName: Parameter =>
-    //   dispatch({ type: "ActionName", Parameter }),
+  // TEMPLATE
+  // dispatchName: Parameter =>
+  //   dispatch({ type: "ActionName", Parameter }),
 });
 
 export default connect(

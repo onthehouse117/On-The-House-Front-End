@@ -53,12 +53,11 @@ class NavBar extends Component {
       <Fragment>
         <div id="usrName">
           <UncontrolledDropdown nav inNavbar>
-            <DropdownToggle nav caret><span id="dynamicUserGreeting">{ user ? `Hi ${user.firstName} ${user.lastName}` : ``}</span></DropdownToggle>
-              <DropdownMenu className="dropdown-menu-right">
-                <DropdownItem><SignOut></SignOut></DropdownItem>
+            <DropdownToggle nav caret><span id="dynamicUserGreeting">My Account</span></DropdownToggle>
+              <DropdownMenu>
+                <DropdownItem className="dropdown-menu-right"><SignOut></SignOut></DropdownItem>
               </DropdownMenu>
           </UncontrolledDropdown>
-          {/* <NavItem><span id="dynamicUserGreeting">{ user ? `Welcome ${user.firstName} ${user.lastName}` : ``}</span></NavItem> */}
         </div>
       </Fragment>
     )

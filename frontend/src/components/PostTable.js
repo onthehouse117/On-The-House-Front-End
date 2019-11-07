@@ -2,15 +2,12 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Media } from "reactstrap";
 import image from "../images/image.jpg";
-import "../posts.css";
+import "./posts.css";
 import axios from "axios";
-import NavBar from './NavBar';
+import NavBar from "./NavBar";
 import {
   BrowserRouter as Router,
-  Switch,
-  Route,
   Link,
-  useRouteMatch
 } from "react-router-dom";
 
 var imgStyle = {
@@ -54,20 +51,23 @@ class PostTable extends Component {
         <NavBar />
         {this.state.posts.map(item => (
           <Media className="Post">
-            <Media left> 
-              <Media style={imgStyle} object src={image} alt="No Image" id = "thumbnail"/>
+            <Media left>
+              <Media
+                style={imgStyle}
+                object
+                src={image}
+                alt="No Image"
+                id="thumbnail"
+              />
             </Media>
             <Media body className="Post-Text">
-              <Link onClick = {item["_id"]}>
-                <Media heading>
-                  {item["title"]}
-                </Media>
+              <Link onClick={item["_id"]}>
+                <Media heading>{item["title"]}</Media>
               </Link>
               {item["description"]}
             </Media>
           </Media>
         ))}
-        
       </div>
     );
   }

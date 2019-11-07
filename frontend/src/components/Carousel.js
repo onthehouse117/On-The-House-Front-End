@@ -7,7 +7,7 @@ import {
   CarouselCaption
 } from "reactstrap";
 
-import './Carousel.css';
+import "./Carousel.css";
 
 const items = [
   {
@@ -39,7 +39,7 @@ const items = [
       "https://static.wixstatic.com/media/47443b_3504201c6bec4f37a93314ae1e356b2c.jpg",
     altText: "Vista Del Campo",
     caption: "Vista Del Campo"
-  },
+  }
 ];
 
 const Example = props => {
@@ -71,9 +71,7 @@ const Example = props => {
         key={item.src}
       >
         <img className="d-block w-100" src={item.src} alt={item.altText} />
-        <CarouselCaption
-          captionText={item.caption}
-        />
+        <CarouselCaption captionText={item.caption} />
       </CarouselItem>
     );
   });

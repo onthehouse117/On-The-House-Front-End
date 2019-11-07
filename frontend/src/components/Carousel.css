@@ -1,7 +1,6 @@
 .carousel img {
-    position: relative;
-    width: 100%;
-    max-height: 80vh;
-    border-top: .1em solid black;
-  }
-  
+  position: relative;
+  width: 100%;
+  max-height: 80vh;
+  border-top: 0.05em solid rgba(82, 81, 81, 0.767);
+}

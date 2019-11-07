@@ -1,27 +1,25 @@
 #idH2 {
-    display: block;
-    text-align: center;
-    font-size: 1.5rem;
-    font-weight: 300;
-    color: #333;
-    margin: 2rem 5rem;
+  display: block;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: #333;
+  margin: 2rem 5rem;
 }
 
 .styles {
-    margin-top: 100px;
+  margin-top: 100px;
 }
 
 .errorMessage {
-    color: red;
-
+  color: red;
 }
 
 .contain {
-    padding: 20px;
-    background-color: white;
-    border: 1px solid #d8dee2;
-    border-radius: 8px;
-    -webkit-box-shadow: 1px 1px 4px -1px rgba(0,0,0,0.76); 
-    box-shadow: 1px 1px 4px -1px rgba(0,0,0,0.76);
-    
+  padding: 20px;
+  background-color: white;
+  border: 1px solid #d8dee2;
+  border-radius: 8px;
+  -webkit-box-shadow: 1px 1px 4px -1px rgba(0, 0, 0, 0.76);
+  box-shadow: 1px 1px 4px -1px rgba(0, 0, 0, 0.76);
 }

@@ -10,7 +10,7 @@ import NavBar from "../components/NavBar";
 import SubLease from "../components/SubLease";
 import LoginForm from "../components/LoginForm";
 import SignUpForm from "../components/SignUpForm";
-import LandingPage from "../components/LandingPage";
+import Home from "../components/Home";
 import PostTable from "../components/PostTable";
 import Posts from "../components/Posts";
 import About from "../components/About";
@@ -28,9 +28,10 @@ class AllRouters extends Component {
     return (
       <div>
         <Router>
+            <NavBar></NavBar>
             <DocumentTitle title="On The House"></DocumentTitle>
             <Switch>
-            <Route exact path="/" component={LandingPage} />
+            <Route exact path="/" component={Home} />
             <Route exact path="/About" component={About} />
             <Route path="/verify" component={VerificationStatus} />
             <Route exact path="/users/loginpage" component={LoginForm} />
