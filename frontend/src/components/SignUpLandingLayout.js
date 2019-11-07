@@ -14,7 +14,7 @@ class SignUpLandingLayout extends Component {
           <Container>
             <Row>
               <Col md="5">
-                <h1 id="othHeaderTitle">Looking for Housemates?</h1>
+                <h1 id="othHeaderTitle">Built for Anteaters</h1>
                 <h5
                   style={{
                     fontWeight: "400",

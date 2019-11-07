@@ -1,9 +1,10 @@
-#carousel {
-  margin: 4em 0;
-}
 #showVerifyWarningAlert {
   cursor: pointer;
 }
 #verifySuccessAlert:hover {
   cursor: pointer;
+}
+
+.main {
+  background-color: #f3f7f7;
 }
