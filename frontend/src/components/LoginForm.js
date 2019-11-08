@@ -79,59 +79,61 @@ class LoginForm extends Component {
   render() {
     const submitButtonEnable = this.requiredFieldsFilled();
     return (
-      <div className="styles">
-        <Container>
-          <div className="row">
-            <Col md="4"></Col>
-            <Col md="4" className="LoginContain">
-              <h1 id="idH2">Sign in to On The House</h1>
-              {this.state.msg ? (
-                <Alert color="danger">{this.state.msg}</Alert>
-              ) : null}
-              <Form onSubmit={this.onSubmit}>
-                <FormGroup row>
-                  <Col>
-                    <Label
-                      className={`d-flex justify-content-start`}
-                      for="uciEmail"
-                    >
-                      Email
-                    </Label>
-                    <Input
-                      type="email"
-                      name="email"
-                      id="uciEmail"
-                      onChange={this.onChange}
-                      placeholder="Enter UCI email"
-                    />
-                  </Col>
-                </FormGroup>
-                <FormGroup row>
-                  <Col>
-                    <Label
-                      className={`d-flex justify-content-start`}
-                      for="userPassword"
-                    >
-                      Password
-                    </Label>
-                    <Input
-                      className={this.state.passwordErrorBorder}
-                      type="password"
-                      name="password"
-                      id="userPassword"
-                      onChange={this.onChange}
-                      placeholder="Enter password"
-                    />
-                  </Col>
-                </FormGroup>
-                <Button type="submit" className="d-flex justify-content-start">
-                  Sign In
-                </Button>
-              </Form>
-            </Col>
-            <Col xs="4"></Col>
-          </div>
-        </Container>
+      <div className="pageBackground">
+        <div className="styles">
+          <Container>
+            <div className="row">
+              <Col md="4"></Col>
+              <Col md="4" className="LoginContain">
+                <h1 id="idH2">Sign in to On The House</h1>
+                {this.state.msg ? (
+                  <Alert color="danger">{this.state.msg}</Alert>
+                ) : null}
+                <Form onSubmit={this.onSubmit}>
+                  <FormGroup row>
+                    <Col>
+                      <Label
+                        className={`d-flex justify-content-start`}
+                        for="uciEmail"
+                      >
+                        Email
+                      </Label>
+                      <Input
+                        type="email"
+                        name="email"
+                        id="uciEmail"
+                        onChange={this.onChange}
+                        placeholder="Enter UCI email"
+                      />
+                    </Col>
+                  </FormGroup>
+                  <FormGroup row>
+                    <Col>
+                      <Label
+                        className={`d-flex justify-content-start`}
+                        for="userPassword"
+                      >
+                        Password
+                      </Label>
+                      <Input
+                        className={this.state.passwordErrorBorder}
+                        type="password"
+                        name="password"
+                        id="userPassword"
+                        onChange={this.onChange}
+                        placeholder="Enter password"
+                      />
+                    </Col>
+                  </FormGroup>
+                  <Button type="submit" className="d-flex justify-content-start">
+                    Sign In
+                  </Button>
+                </Form>
+              </Col>
+              <Col xs="4"></Col>
+            </div>
+          </Container>
+        </div>
       </div>
     );
   }
