@@ -19,6 +19,30 @@
           dispatch({type: ACTION})
       }; 
     </pre>
+* Whenever you create a new action function, please add the function name to **store/actions/index.js**.  For example, when you have a new action function for posts, add it under **'./postActions'** like this: <br/>
+    <pre>
+     import { combineReducers } from 'redux';
+
+      export {
+          loadUser,
+          register,
+          login,
+          logout,
+          verify,
+          tokenConfig
+      } from './authActions'
+
+      export {
+          returnErrors,
+          clearErrors
+      } from './errorActions'
+
+      export {
+          UpdatePostData,
+          {YOUR NEW ACTION FUNCTION HERE}
+      } from './postActions'
+    </pre>
+
 
 ### Redux Developer Tools Middleware 
 * Because the reducers are separated into multiple js files, they each will contain their own intial state.  This helps the reducers become more neat and organized especially when referring back to the action creator functions that you've dispatched.
