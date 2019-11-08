@@ -14,9 +14,11 @@
   
 ### Importing New Action Creator Functions
 * **Action Creator Functions** will look similar to something like this: <br />
-  **export const login = () => dispatch => {**  <br/>
-  <pre>   **dispatch({type: ACTION})** <br/> <pre/>
-    **}** <br/>
+   <pre>
+      export const login = () => dispatch => {
+          dispatch({type: ACTION})
+      }; 
+    </pre>
 
 ### Redux Developer Tools Middleware 
 * Because the reducers are separated into multiple js files, they each will contain their own intial state.  This helps the reducers become more neat and organized especially when referring back to the action creator functions that you've dispatched.
