@@ -44,6 +44,7 @@
     </pre>
 
 
+
 ### Redux Developer Tools Middleware 
 * Because the reducers are separated into multiple js files, they each will contain their own intial state.  This helps the reducers become more neat and organized especially when referring back to the action creator functions that you've dispatched.
 
