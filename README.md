@@ -10,7 +10,6 @@
 *All the states are combined into one store in the root directory file **index.js**.
 
 *There is a **store** folder, which includes the **actions** and **reducers** folder.  These contain actions and reducers for **auths**, **posts**, and **errors**.
-
   *There is another **index.js** file inside the actions folders, which allows you to import all asynchronous actions to your component.    You can import this file by typing **import star as actionMethods from "../store/actions/index"**.  Afterwards, you can return an   
    asynchronous dispatch from the function **mapDispatchToProps = dispatch => {}** which can then be used to call your action creator 
    function. (See LoginForm.js for examples of these implementations)
