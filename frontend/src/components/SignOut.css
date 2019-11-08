@@ -1,8 +1,8 @@
 #userLoggedInButton {
     margin: 0 100px 0 0;
     padding: 0;
-    color: rgb(100, 6, 6);
-    font-weight: 500;
+    color: rgba(0, 0, 0, 0.5)!important;
+    font-weight: 500; 
 }
 
 #userLoggedInButton:hover {

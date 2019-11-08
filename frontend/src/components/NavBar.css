@@ -19,9 +19,15 @@
 }
 
 /* Dynamic dropdown CSS */
-#dynamicUserGreeting {
+#signedInDropdown {
   color: rgba(0, 0, 0, 0.5);
   margin-right: 0px;
+}
+
+#dynamicUserGreeting
+{
+  color: rgb(100, 6, 6);
+  font-weight: 500;
 }
 
 #usrName {
@@ -34,6 +40,8 @@
 .dropdown-menu-right {
   margin: 0;
   width: 100px;
+  color:rgba(0, 0, 0, 0.5)!important;
+  font-weight: 500!important; 
 }
 
 .nav-link:hover {
