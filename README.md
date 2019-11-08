@@ -5,19 +5,17 @@
 **Make sure you use Redux Developer Tools for the following**
 
 ### Folder Structure
-*Based on opinions from others online, I've decided to keep our reducers (and states within them) separate since we are creating a big application.
+* Based on opinions from others online, I've decided to keep our reducers (and states within them) separate since we are creating a big application.
 
-*All the states are combined into one store in the root directory file **index.js**.
+* All the states are combined into one store in the root directory file **index.js**.
 
-*There is a **store** folder, which includes the **actions** and **reducers** folder.  These contain actions and reducers for **auths**, **posts**, and **errors**.
-  *There is another **index.js** file inside the actions folders, which allows you to import all asynchronous actions to your component.    You can import this file by typing **import star as actionMethods from "../store/actions/index"**.  Afterwards, you can return an   
-   asynchronous dispatch from the function **mapDispatchToProps = dispatch => {}** which can then be used to call your action creator 
-   function. (See LoginForm.js for examples of these implementations)
+* There is a **store** folder, which includes the **actions** and **reducers** folder.  These contain actions and reducers for **auths**, **posts**, and **errors**.
+  * There is another **index.js** file inside the actions folders, which allows you to import all asynchronous actions to your component. You can import this file by typing **import star as actionMethods from "../store/actions/index"**.  Afterwards, you can return an asynchronous dispatch from the function **mapDispatchToProps = dispatch => {}** which can then be used to call your action creator function. (See LoginForm.js for examples of these implementations)
 
 ### Redux Developer Tools Middleware 
-*Because the reducers are separated into multiple js files, they each will contain their own intial state.  This helps the reducers become more neat and organized especially when referring back to the action creator functions that you've dispatched.
+* Because the reducers are separated into multiple js files, they each will contain their own intial state.  This helps the reducers become more neat and organized especially when referring back to the action creator functions that you've dispatched.
 
-*In addition, the states will have a better structure on React Developer Tools while debugging the web application.  On React Developer Tools, under **State** and **Tree**, you will see that the initial states are organized under 3 reducers: **error**, **auth**, and **post**.  As each action is dispatched, this structure will make it easier for you to see the changes that occur in each state.
+* In addition, the states will have a better structure on React Developer Tools while debugging the web application.  On React Developer Tools, under **State** and **Tree**, you will see that the initial states are organized under 3 reducers: **error**, **auth**, and **post**.  As each action is dispatched, this structure will make it easier for you to see the changes that occur in each state.
 
 ---------------------------------------------------------------------------------------
 
