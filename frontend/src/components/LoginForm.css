@@ -19,7 +19,9 @@
   right: 0;
   bottom: 0;
   left: 0;
-  background: linear-gradient(to right, rgb(168, 255, 120), rgb(120, 255, 214))
+  background: url("https://mdbootstrap.com/img/Photos/Others/img%20(42).jpg")
+  no-repeat center center;
+ background-size: cover;
 }
 
 .styles {
