@@ -1,88 +1,45 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Media, Container, Row, Col } from "reactstrap";
 import image from "../images/image.jpg";
 import "./posts.css";
-import axios from "axios";
-import NavBar from "./NavBar";
 
-var imgStyle = {
-  width: "25em"
-};
-
-export default class Posts extends Component {
-  state = {
-    _id: "",
-    title: "",
-    description: "",
-    community: "",
-    author: "",
-    comments: [],
-    createdAt: "",
-    updatedAt: ""
-  };
-
-  componentDidMount() {
-    const config = {
-      headers: {
-        "Content-type": "application/json",
-        "Access-Control-Allow-Origin": "*",
-        crossDomain: true,
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZGMwZTlhMWVhOTM3NDAwMTc4N2ZjNTkiLCJpYXQiOjE1NzI5MzMyMzV9.tlH3nc4_Jv-ZIfN-8ZwOofPwIzyJuz5ddTZRbuzIZU8"
-      }
-    };
-
-    const body = JSON.stringify({});
-    try {
-      axios.get("/posts/5dbf90a47da5730017d799bb", config).then(res => {
-        this.setState({
-          _id: res.data.post._id,
-          title: res.data.post.title,
-          description: res.data.post.description,
-          community: res.data.post.community,
-          author: res.data.post.author,
-          comments: res.data.post.comments,
-          createdAt: res.data.post.createdAt,
-          updatedAt: res.data.post.updatedAt
-        });
-      });
-    } catch (e) {
-      console.log(e);
-    }
-  }
-
+class Posts extends Component {
   render() {
     return (
-      <div className="Post-Page">
-        {<NavBar />}
-        <Container>
-          <Row>
-            <Media heading>{this.state.title}</Media>
-          </Row>
-          <Row>
-            <Col>
-              <Media left>
-                <Media style={imgStyle} object src={image} alt="No Image" />
-              </Media>
-            </Col>
-            <Col></Col>
-            <Col></Col>
-          </Row>
-          <Row>
-            <Col>{this.state.description}</Col>
-            <Col></Col>
-            <Col></Col>
-          </Row>
-        </Container>
-      </div>
+        <div id="wrapper">
+
+        <header class="cf">
+          <h1 class="name">
+              {this.props.postData != null ? this.props.postData.title : null}
+          </h1>
+          <p class="date">2 hr ago</p>
+        </header>
+
+        <p class="status">{this.props.postData != null ? this.props.postData.description : null}</p>
+        <img class="img-content" src={image}></img>
+        <div class="action">
+          <div class="like">
+            <a href="#">
+              <img src="https://1.bp.blogspot.com/-qns_lZPjg0I/VWY2dO1HN-I/AAAAAAAACVA/akLTMY7RJSk/s1600/Thumbs-up-facebook-icon-small.png" alt="thumbs up"></img>
+              <p>Like</p>
+            </a>
+          </div>
+
+          <div class="comment">
+            <a href="#">
+              <img src="https://s0.wp.com/wp-content/themes/vip/facebook-groups/img/message_icon.png"></img>
+              <p>Comment</p>
+            </a>
+          </div>
+        </div>
+        </div>
     );
   }
 }
 
 const mapStatetoProps = state => ({
-  // TEMPLATE
-  // propYouWantInserted : state.ItemName,
+  token: state.auth.token,
+  postData: state.auth.postData
 });
 
 const mapDispatchToProps = state => ({
@@ -90,3 +47,9 @@ const mapDispatchToProps = state => ({
   // dispatchName: Parameter =>
   //   dispatch({ type: "ActionName", Parameter }),
 });
+
+
+export default connect(
+  mapStatetoProps,
+  mapDispatchToProps
+)(Posts);

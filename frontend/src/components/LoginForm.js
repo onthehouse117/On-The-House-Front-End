@@ -14,7 +14,6 @@ import {
   Button,
   Alert
 } from "reactstrap";
-import NavBar from "./NavBar";
 
 class LoginForm extends Component {
   state = {
@@ -81,11 +80,10 @@ class LoginForm extends Component {
     const submitButtonEnable = this.requiredFieldsFilled();
     return (
       <div className="styles">
-        <NavBar />
         <Container>
           <div className="row">
             <Col md="4"></Col>
-            <Col md="4" className="contain">
+            <Col md="4" className="LoginContain">
               <h1 id="idH2">Sign in to On The House</h1>
               {this.state.msg ? (
                 <Alert color="danger">{this.state.msg}</Alert>

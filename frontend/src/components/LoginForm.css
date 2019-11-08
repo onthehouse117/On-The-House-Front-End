@@ -1,3 +1,9 @@
+/* html {
+  background: url("https://mdbootstrap.com/img/Photos/Others/img%20(42).jpg")no-repeat center center;
+  background-size: cover;
+}
+ */
+
 #idH2 {
   display: block;
   text-align: center;
@@ -15,9 +21,8 @@
   color: red;
 }
 
-.contain {
+.LoginContain {
   padding: 20px;
-  background-color: white;
   border: 1px solid #d8dee2;
   border-radius: 8px;
   -webkit-box-shadow: 1px 1px 4px -1px rgba(0, 0, 0, 0.76);

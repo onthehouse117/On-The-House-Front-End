@@ -9,12 +9,10 @@ import {
 import NavBar from "../components/NavBar";
 import SubLease from "../components/SubLease";
 import LoginForm from "../components/LoginForm";
-import SignUpForm from "../components/SignUpForm";
 import Home from "../components/Home";
 import PostTable from "../components/PostTable";
 import Posts from "../components/Posts";
 import About from "../components/About";
-import VerificationPage from "../components/VerificationPage/VerificationPage";
 import VerificationStatus from "../components/VerificationPage/VerificationStatus";
 import PrivateRoute from './PrivateRoute';
 
@@ -34,10 +32,9 @@ class AllRouters extends Component {
             <Route exact path="/" component={Home} />
             <Route exact path="/About" component={About} />
             <Route path="/verify" component={VerificationStatus} />
-            <Route exact path="/users/loginpage" component={LoginForm} />
+            <Route exact path="/users/login" component={LoginForm} />
             <Route exact path="/SubLease" component={SubLease} />
             <PrivateRoute path='/posttable' component={PostTable}  />
-            {/* <Route exact path="/posttable" component={PostTable} /> */}
             <Route exact path="/post" component={Posts} />
             <Redirect to="/" />
             </Switch>

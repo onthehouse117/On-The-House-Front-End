@@ -66,14 +66,14 @@ class NavBar extends Component {
     //Guests who visit OnTheHouse will only see a sign up/sign in button.
     const guestLinks = (
       <Fragment>
-        <NavItem><NavLink id="signInButton" tag={Link} to='/users/loginpage'>Sign In</NavLink></NavItem>
+        <NavItem><NavLink id="signInButton" tag={Link} to='/users/login'>Sign In</NavLink></NavItem>
       </Fragment>
     )
 
     return (
       <div>
         <Navbar className={`navbar navbar-expand-lg navbar-light fixed-top ${this.state.color}`}>
-          <NavbarBrand className="navBrand" tag={Link} to='/'>On The House Logo</NavbarBrand>
+          <NavbarBrand className="navBrand" tag={Link} to='/'>Logo</NavbarBrand>
           <NavbarToggler onClick={this.toggle}><span className="navbar-toggler-icon"></span></NavbarToggler>
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="mr-auto mt-2 mt-lg-0" navbar>
