@@ -2,7 +2,7 @@
 
 ## Redux Update PLEASE READ!!
 
-**--Make sure you use Redux Developer Tools for the following--**
+**--Make sure you are using Redux Developer Tools for the following--**
 
 ### Folder Structure
 * Based on opinions from others online, I've decided to keep our reducers (and states within them) separate since we are creating a big application.
