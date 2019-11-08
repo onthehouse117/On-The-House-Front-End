@@ -15,7 +15,7 @@
 ### Importing New Action Creator Functions
 * **Action Creator Functions** will look similar to something like this: <br />
   **export const login = () => dispatch => {**  <br/>
-        **dispatch({type: ACTION})** <br/>
+  <pre>   **dispatch({type: ACTION})** <br/> <pre/>
     **}** <br/>
 
 ### Redux Developer Tools Middleware 
