@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { clearErrors } from "../actions/errorActions";
-import { login } from "../actions/authActions";
+import * as actionMethods from '../store/actions/index';
+import { clearErrors } from "../store/actions/errorActions";
 import "./LoginForm.css";
 import PropTypes from "prop-types";
 import {
@@ -64,7 +64,7 @@ class LoginForm extends Component {
     e.preventDefault();
 
     //Set Error message to null.
-    this.props.clearErrors();
+    this.props.handleClearErrors();
 
     //Check if user inputs are valid
     const { email, password } = this.state;
@@ -73,7 +73,7 @@ class LoginForm extends Component {
       password
     };
     //Call login action
-    this.props.login(user);
+    this.props.handleLoginUser(user);
   };
 
   render() {
@@ -148,14 +148,17 @@ const mapStatetoProps = state => ({
   userObject: state.auth.user
 });
 
-const mapDispatchToProps = state => ({
+const mapDispatchToProps = dispatch => {{
   // TEMPLATE
   // dispatchName: Parameter =>
   //   dispatch({ type: "ActionName", Parameter }),
-});
+  return {
+    handleLoginUser: (user) => dispatch(actionMethods.login(user)),
+    handleClearErrors: () => dispatch(actionMethods.clearErrors())
+  }
+}};
 
 export default connect(
   mapStatetoProps,
-  //   mapDispatchToProps,
-  { login, clearErrors }
+  mapDispatchToProps
 )(LoginForm);

@@ -10,7 +10,6 @@ import {
     VERIFICATION_SUCCESS,
     USER_CONFIRMED_VERIFICATION,
     USER_DISMISSED_VERIFICATION_WARNING,
-    UPDATE_POST_DATA
 } from '../actions/actionTypes';
 
 const initialState = {
@@ -20,7 +19,6 @@ const initialState = {
     showVerificationWarning: false,
     isLoading: false,
     user: null,
-    postData: null
 };
 
 export default function(state = initialState, action) {
@@ -85,12 +83,7 @@ export default function(state = initialState, action) {
                 ...state,
                 showVerificationWarning: false
             }
-        case UPDATE_POST_DATA:
-            console.log("INSIDE UPDATE PSOT DATAT ACTION")
-            return {
-                ...state,
-                postData: action.postData
-            }
+            
         default:
             return state;
     }

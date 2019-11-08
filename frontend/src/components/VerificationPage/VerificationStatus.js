@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-import { verify } from "../../actions/authActions";
+import { verify } from "../../store/actions/authActions";
 
 class VerificationStatus extends Component {
   componentDidMount() {
