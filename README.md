@@ -17,6 +17,13 @@
 
 * In addition, the states will have a better structure on React Developer Tools while debugging the web application.  On React Developer Tools, under **State** and **Tree**, you will see that the initial states are organized under 3 reducers: **error**, **auth**, and **post**.  As each action is dispatched, this structure will make it easier for you to see the changes that occur in each state.
 
+* Some action creator functions will make a POST or GET request to the backend and receive a JSON object in response.  The JSON object will be stored within a corresponding reducer's state object depending on its type.  For example: 
+ * Actions will place any 404 status message objects received from the backend under **error.msg**.  
+ * User objects will be sent from the backend after they successfully log in.  The user object will be stored under **auth.user**.
+ * User tokens from the local machine will be stored under **auth.token**.
+ * Individual post objects will be stored under **post.postData**.
+ *etc.
+
 ---------------------------------------------------------------------------------------
 
 
