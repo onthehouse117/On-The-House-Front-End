@@ -13,8 +13,10 @@
   * There is another **index.js** file inside the actions folders, which allows you to import all asynchronous actions to your component. You can import this file by typing **import * as actionMethods from "../store/actions/index"**.  Afterwards, you can return an asynchronous dispatch from the function **mapDispatchToProps = dispatch => {}** which can then be used to call your action creator function. (**See LoginForm.js for examples of these implementations**)
   
 ### Importing New Action Creator Functions
-* **Action Creator Functions** will look similar to something like this: 
-  **export const login = () => dispatch => { dispatch({type: ACTION}) }**
+* **Action Creator Functions** will look similar to something like this: <br />
+  **export const login = () => dispatch => {**  <br/>
+        **dispatch({type: ACTION})** <br/>
+    **}** <br/>
 
 ### Redux Developer Tools Middleware 
 * Because the reducers are separated into multiple js files, they each will contain their own intial state.  This helps the reducers become more neat and organized especially when referring back to the action creator functions that you've dispatched.
