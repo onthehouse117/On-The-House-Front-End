@@ -20,7 +20,7 @@
 
 /* Dynamic dropdown CSS */
 #signedInDropdown {
-  color: rgba(0, 0, 0, 0.5);
+  color: rgb(0, 0, 0);
   margin-right: 0px;
 }
 
@@ -42,6 +42,10 @@
   width: 100px;
   color:rgba(0, 0, 0, 0.5)!important;
   font-weight: 500!important; 
+}
+
+.nav-link {
+  color: rgb(0, 0, 0)!important;
 }
 
 .nav-link:hover {
