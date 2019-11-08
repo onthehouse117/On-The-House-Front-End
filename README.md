@@ -22,7 +22,7 @@
   * User objects will be sent from the backend after they successfully log in.  The user object will be stored under **auth.user**.
   * User tokens from the local machine will be stored under **auth.token**.
   * Individual post objects will be stored under **post.postData**.
-  *etc.
+  * etc.
 
 ---------------------------------------------------------------------------------------
 
