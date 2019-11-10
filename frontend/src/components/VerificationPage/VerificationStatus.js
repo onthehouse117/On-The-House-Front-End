@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-import { verify } from "../../store/actions/authActions";
+import * as actionMethods from '../../store/actions/index';
 
 class VerificationStatus extends Component {
   componentDidMount() {
     console.log(this.props);
     const userToken = this.props.location.search.split("=")[1];
     const tokenToRequest = "Bearer " + userToken;
-    this.props.verify(tokenToRequest);
+    this.props.handleVerify(tokenToRequest);
   }
   render() {
     const styles = {
@@ -47,8 +47,16 @@ const mapStatetoProps = state => ({
   error: state.error
 });
 
+const mapDispatchToProps = dispatch => {{
+  // TEMPLATE
+  // dispatchName: Parameter =>
+  //   dispatch({ type: "ActionName", Parameter }),
+  return {
+    handleVerify: (tokenToConfirm) => dispatch(actionMethods.verify(tokenToConfirm)),
+  }
+}};
+
 export default connect(
   mapStatetoProps,
-  //   mapDispatchToProps,
-  { verify }
+  mapDispatchToProps,
 )(VerificationStatus);
