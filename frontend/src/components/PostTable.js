@@ -4,7 +4,7 @@ import { Media } from "reactstrap";
 import image from "../images/image.jpg";
 import "./posts.css";
 import axios from "axios";
-import { UpdatePostData } from "../actions/postActions";
+import * as actionMethods from '../store/actions/index';
 import { BrowserRouter as Router, Link } from "react-router-dom";
 
 var imgStyle = {
@@ -64,7 +64,7 @@ class PostTable extends Component {
                 <Media
                   key={item["_id"]}
                   onClick={() =>
-                    this.props.UpdatePostData(this.getPostData(item["_id"])[0])
+                    this.props.handleUpdatePostData(this.getPostData(item["_id"])[0])
                   }
                   heading
                 >
@@ -86,11 +86,13 @@ const mapStatetoProps = state => ({
   token: state.auth.token
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = dispatch => {
+  return {
   // TEMPLATE
-});
+  handleUpdatePostData: (postContent) => dispatch(actionMethods.UpdatePostData(postContent)),
+}};
 
 export default connect(
   mapStatetoProps,
-  { UpdatePostData }
+  mapDispatchToProps
 )(PostTable);

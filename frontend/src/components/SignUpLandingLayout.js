@@ -4,7 +4,7 @@ import "./SignUpLandingLayout.css";
 import { Container, Row, Col } from "reactstrap";
 import SignUpForm from "./SignUpForm.js";
 import { Alert } from "reactstrap";
-import { USER_DISMISSED_VERIFICATION_WARNING } from "../actions/actionTypes";
+import { USER_DISMISSED_VERIFICATION_WARNING } from "../store/actions/actionTypes";
 
 class SignUpLandingLayout extends Component {
   render() {

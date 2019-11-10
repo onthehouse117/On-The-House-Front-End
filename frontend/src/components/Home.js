@@ -6,7 +6,7 @@ import { Alert } from "reactstrap";
 
 import {
   USER_CONFIRMED_VERIFICATION
-} from "../actions/actionTypes";
+} from "../store/actions/actionTypes";
 
 class Home extends Component {
   state = {

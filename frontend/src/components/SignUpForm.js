@@ -1,6 +1,5 @@
 import React, { Component} from "react";
 import { connect } from "react-redux";
-import { clearErrors } from "../actions/errorActions";
 import "./SignUpForm.css";
 import PropTypes from "prop-types";
 import {
@@ -14,7 +13,7 @@ import {
   Alert
 } from "reactstrap";
 
-import { register } from "../actions/authActions";
+import * as actionMethods from '../store/actions/index';
 
 class SignUpForm extends Component {
   state = {
@@ -126,7 +125,7 @@ class SignUpForm extends Component {
     e.preventDefault();
 
     //Set Error message to null.
-    this.props.clearErrors();
+    this.props.handleClearErrors();
     this.setState({
       msg: null,
       dobErrorBorder: "",
@@ -152,7 +151,7 @@ class SignUpForm extends Component {
 
     //Send new user object to register action and JSON request body
     if (valid) {
-      this.props.register(newUser);
+      this.props.handleRegisterUser(newUser);
     }
   };
 
@@ -287,14 +286,17 @@ const mapStatetoProps = state => ({
   error: state.error
 });
 
-const mapDispatchToProps = state => ({
+const mapDispatchToProps = dispatch => {
   // TEMPLATE
   // dispatchName: Parameter =>
   //   dispatch({ type: "ActionName", Parameter }),
-});
+  return {
+    handleRegisterUser: (newUser) => dispatch(actionMethods.register(newUser)),
+    handleClearErrors: () => dispatch(actionMethods.clearErrors())
+  }
+};
 
 export default connect(
   mapStatetoProps,
-  //   mapDispatchToProps,
-  { register, clearErrors }
+  mapDispatchToProps
 )(SignUpForm);

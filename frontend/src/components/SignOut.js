@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./SignOut.css";
-import { logout } from "../actions/authActions";
+import * as actionMethods from '../store/actions/index';
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
@@ -14,7 +14,7 @@ export class SignOut extends Component {
     return (
       <NavLink
         id="userLoggedInButton"
-        onClick={this.props.logout}
+        onClick={this.props.handleLogoutUser}
         tag={Link}
         to="/"
       >
@@ -29,7 +29,17 @@ const mapStatetoProps = state => ({
   // propYouWantInserted : state.ItemName,
 });
 
+const mapDispatchToProps = dispatch => {
+  // TEMPLATE
+  // dispatchName: Parameter =>
+  //   dispatch({ type: "ActionName", Parameter }),
+  return {
+    handleLogoutUser: () => dispatch(actionMethods.logout()),
+    handleClearErrors: () => dispatch(actionMethods.clearErrors())
+  }
+};
+
 export default connect(
   mapStatetoProps,
-  { logout }
+  mapDispatchToProps
 )(SignOut);
