@@ -39,7 +39,7 @@ class Posts extends Component {
 
 const mapStatetoProps = state => ({
   token: state.auth.token,
-  postData: state.auth.postData
+  postData: state.post.postData
 });
 
 const mapDispatchToProps = state => ({
