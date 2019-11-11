@@ -2,8 +2,16 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import image from "../images/image.jpg";
 import "./posts.css";
+import { BrowserRouter as Router, Link } from "react-router-dom";
+import { Media } from "reactstrap";
+
 
 class Posts extends Component {
+
+  clickedComment() {
+    console.log("Hello World")
+  }
+
   render() {
     return (
         <div id="wrapper">
@@ -19,17 +27,20 @@ class Posts extends Component {
         <img class="img-content" src={image}></img>
         <div class="action">
           <div class="like">
-            <a href="#">
+            <Link>
               <img src="https://1.bp.blogspot.com/-qns_lZPjg0I/VWY2dO1HN-I/AAAAAAAACVA/akLTMY7RJSk/s1600/Thumbs-up-facebook-icon-small.png" alt="thumbs up"></img>
               <p>Like</p>
-            </a>
+            </Link>
           </div>
 
           <div class="comment">
-            <a href="#">
+            <Link to = "#">
+                <Media>
+                  
+                </Media>
               <img src="https://s0.wp.com/wp-content/themes/vip/facebook-groups/img/message_icon.png"></img>
               <p>Comment</p>
-            </a>
+            </Link>
           </div>
         </div>
         </div>
