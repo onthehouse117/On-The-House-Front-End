@@ -7,7 +7,7 @@ import image from "../images/image.jpg";
 import "./posts.css";
 import axios from "axios";
 import * as actionMethods from '../store/actions/index';
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 var imgStyle = {
   width: "130px"

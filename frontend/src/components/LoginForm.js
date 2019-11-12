@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actionMethods from '../store/actions/index';
-import { clearErrors } from "../store/actions/errorActions";
 import "./LoginForm.css";
 import PropTypes from "prop-types";
 import {
@@ -77,7 +76,7 @@ class LoginForm extends Component {
   };
 
   render() {
-    const submitButtonEnable = this.requiredFieldsFilled();
+    // const submitButtonEnable = this.requiredFieldsFilled();
     return (
       <div className="pageBackground">
         <div className="styles">

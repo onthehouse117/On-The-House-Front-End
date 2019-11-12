@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import PropTypes from 'prop-types';
-import styles from "./NavBar.css";
+import "./NavBar.css";
 import {
   Collapse,
   Navbar,
@@ -11,7 +11,6 @@ import {
   NavItem,
   NavLink,
   UncontrolledDropdown,
-  Dropdown,
   DropdownToggle,
   DropdownMenu,
   DropdownItem

@@ -1,15 +1,15 @@
 import React from "react";
 import { Route, Redirect }  from 'react-router-dom';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
-const propTypes = {
-    isAuthenticated: PropTypes.bool,
-    error: PropTypes.object.isRequired,
-    register: PropTypes.func.isRequired,
-    clearErrors: PropTypes.func.isRequired,
-    userObject: PropTypes.object.isRequired
-  }
+// const propTypes = {
+//     isAuthenticated: PropTypes.bool,
+//     error: PropTypes.object.isRequired,
+//     register: PropTypes.func.isRequired,
+//     clearErrors: PropTypes.func.isRequired,
+//     userObject: PropTypes.object.isRequired
+//   }
 
 
 const PrivateRoute = ({ isAuthenticated, userObject, component:Component, ...rest}) => (

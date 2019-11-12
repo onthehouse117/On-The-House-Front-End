@@ -39,7 +39,7 @@ class SignUpForm extends Component {
   };
 
   componentDidUpdate(prevProps) {
-    const { error, isAuthenticated } = this.props;
+    const { error } = this.props;
     if (error !== prevProps.error) {
       //register error
       if (error.id === "REGISTER_FAIL") {
@@ -253,7 +253,7 @@ class SignUpForm extends Component {
                         onChange={this.onChange}
                         placeholder="Enter password"
                       />
-                      <p class="pwHint">
+                      <p className="pwHint">
                         Must contain at least one upper case letter, one lower
                         case letter, one number, and one special character
                       </p>
