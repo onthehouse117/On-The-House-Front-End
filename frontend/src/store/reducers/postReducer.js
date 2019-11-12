@@ -10,7 +10,9 @@ import {
     VERIFICATION_SUCCESS,
     USER_CONFIRMED_VERIFICATION,
     USER_DISMISSED_VERIFICATION_WARNING,
-    UPDATE_POST_DATA
+    UPDATE_POST_DATA,
+    NEW_POST_SUCCESS,
+    NEW_POST_FAIL
 } from '../actions/actionTypes';
 
 const initialState = {
@@ -26,6 +28,11 @@ export default function(state = initialState, action) {
                 ...state,
                 postData: action.postData
             }
+        case NEW_POST_SUCCESS:
+            return {
+                ...state,
+            }
+        case NEW_POST_FAIL:
         default:
             return state;
     }

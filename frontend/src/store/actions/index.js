@@ -15,5 +15,6 @@ export {
 } from './errorActions'
 
 export {
-    UpdatePostData
+    UpdatePostData,
+    createNewPost
 } from './postActions'

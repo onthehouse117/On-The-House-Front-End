@@ -12,6 +12,7 @@ class Posts extends Component {
   };
 
   clickedComment() {
+    //Do all axios calls in the postActions!!
     console.log("Hello World")
     const config = {
       headers: {
@@ -36,7 +37,6 @@ class Posts extends Component {
   render() {
     return (
         <div id="wrapper">
-
         <header class="cf">
           <h1 class="name">
               {this.props.postData != null ? this.props.postData.title : null}
