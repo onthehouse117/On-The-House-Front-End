@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Media } from "reactstrap";
+import { Media, Button } from "reactstrap";
+import ModalBackground from "./ModalBackground"
+import NewPostModal from './NewPostModal';
 import image from "../images/image.jpg";
 import "./posts.css";
 import axios from "axios";
@@ -13,7 +15,12 @@ var imgStyle = {
 
 class PostTable extends Component {
   state = {
-    posts: []
+    posts: [],
+    id: null,
+    title: null,
+    description: null,
+    community: null,
+    showModal: false
   };
 
   getPostData(postID) {
@@ -45,37 +52,48 @@ class PostTable extends Component {
     console.log("posts:", this.state.posts);
   }
 
+  //When user activates modal
+  handleNewPostOnClick = e => this.setState( {showModal: true} )
+
+  //User here cancels the modal
+  handleCancelButton = e => this.setState( {showModal: false} );
+
   render() {
     return (
-      <div className="PostDiv">
-        {this.state.posts.map(item => (
-          <Media className="Post" key={item["_id"]}>
-            <Media left>
-              <Media
-                style={imgStyle}
-                object
-                src={image}
-                alt="No Image"
-                id="thumbnail"
-              />
-            </Media>
-            <Media body className="Post-Text">
-              <Link to="/post">
+      <React.Fragment>
+        {this.state.showModal && <ModalBackground />}
+        {this.state.showModal && <NewPostModal title="Create a Post" handleCancel={this.handleCancelButton} canCancel canConfirm></NewPostModal>}
+        <div className="PostDiv">
+          <Button onClick = {this.handleNewPostOnClick}>New Post</Button>
+          {this.state.posts.map(item => (
+            <Media className="Post" key={item["_id"]}>
+              <Media left>
                 <Media
-                  key={item["_id"]}
-                  onClick={() =>
-                    this.props.handleUpdatePostData(this.getPostData(item["_id"])[0])
-                  }
-                  heading
-                >
-                  {item["title"]}
-                </Media>
-              </Link>
-              {item["description"]}
+                  style={imgStyle}
+                  object
+                  src={image}
+                  alt="No Image"
+                  id="thumbnail"
+                />
+              </Media>
+              <Media body className="Post-Text">
+                <Link to="/post">
+                  <Media
+                    key={item["_id"]}
+                    onClick={() =>
+                      this.props.handleUpdatePostData(this.getPostData(item["_id"])[0])
+                    }
+                    heading
+                  >
+                    {item["title"]}
+                  </Media>
+                </Link>
+                {item["description"]}
+              </Media>
             </Media>
-          </Media>
-        ))}
-      </div>
+          ))}
+        </div>
+      </React.Fragment>
     );
   }
 }
