@@ -14,7 +14,7 @@ import postReducer from './store/reducers/postReducer';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://on-the-house-api.herokuapp.com';
+axios.defaults.baseURL = 'https://dev-oth-api.herokuapp.com/';
 
 const middleWare = [thunk];
 

@@ -4,12 +4,33 @@ import image from "../images/image.jpg";
 import "./posts.css";
 import { BrowserRouter as Router, Link } from "react-router-dom";
 import { Media } from "reactstrap";
-
+import axios from "axios";
 
 class Posts extends Component {
+  state = {
+    comments: []
+  };
 
   clickedComment() {
     console.log("Hello World")
+    const config = {
+      headers: {
+        crossDomain: true,
+        Authorization: `Bearer ${this.props.token}`
+      }
+    };
+
+    const body = JSON.stringify({});
+    try {
+      axios.get("/comments/" + this.props.postData._id, body, config).then(res => {
+        this.setState({
+          comments: res.data
+        });
+      });
+    } catch (e) {
+      console.log(e);
+    }
+    console.log("comments:", this.state.posts);
   }
 
   render() {
@@ -34,9 +55,9 @@ class Posts extends Component {
           </div>
 
           <div class="comment">
-            <Link to = "#">
+            <Link to = "#" onClick = {this.clickedComment()}>
                 <Media>
-                  
+
                 </Media>
               <img src="https://s0.wp.com/wp-content/themes/vip/facebook-groups/img/message_icon.png"></img>
               <p>Comment</p>
