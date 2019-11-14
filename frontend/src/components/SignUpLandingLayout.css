@@ -7,3 +7,9 @@
   margin-left: 0;
   margin-right: 3rem;
 }
+
+.pageBackground {
+  background: url("../images/bg-login.jpg")
+  no-repeat center center;
+ background-size: cover;
+}
