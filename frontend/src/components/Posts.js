@@ -2,9 +2,18 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import image from "../images/image.jpg";
 import "./posts.css";
-import { BrowserRouter as Router, Link } from "react-router-dom";
-import { Media, Button } from "reactstrap";
+// import { BrowserRouter as Router, Link } from "react-router-dom";
+import { Media, Button, Table } from "reactstrap";
 import axios from "axios";
+
+const dataLOL = [
+  {
+    name: "lol",
+    bye: "gg",
+    ok: "hahah",
+    joker: "lele"
+  }
+];
 
 class Posts extends Component {
   state = {
@@ -23,6 +32,7 @@ class Posts extends Component {
     const body = JSON.stringify({});
     try {
       axios.get("/comments/" + this.props.postData._id, config).then(res => {
+        console.log("COMMENTS: ", res.data);
         this.setState({
           comments: res.data
         });
@@ -32,50 +42,73 @@ class Posts extends Component {
     }
   }
 
-
+  componentDidMount() {
+    this.clickedComment();
+  }
 
   render() {
     return (
-        <div id="wrapper">
+      <div className='outer'>
+      <div id="wrapper">
         <header class="cf">
           <h1 class="name">
-              {this.props.postData != null ? this.props.postData.title : null}
+            {this.props.postData != null ? this.props.postData.title : null}
           </h1>
           <p class="date">2 hr ago</p>
         </header>
 
-        <p class="status">{this.props.postData != null ? this.props.postData.description : null}</p>
+        <p class="status">
+          {this.props.postData != null ? this.props.postData.description : null}
+        </p>
         <img class="img-content" src={image}></img>
         <div class="action">
           <div class="like">
-            <Button color = "link" onClick = {() => console.log("Liked")}>
-              <Media object src = {"https://1.bp.blogspot.com/-qns_lZPjg0I/VWY2dO1HN-I/AAAAAAAACVA/akLTMY7RJSk/s1600/Thumbs-up-facebook-icon-small.png"}></Media>
+            <Button color="link" onClick={() => console.log("Liked")}>
+              <Media
+                object
+                src={
+                  "https://1.bp.blogspot.com/-qns_lZPjg0I/VWY2dO1HN-I/AAAAAAAACVA/akLTMY7RJSk/s1600/Thumbs-up-facebook-icon-small.png"
+                }
+              ></Media>
               <p>Like</p>
             </Button>
           </div>
 
           <div class="comment">
-            <Button color = "link" onClick = {() => this.clickedComment()}>
-              <Media object src = {"https://s0.wp.com/wp-content/themes/vip/facebook-groups/img/message_icon.png"}></Media>
+            <Button color="link">
+              <Media
+                object
+                src={
+                  "https://s0.wp.com/wp-content/themes/vip/facebook-groups/img/message_icon.png"
+                }
+              ></Media>
               <p>Comment</p>
             </Button>
           </div>
-
-          {this.state.comments != [] && this.state.comments.map(item => (
-            <Media key={item._id}>
-              {item["name"]}
-              {item["date"]}
-              {item["content"]}
-            </Media>
-            ))}
+          {this.state.comments && console.log(this.state.comments)}
         </div>
-        </div>
+      </div>
 
+      <div className='HM'>
+      <Table responsive='md' borderless variant='true'>
+        <tbody>
+          {this.state.comments && this.state.comments.map(({ name, content}, index) => (
+            <tr key={index} className='row'>
+              <td className='author'>{name}</td>
+              <td className='message'>{content}</td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
+      </div>
+
+
+      </div>
+
+              
     );
   }
 }
-
-
 
 const mapStatetoProps = state => ({
   token: state.auth.token,
@@ -88,8 +121,4 @@ const mapDispatchToProps = state => ({
   //   dispatch({ type: "ActionName", Parameter }),
 });
 
-
-export default connect(
-  mapStatetoProps,
-  mapDispatchToProps
-)(Posts);
+export default connect(mapStatetoProps, mapDispatchToProps)(Posts);
