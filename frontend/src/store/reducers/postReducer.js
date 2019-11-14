@@ -31,6 +31,7 @@ export default function(state = initialState, action) {
         case NEW_POST_SUCCESS:
             return {
                 ...state,
+                postData: action.postData
             }
         case NEW_POST_FAIL:
         default:

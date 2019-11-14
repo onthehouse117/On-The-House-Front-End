@@ -14,13 +14,14 @@ import {
 
 const initialState = {
     token: localStorage.getItem('token'),
-    isAuthenticated: null,
+    isAuthenticated: false,
     bypassVerify: null,
     showVerificationWarning: false,
     isLoading: false,
-    user: null,
+    user: null
 };
 
+// {"verified":true,"admin":false,"_id":"5dc7835b940dd40017ce4475","firstName":"Andres","lastName":"Torres","DOB":"1999-01-10T00:00:00.000Z","email":"firminl@uci.edu","createdAt":"2019-11-10T03:26:19.605Z","updatedAt":"2019-11-14T07:23:19.038Z","__v":178,"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZGM3ODM1Yjk0MGRkNDAwMTdjZTQ0NzUiLCJpYXQiOjE1NzM3MTYxOTl9.8djpPqG7VAQoSCW2TufmwiHiJ4AXhDsBVYLwVyQAyGo"}
 
 export default function(state = initialState, action) {
     switch (action.type) {

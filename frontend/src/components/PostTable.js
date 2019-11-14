@@ -17,9 +17,9 @@ class PostTable extends Component {
   state = {
     posts: [],
     id: null,
-    title: null,
-    description: null,
-    community: null,
+    title: "Park Place Single Bed",
+    description: "This place is not very well maintainted but I need money anyway",
+    community: "Park Place",
     showModal: false
   };
 
@@ -58,11 +58,31 @@ class PostTable extends Component {
   //User here cancels the modal
   handleCancelButton = e => this.setState( {showModal: false} );
 
+  //User clicks post to the modal
+  handlePostButton = e => {
+    const { title, description, community } = this.state;
+    const newPostObject = {
+      title,
+      description,
+      community
+    };
+
+    const { _id, firstName, lastName } = this.props.user;
+    const currentUser = {
+      _id,
+      firstName,
+      lastName
+    };
+    console.log(`This.props.user is ${JSON.stringify(this.props.user)}`);
+    this.props.handleCreateNewPost(newPostObject, currentUser, this.props.token);
+    this.setState( {showModal: false} 
+  )};
+
   render() {
     return (
       <React.Fragment>
         {this.state.showModal && <ModalBackground />}
-        {this.state.showModal && <NewPostModal title="Create a Post" handleCancel={this.handleCancelButton} canCancel canConfirm>
+        {this.state.showModal && <NewPostModal title="Create a Post" handleClickPost={this.handlePostButton} handleCancel={this.handleCancelButton} canCancel canConfirm>
           {/* <form>
             <div className="form-group">
                 <label htmlFor="exampleFormControlTextarea1">Title</label>
@@ -148,13 +168,15 @@ class PostTable extends Component {
 const mapStatetoProps = state => ({
   // TEMPLATE
   // propYouWantInserted : state.ItemName,
-  token: state.auth.token
+  token: state.auth.token,
+  user: state.auth.user
 });
 
 const mapDispatchToProps = dispatch => {
   return {
   // TEMPLATE
   handleUpdatePostData: (postContent) => dispatch(actionMethods.UpdatePostData(postContent)),
+  handleCreateNewPost: (theNewPost, currUser, localToken) => dispatch(actionMethods.createNewPost(theNewPost, currUser, localToken))
 }};
 
 export default connect(

@@ -24,11 +24,9 @@
 }
 
 .HM {
-float: right;
-width: 500px;
+width: 485px;;
 margin-top: 100px;
 }
-
 
 .author {
   /* width: 100%; */
@@ -44,16 +42,10 @@ margin-top: 100px;
   /* background-color: red; */
 }
 
-
 .message {
   position: relative;
-  margin: 0 0 0 100px;
+  margin: 0 0 0 100px; 
 }
-
-
-
-
-
 
 * {
   margin: 0;
@@ -85,13 +77,12 @@ header {
 
 #wrapper {
   background-color: #fff;
-  width: 950px;
-  margin: 100px 0 100px 400px;
+  width: 97%;
+  margin: 100px 400px 100px 0px;
   border: 1px solid #D0D1D5;
   border-top: 0;
   border-radius: 2px;
   padding: 12px;
-  float: left;
 }
 
 .arrow {
