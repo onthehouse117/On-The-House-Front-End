@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1368px" height="431px" viewBox="0 0 1368 431" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="none">
+    <!-- Generator: Sketch 45.1 (43504) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 15</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M1368,411.924344 L1368,0.886528742 L0,0.886528742 L0,411.922406 C212.532781,424.064402 443.103572,430.713123 684.016967,430.713123 C924.91754,430.713123 1155.47661,424.06511 1368.00002,411.924325 Z" id="path-1"></path>
+        <linearGradient x1="11.4236109%" y1="100%" x2="11.4236111%" y2="2.00693559%" id="linearGradient-3">
+            <stop stop-color="#15B6DE" offset="0%"></stop>
+            <stop stop-color="#177ACD" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="27.2640377%" y1="10.7586722%" x2="27.2640377%" y2="100.260116%" id="linearGradient-4">
+            <stop stop-color="#1798CD" offset="0%"></stop>
+            <stop stop-color="#176BCD" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-5" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-15">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Mask" fill="#FFFFFF" opacity="0.479902627" xlink:href="#path-1"></use>
+            <g mask="url(#mask-2)" id="Path-3">
+                <g transform="translate(-748.000000, 22.000000)">
+                    <path d="M498,325.468085 C498,325.468085 966.143332,111.592216 1510,285.850244 C2053.85667,460.108273 2333.5,399.68885 2401.5,325.468085 C2469.5,251.24732 2367.5,0 2367.5,0 L529.5,2.28052002e-13 L498,325.468085 Z" fill-opacity="0.800000012" fill="url(#linearGradient-3)" opacity="0.433933424" transform="translate(1461.437500, 199.500000) rotate(-180.000000) translate(-1461.437500, -199.500000) "></path>
+                    <path d="M128.043056,770.760291 C128.043056,770.760291 715.5,602.5 1259.31949,770.760291 C1803.13898,939.020582 2402.45734,634.609684 2402.45734,634.609684 L2514,65 L0,76.1143353 L128.043056,770.760291 Z" fill-opacity="0.800000012" fill="url(#linearGradient-3)" opacity="0.318274457" transform="translate(1257.000000, 443.232785) rotate(-180.000000) translate(-1257.000000, -443.232785) "></path>
+                    <path d="M748,122 C748,122 972,212.546202 1658,404.046202 C2344,595.546202 2894.5,289.068923 2894.5,289.068923 L2894.5,109.046202 L748,68 L748,122 Z" fill-opacity="0.8" fill="url(#linearGradient-4)" transform="translate(1821.250000, 267.500000) scale(-1, 1) rotate(-180.000000) translate(-1821.250000, -267.500000) "></path>
+                    <path d="M128.043056,867.760291 C128.043056,867.760291 715.5,699.5 1259.31949,867.760291 C1803.13898,1036.02058 2402.45734,731.609684 2402.45734,731.609684 L2514,162 L0,173.114335 L128.043056,867.760291 Z" fill-opacity="0.7" fill="url(#linearGradient-3)" transform="translate(1257.000000, 540.232785) rotate(-180.000000) translate(-1257.000000, -540.232785) "></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

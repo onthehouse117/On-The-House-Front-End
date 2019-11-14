@@ -9,7 +9,7 @@ import { USER_DISMISSED_VERIFICATION_WARNING } from "../store/actions/actionType
 class SignUpLandingLayout extends Component {
   render() {
     return (
-      <div>
+      <div className="pageBackground">
         <div id="SignUpLandingContainer" className="container-fluid">
           <Container>
             <Row>
