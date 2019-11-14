@@ -61,15 +61,13 @@ class Posts extends Component {
             </Button>
           </div>
 
-          {this.state.comments != [] && this.state.comments.map(item => {
-            console.log(item)
-            return(
+          {this.state.comments != [] && this.state.comments.map(item => (
             <Media key={item._id}>
-              {item.name}
-              {item.createdAt}
-              {item.content}
-            </Media>)
-            })}
+              {item["name"]}
+              {item["date"]}
+              {item["content"]}
+            </Media>
+            ))}
         </div>
         </div>
 
