@@ -31,7 +31,14 @@
 
 @media (min-width: 768px) {
     .newPostModal{
-        width: 30rem;
+        /* width: 30rem; */
+        width: 90%;
+        max-width: 1000px;
         left: calc((100% - 30rem) / 2);
     }
+}
+
+
+.buttonColor {
+    background: #459212!important;
 }

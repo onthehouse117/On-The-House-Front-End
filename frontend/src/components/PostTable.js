@@ -62,7 +62,54 @@ class PostTable extends Component {
     return (
       <React.Fragment>
         {this.state.showModal && <ModalBackground />}
-        {this.state.showModal && <NewPostModal title="Create a Post" handleCancel={this.handleCancelButton} canCancel canConfirm></NewPostModal>}
+        {this.state.showModal && <NewPostModal title="Create a Post" handleCancel={this.handleCancelButton} canCancel canConfirm>
+          {/* <form>
+            <div className="form-group">
+                <label htmlFor="exampleFormControlTextarea1">Title</label>
+                <textarea className="form-control" id="exampleFormControlTextarea1" rows="1"></textarea>
+            </div>
+            <div className="form-group">
+                <label htmlFor="exampleFormControlTextarea2">Description</label>
+                <textarea className="form-control" id="exampleFormControlTextarea2" rows="3"></textarea>
+            </div>
+            <div className="form-group">
+              <label className="my-1 mr-2" htmlFor="inlineFormCustomSelectPref">Select Community</label>
+              <select className="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+                  <option selected>Communities...</option>
+                  <option value="1">Plaza Verde</option>
+                  <option value="2">Puerta Del Sol</option>
+                  <option value="3">Arroyo Vista</option>
+                  <option value="4">Vista Del Campo Norte</option>
+                  <option value="5">Camino Del Sol</option>
+                  <option value="6">Vista Del Campo</option>
+                  <option value="7">UTC</option>
+              </select>
+            </div>
+          </form> */}
+        <form>
+          <div className="form-styles">
+            <label htmlFor="exampleFormControlTextarea1">Title</label>
+            <input type="text" id="exampleFormControlTextarea1"/>
+          </div>
+          <div className="form-styles">
+              <label htmlFor="exampleFormControlTextarea2">Description</label>
+              <textarea id="exampleFormControlTextarea2" rows="3"></textarea>
+          </div>
+          <div className="form-styles">
+            <label className="my-1 mr-2" htmlFor="inlineFormCustomSelectPref">Select Community</label>
+            <select className="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+                <option selected>Communities...</option>
+                <option value="1">Plaza Verde</option>
+                <option value="2">Puerta Del Sol</option>
+                <option value="3">Arroyo Vista</option>
+                <option value="4">Vista Del Campo Norte</option>
+                <option value="5">Camino Del Sol</option>
+                <option value="6">Vista Del Campo</option>
+                <option value="7">UTC</option>
+            </select>
+          </div>
+        </form>
+        </NewPostModal>}
         <div className="PostDiv">
           <Button onClick = {this.handleNewPostOnClick}>New Post</Button>
           {this.state.posts.map(item => (
