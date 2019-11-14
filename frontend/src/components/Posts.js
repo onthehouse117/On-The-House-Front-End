@@ -32,8 +32,9 @@ class Posts extends Component {
     }
   }
 
+
+
   render() {
-    console.log(this.state.comments)
     return (
         <div id="wrapper">
         <header class="cf">
@@ -54,15 +55,21 @@ class Posts extends Component {
           </div>
 
           <div class="comment">
-            <Button color = "link" onClick = {() => 
-              this.clickedComment()}>
+            <Button color = "link" onClick = {() => this.clickedComment()}>
               <Media object src = {"https://s0.wp.com/wp-content/themes/vip/facebook-groups/img/message_icon.png"}></Media>
               <p>Comment</p>
-              {/* <Media>
-                {this.state.comments[0]}
-              </Media> */}
             </Button>
           </div>
+
+          {this.state.comments != [] && this.state.comments.map(item => {
+            console.log(item)
+            return(
+            <Media key={item._id}>
+              {item.name}
+              {item.createdAt}
+              {item.content}
+            </Media>)
+            })}
         </div>
         </div>
 
