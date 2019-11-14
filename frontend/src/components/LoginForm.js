@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import * as actionMethods from '../store/actions/index';
+import * as actionMethods from "../store/actions/index";
 import "./LoginForm.css";
 import PropTypes from "prop-types";
 import {
@@ -84,6 +84,7 @@ class LoginForm extends Component {
             <div className="row">
               <Col md="4"></Col>
               <Col md="4" className="LoginContain">
+              <h1 id="idH2">Sign in</h1>
                 {this.state.msg ? (
                   <Alert color="danger">{this.state.msg}</Alert>
                 ) : null}
@@ -134,17 +135,16 @@ const mapStatetoProps = state => ({
   userObject: state.auth.user
 });
 
-const mapDispatchToProps = dispatch => {{
-  // TEMPLATE
-  // dispatchName: Parameter =>
-  //   dispatch({ type: "ActionName", Parameter }),
-  return {
-    handleLoginUser: (user) => dispatch(actionMethods.login(user)),
-    handleClearErrors: () => dispatch(actionMethods.clearErrors())
+const mapDispatchToProps = dispatch => {
+  {
+    // TEMPLATE
+    // dispatchName: Parameter =>
+    //   dispatch({ type: "ActionName", Parameter }),
+    return {
+      handleLoginUser: user => dispatch(actionMethods.login(user)),
+      handleClearErrors: () => dispatch(actionMethods.clearErrors())
+    };
   }
-}};
+};
 
-export default connect(
-  mapStatetoProps,
-  mapDispatchToProps
-)(LoginForm);
+export default connect(mapStatetoProps, mapDispatchToProps)(LoginForm);
