@@ -16,9 +16,9 @@ var imgStyle = {
 class PostTable extends Component {
   state = {
     posts: [],
-    title: "Trap House in Costa Mesa",
-    description: "Selling bricks and subleasing storage room. Total: $2500 per month",
-    community: "Arroyo Vista",
+    title: "",
+    description: "",
+    community: "",
     showModal: false
   };
 
@@ -57,6 +57,10 @@ class PostTable extends Component {
     });
   }
 
+  onChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
   //When user activates modal
   handleNewPostOnClick = e => this.setState({ showModal: true });
 
@@ -92,11 +96,11 @@ class PostTable extends Component {
             <form>
               <div className="form-styles">
                 <label htmlFor="exampleFormControlTextarea1">Title</label>
-                <input type="text" id="exampleFormControlTextarea1" />
+                <input type="text" name="title" id="exampleFormControlTextarea1" onChange={this.onChange} />
               </div>
               <div className="form-styles">
                 <label htmlFor="exampleFormControlTextarea2">Description</label>
-                <textarea id="exampleFormControlTextarea2" rows="3"></textarea>
+                <textarea id="exampleFormControlTextarea2" name="description" rows="3" onChange={this.onChange}></textarea>
               </div>
               <div className="form-styles">
                 <label
@@ -108,15 +112,25 @@ class PostTable extends Component {
                 <select
                   className="custom-select my-1 mr-sm-2"
                   id="inlineFormCustomSelectPref"
+                  name="community"
+                  onChange={this.onChange}
                 >
                   <option selected>Communities...</option>
-                  <option value="1">Plaza Verde</option>
-                  <option value="2">Puerta Del Sol</option>
-                  <option value="3">Arroyo Vista</option>
-                  <option value="4">Vista Del Campo Norte</option>
-                  <option value="5">Camino Del Sol</option>
-                  <option value="6">Vista Del Campo</option>
-                  <option value="7">UTC</option>
+                  <option >Plaza Verde</option>
+                  <option >Camino Del Sol</option>
+                  <option>Vista Del Campo Norte</option>
+                  <option>Vista Del Campo</option>
+                  <option>Puerta del Sol</option>
+                  <option>Campus Village</option>
+                  <option>Palo Verde</option>
+                  <option>Verano Place</option>
+                  <option>Ambrose</option>
+                  <option>Berkeley Court</option>
+                  <option>Columbia Court</option>
+                  <option>Dartmouth Court</option>
+                  <option>Harvard Court</option>
+                  <option>Cornell Court</option>
+                  <option>Stanford Court</option>
                 </select>
               </div>
             </form>
