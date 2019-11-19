@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Media, Button } from "reactstrap";
+import { Media, Alert, Button } from "reactstrap";
 import ModalBackground from "./ModalBackground";
 import NewPostModal from "./NewPostModal";
 import image from "../images/image.jpg";
@@ -20,7 +20,9 @@ class PostTable extends Component {
     title: "",
     description: "",
     community: "",
-    price: "",
+    price: null,
+    showInvalidPriceWarning: false,
+    errmsg: "",
     showModal: false
   };
 
@@ -34,6 +36,16 @@ class PostTable extends Component {
         community != "Communities..."
       );
     };
+  
+    validateCases() {
+      // console.log(`this.state.price is ${this.state.price}`);
+      // console.log(`type is ${typeof(this.state.price)}`);
+      if(this.state.price <= 0 || this.state.price > 10000) {
+        this.setState({errmsg: "The price range must be within $0 and $10000"});
+        return false;
+      }
+      return true;
+    }
 
   getPostData(postID) {
     return this.state.posts.filter(item => item._id === postID);
@@ -78,6 +90,10 @@ class PostTable extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
+  priceOnChange = e => {
+    this.setState({ [e.target.name]: Number(e.target.value) });
+  }
+
   //When user activates modal
   handleNewPostOnClick = e => {
     this.setState({ showModal: true });
@@ -89,15 +105,28 @@ class PostTable extends Component {
   //User clicks post to the modal
   handlePostButton = e => {
     e.preventDefault();
-    const { title, description, community } = this.state;
-    const newPostObject = {
-      title,
-      description,
-      community
-    };
-    this.props.handleCreateNewPost(newPostObject, this.props.token);
-    this.setState({ showModal: false });
-    this.PostsToState();
+
+    //clear errors
+    this.setState({ 
+      price: null,
+      showInvalidPriceWarning: false,
+      errmsg: ""
+    });
+
+    //Check to see if fields are valid
+    const valid = this.validateCases();
+
+    if(valid) {
+      const { title, description, community } = this.state;
+      const newPostObject = {
+        title,
+        description,
+        community
+      };
+      this.props.handleCreateNewPost(newPostObject, this.props.token);
+      this.setState({ showModal: false });
+      this.PostsToState();
+    }
   };
 
   render() {
@@ -114,6 +143,10 @@ class PostTable extends Component {
             canCancel
             canConfirm
           >
+            {this.state.errmsg && (
+            <Alert color="danger">{this.state.errmsg}</Alert>
+            )}
+
             <form>
               <div className="form-styles">
                 <label htmlFor="exampleFormControlTextarea1">Title</label>
@@ -129,13 +162,14 @@ class PostTable extends Component {
                 <label htmlFor="priceForm">Price</label>
                 <input
                   type="number"
+                  name="price"
                   id="priceForm"
                   className="modalTextField"
                   min="0.00"
                   max="10000.00"
                   step="0.01"
-                  placeholder = "$0.00"
-                  onChange={this.onChange}
+                  placeholder = "0.00"
+                  onChange={this.priceOnChange}
                 ></input>
               </div>
               <div className="form-styles">
