@@ -1,6 +1,6 @@
-.App {
+/* .App {
   text-align: center;
-}
+} */
 
 .App-logo {
   height: 40vmin;
@@ -19,4 +19,11 @@
 
 .App-link {
   color: #09d3ac;
+}
+
+
+html {
+  margin: 0;
+  height: 100%;
+  width: 100%;
 }

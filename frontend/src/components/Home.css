@@ -1,0 +1,17 @@
+#showVerifyWarningAlert {
+  cursor: pointer;
+}
+
+#verifySuccessAlert {
+  position: fixed;
+  width: 100%;
+  margin-top: 3rem;
+  text-align: center;
+}
+#verifySuccessAlert:hover {
+  cursor: pointer;
+}
+
+.main {
+  background-color: #f3f7f7;
+}

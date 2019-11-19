@@ -1,126 +1,150 @@
-import React, { Component, useState } from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
-import './LoginForm.css'
-import{
-  Form, 
+import * as actionMethods from "../store/actions/index";
+import "./LoginForm.css";
+import PropTypes from "prop-types";
+import {
+  Form,
   FormGroup,
   Label,
   Input,
-  FormText,
   Container,
-  Row,
   Col,
-  Button
-} from 'reactstrap';
-import axios from 'axios';
-
-
-const styles = {
-    marginTop: '150px',
-};
-
-const initialState = {
-  email: "",
-  password: "",
-  userTokens: [],
-  showErrorMessage: false,
-  userHasToken: false,
-  verified: false,
-};
+  Button,
+  Alert
+} from "reactstrap";
 
 class LoginForm extends Component {
-    state = initialState;
+  state = {
+    email: "",
+    password: "",
+    msg: null
+  };
 
-    validateCases = () => {
-     
-      if (!this.state.email.includes('@uci.edu') || this.state.password.length < 8)
-      {      
-        console.log('invalid email');
-        this.setState({showErrorMessage: true});
-        console.log(this.state.showErrorMessage);
-        return false;
+  static propTypes = {
+    isAuthenticated: PropTypes.bool,
+    error: PropTypes.object.isRequired,
+    login: PropTypes.func.isRequired,
+    clearErrors: PropTypes.func.isRequired
+  };
+
+  componentDidUpdate(prevProps) {
+    const { error, isAuthenticated } = this.props;
+    if (error !== prevProps.error) {
+      if (error.id === "LOGIN_FAIL") {
+        this.setState({ msg: "Incorrect email or password" });
+      } else {
+        this.setState({ msg: null });
       }
+    }
 
-      else if (!this.state.password) {
-        console.log('no password inputed');
-        this.setState({showErrorMessage: true});
-        return false;
-      }
-      this.state.showErrorMessage = false;
-      return true;
-    };
-
-    handleInputChange = e => {
-      this.setState( {[e.target.name]: e.target.value} );
-      console.log(` target value is ${e.target.value} and name is ${e.target.name}`);
-    };
-
-    submitHandler = e => {
-      e.preventDefault();
-      const valid = this.validateCases();
-      if (valid ) {   {/*&& this.state.verified */}
-        console.log(this.state);
-        this.setState(initialState);
-      }
-    };
-
-    render() {
-      let errorMessage = null;
-      if (this.state.showErrorMessage) {
-        errorMessage = ( 
-          <div className='errorMessage'>
-            *Invalid email or password
-          </div>
-    
-        );
-      }
-      return (
-        <div className='styles'>
-          <Container>
-            <div className='row'>
-              <Col md='4'></Col>
-              <Col md='4' className='contain'>
-                <h1 id='idH1'>Sign in to On The House</h1>
-                {errorMessage}
-                <Form onSubmit={this.submitHandler}>
-                  <FormGroup row> 
-                    <Col>
-                      <Label className='d-flex justify-content-start' for="uciEmail">Email</Label>
-                      <Input type="email" name="email" value={this.state.name} id="uciEmail" onChange={this.handleInputChange} placeholder="Enter UCI email" required/>
-                    </Col>
-                  </FormGroup>
-                  <FormGroup row> 
-                    <Col>
-                      <Label className='d-flex justify-content-start' for="userPassword">Password</Label>
-                      <Input type="password" name="password" value={this.state.password} id="userPassword" onChange={this.handleInputChange} placeholder="Enter password" required/> 
-                      {/* value={this.state.password} */}
-                    </Col>
-                  </FormGroup>
-                  <Button type='submit' className='d-flex justify-content-start' action="/">Sign In</Button>
-                </Form>
-              </Col>
-              <Col xs='4'></Col>
-            </div>
-          </Container>
-        </div>
-      )
+    //If user authenticated, redirect to posts page.  Else, keep the user at the home page.
+    if (isAuthenticated && this.props.userObject.verified) {
+      const { history } = this.props;
+      history.push("/PostTable");
+    } else if (isAuthenticated) {
+      const { history } = this.props;
+      history.push("/");
     }
   }
 
+  //Checks if all required fields have inputs. If so, then the submit button will be enabled.
+  requiredFieldsFilled() {
+    const { email, password } = this.state;
+    return email.length > 0 && password.length > 0;
+  }
+
+  onChange = e => {
+    console.log(typeof e.target.value);
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
+  onSubmit = e => {
+    e.preventDefault();
+
+    //Set Error message to null.
+    this.props.handleClearErrors();
+
+    //Check if user inputs are valid
+    const { email, password } = this.state;
+    const user = {
+      email,
+      password
+    };
+    //Call login action
+    this.props.handleLoginUser(user);
+  };
+
+  render() {
+    // const submitButtonEnable = this.requiredFieldsFilled();
+    return (
+      <div className="pageBackground">
+        <div className="styles">
+          <Container>
+            <div className="row">
+              <Col md="4"></Col>
+              <Col md="4" className="LoginContain">
+              <h1 id="idH2">Sign in</h1>
+                {this.state.msg ? (
+                  <Alert color="danger">{this.state.msg}</Alert>
+                ) : null}
+                <Form onSubmit={this.onSubmit}>
+                  <FormGroup row>
+                    <Col>
+                      <Input
+                        type="email"
+                        name="email"
+                        id="uciEmail"
+                        onChange={this.onChange}
+                        placeholder="UCI email"
+                      />
+                    </Col>
+                  </FormGroup>
+                  <FormGroup row>
+                    <Col>
+                      <Input
+                        className={this.state.passwordErrorBorder}
+                        type="password"
+                        name="password"
+                        id="userPassword"
+                        onChange={this.onChange}
+                        placeholder="Password"
+                      />
+                    </Col>
+                  </FormGroup>
+                  <Button type="submit" className="login">
+                    Login
+                  </Button>
+                </Form>
+              </Col>
+              <Col xs="4"></Col>
+            </div>
+          </Container>
+        </div>
+      </div>
+    );
+  }
+}
 
 const mapStatetoProps = state => ({
-    // TEMPLATE
-    // propYouWantInserted : state.ItemName,
+  // TEMPLATE
+  // propYouWantInserted : state.ItemName,
+  authAction: state.auth,
+  isAuthenticated: state.auth.isAuthenticated,
+  error: state.error,
+  userObject: state.auth.user
 });
 
-const mapDispatchToProps = state => ({
+const mapDispatchToProps = dispatch => {
+  {
     // TEMPLATE
     // dispatchName: Parameter =>
     //   dispatch({ type: "ActionName", Parameter }),
-});
+    return {
+      handleLoginUser: user => dispatch(actionMethods.login(user)),
+      handleClearErrors: () => dispatch(actionMethods.clearErrors())
+    };
+  }
+};
 
-export default connect(
-  mapStatetoProps,
-  mapDispatchToProps
-)(LoginForm);
-
+export default connect(mapStatetoProps, mapDispatchToProps)(LoginForm);

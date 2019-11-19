@@ -1,0 +1,19 @@
+#showVerifyWarningAlert {
+  text-align: center;
+}
+
+#othHeaderTitle {
+  display: block;
+  font-family: "Nunito", sans-serif;
+  font-size: 4rem;
+  margin: 175px 0 3rem 3rem;
+  font-weight: 549;
+  margin-left: 0;
+  margin-right: 3rem;
+}
+
+.pageBackground {
+  background: url("../images/bg-login.jpg")
+  no-repeat center center;
+ background-size: cover;
+}

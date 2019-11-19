@@ -1,27 +1,49 @@
-#idH1 {
-    display: block;
-    text-align: center;
-    font-size: 1.7rem;
-    font-weight: 300;
-    color: #333;
-    margin: 2rem 5rem;
+/* html {
+  background: url("https://mdbootstrap.com/img/Photos/Others/img%20(42).jpg")no-repeat center center;
+  background-size: cover;
+}
+ */
+
+#idH2 {
+  display: block;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: #333;
+  margin: 2rem 5rem;
+}
+
+.pageBackground {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: url("../images/bg-login.jpg")
+  no-repeat center center;
+ background-size: cover;
 }
 
 .styles {
-    margin-top: 100px;
+  margin-top: 100px;
 }
 
 .errorMessage {
-    color: red;
-
+  color: red;
 }
 
-.contain {
-    padding: 20px;
-    background-color: white;
-    border: 1px solid #d8dee2;
-    border-radius: 8px;
-    -webkit-box-shadow: 1px 1px 4px -1px rgba(0,0,0,0.76); 
-    box-shadow: 1px 1px 4px -1px rgba(0,0,0,0.76);
-    
+.LoginContain {
+  position: relative;
+  padding: 40px;
+  background-color: #ffffff60;
+  border: 1px solid #d8dee2;
+  border-radius: 8px;
+  -webkit-box-shadow: 1px 1px 4px -1px rgba(0, 0, 0, 0.76);
+  box-shadow: 1px 1px 4px -1px rgba(0, 0, 0, 0.76);
+}
+
+
+.login {
+  background-color: rgba(7, 7, 7, 0.555)!important;
+  
 }
