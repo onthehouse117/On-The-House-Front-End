@@ -23,6 +23,17 @@ class PostTable extends Component {
     showModal: false
   };
 
+    //Checks if all required fields have inputs. If so, then the submit button will be enabled.
+    requiredFieldsFilled() {
+    const { title, description, community } = this.state;
+    return (
+        title.length > 0 &&
+        description.length > 0 &&
+        community.length > 0 &&
+        community != "Communities..."
+      );
+    };
+
   getPostData(postID) {
     return this.state.posts.filter(item => item._id === postID);
   }
@@ -88,6 +99,7 @@ class PostTable extends Component {
   };
 
   render() {
+    const createPostButtonEnable = this.requiredFieldsFilled();
     return (
       <React.Fragment>
         {this.state.showModal && <ModalBackground />}
@@ -96,6 +108,7 @@ class PostTable extends Component {
             title="Create a Post"
             handleClickPost={this.handlePostButton}
             handleCancel={this.handleCancelButton}
+            handleDisabled={!createPostButtonEnable}
             canCancel
             canConfirm
           >
