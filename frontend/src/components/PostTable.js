@@ -20,6 +20,7 @@ class PostTable extends Component {
     title: "",
     description: "",
     community: "",
+    price: "",
     showModal: false
   };
 
@@ -87,6 +88,7 @@ class PostTable extends Component {
 
   //User clicks post to the modal
   handlePostButton = e => {
+    e.preventDefault();
     const { title, description, community } = this.state;
     const newPostObject = {
       title,
@@ -122,6 +124,19 @@ class PostTable extends Component {
                   className="modalTextField"
                   onChange={this.onChange}
                 />
+              </div>
+              <div className="form-styles">
+                <label htmlFor="priceForm">Price</label>
+                <input
+                  type="number"
+                  id="priceForm"
+                  className="modalTextField"
+                  min="0.00"
+                  max="10000.00"
+                  step="0.01"
+                  placeholder = "$0.00"
+                  onChange={this.onChange}
+                ></input>
               </div>
               <div className="form-styles">
                 <label htmlFor="exampleFormControlTextarea2">Description</label>
@@ -191,10 +206,10 @@ class PostTable extends Component {
                     }
                     heading
                   >
-                    {item["title"]}
+                  {`[${item["community"]}] ${item["title"]}`}
                   </Media>
                 </Link>
-                {`(${item["community"]}) ${item["name"]}`}
+                posted by:  <strong>{item["name"]}</strong>
                 {this.props.user["_id"] === item["author"] && (
                   <p>
                     <Button
