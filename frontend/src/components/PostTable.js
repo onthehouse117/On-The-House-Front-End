@@ -162,21 +162,22 @@ class PostTable extends Component {
                   onChange={this.onChange}
                 >
                   <option selected>Communities...</option>
-                  <option>Plaza Verde</option>
-                  <option>Camino Del Sol</option>
-                  <option>Vista Del Campo Norte</option>
-                  <option>Vista Del Campo</option>
-                  <option>Puerta del Sol</option>
-                  <option>Campus Village</option>
-                  <option>Palo Verde</option>
-                  <option>Verano Place</option>
                   <option>Ambrose</option>
+                  <option>Arroyo Vista</option>
                   <option>Berkeley Court</option>
+                  <option>Camino Del Sol</option>
+                  <option>Campus Village</option>
                   <option>Columbia Court</option>
+                  <option>Cornell Court</option>
                   <option>Dartmouth Court</option>
                   <option>Harvard Court</option>
-                  <option>Cornell Court</option>
+                  <option>Palo Verde</option>
+                  <option>Plaza Verde</option>
+                  <option>Puerta del Sol</option>
                   <option>Stanford Court</option>
+                  <option>Verano Place</option>
+                  <option>Vista Del Campo</option>
+                  <option>Vista Del Campo Norte</option>
                 </select>
               </div>
             </form>
