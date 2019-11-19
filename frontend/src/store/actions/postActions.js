@@ -7,6 +7,22 @@ export const UpdatePostData = (postData) => dispatch => {
 dispatch({type: UPDATE_POST_DATA, postData});
 }
 
+export const deletePost = (postId, userToken) => dispatch => {
+  console.log(`Preparing to delete post ${postId}, ${userToken}`)
+  const config = {
+    headers: {
+        "Content-type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        crossDomain: true,
+        Authorization: `Bearer ${userToken}`
+      }
+  };
+  axios.delete(`/posts/${postId}`, config)
+  .then(res => {
+    console.log("successfully deleted the post", res)
+  })
+}
+
 //Create new post
 export const createNewPost = ( { id, title, description, community }, { _id, firstName, lastName }, userToken) => dispatch => {
 console.log("Preparing to create new post");

@@ -14,5 +14,6 @@ export {
 
 export {
     UpdatePostData,
-    createNewPost
+    createNewPost,
+    deletePost
 } from './postActions'
