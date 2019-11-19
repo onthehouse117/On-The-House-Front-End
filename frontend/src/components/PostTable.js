@@ -27,6 +27,11 @@ class PostTable extends Component {
   }
 
   componentDidMount() {
+    this.PostsToState();
+  }
+
+  PostsToState() {
+    console.log("ABOUT TO MAKE A API CALL");
     const config = {
       headers: {
         "Content-type": "application/json",
@@ -39,15 +44,14 @@ class PostTable extends Component {
     const body = JSON.stringify({});
     try {
       axios.post("/posts/getPosts", body, config).then(res => {
-        console.log("about to srt posts", res);
         this.setState({
           posts: res.data
         });
+        console.log("UPDATED STATE:", this.state.posts);
       });
     } catch (e) {
       console.log(e);
     }
-    console.log("posts:", this.state.posts);
   }
 
   updatePosts(postID) {
@@ -62,7 +66,9 @@ class PostTable extends Component {
   };
 
   //When user activates modal
-  handleNewPostOnClick = e => this.setState({ showModal: true });
+  handleNewPostOnClick = e => {
+    this.setState({ showModal: true });
+  };
 
   //User here cancels the modal
   handleCancelButton = e => this.setState({ showModal: false });
@@ -75,10 +81,9 @@ class PostTable extends Component {
       description,
       community
     };
-
-    console.log(`This.props.user is ${JSON.stringify(this.props.user)}`);
     this.props.handleCreateNewPost(newPostObject, this.props.token);
     this.setState({ showModal: false });
+    this.PostsToState();
   };
 
   render() {
@@ -96,11 +101,21 @@ class PostTable extends Component {
             <form>
               <div className="form-styles">
                 <label htmlFor="exampleFormControlTextarea1">Title</label>
-                <input type="text" name="title" id="exampleFormControlTextarea1" onChange={this.onChange} />
+                <input
+                  type="text"
+                  name="title"
+                  id="exampleFormControlTextarea1"
+                  onChange={this.onChange}
+                />
               </div>
               <div className="form-styles">
                 <label htmlFor="exampleFormControlTextarea2">Description</label>
-                <textarea id="exampleFormControlTextarea2" name="description" rows="3" onChange={this.onChange}></textarea>
+                <textarea
+                  id="exampleFormControlTextarea2"
+                  name="description"
+                  rows="3"
+                  onChange={this.onChange}
+                ></textarea>
               </div>
               <div className="form-styles">
                 <label
@@ -116,8 +131,8 @@ class PostTable extends Component {
                   onChange={this.onChange}
                 >
                   <option selected>Communities...</option>
-                  <option >Plaza Verde</option>
-                  <option >Camino Del Sol</option>
+                  <option>Plaza Verde</option>
+                  <option>Camino Del Sol</option>
                   <option>Vista Del Campo Norte</option>
                   <option>Vista Del Campo</option>
                   <option>Puerta del Sol</option>
@@ -163,7 +178,7 @@ class PostTable extends Component {
                     {item["title"]}
                   </Media>
                 </Link>
-                {item["description"]}
+                {`(${item["community"]}) ${item["name"]}`}
                 {this.props.user["_id"] === item["author"] && (
                   <p>
                     <Button
