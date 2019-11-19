@@ -8,7 +8,7 @@ const NewPostModal = props => (
         <section className="modal_content"></section>
             {props.children}
         <section className="modal_actions">
-            {props.canCancel && <Button color="danger" onClick={props.handleCancel}>Cancel</Button>}
+            {props.canCancel && <Button className="cancel_btn" color="danger" onClick={props.handleCancel}>Cancel</Button>}
             {props.canConfirm && <Button className="buttonColor" onClick={props.handleClickPost}>Post</Button>}
         </section>
     </div>

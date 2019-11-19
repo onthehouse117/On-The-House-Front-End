@@ -29,15 +29,33 @@
     padding: 1rem;
 }
 
+.cancel_btn {
+    margin-right: 0.4rem;
+}
+
 @media (min-width: 768px) {
     .newPostModal{
-        /* width: 30rem; */
-        width: 90%;
+        width: 30rem;
         max-width: 1000px;
         left: calc((100% - 30rem) / 2);
     }
 }
 
+div[class="form-styles"] label{
+    margin-left: 2rem;
+}
+
+.modalTextField {
+    margin-left: 2rem;
+    right: 0px;
+    width: 87%;
+}
+
+#inlineFormCustomSelectPref {
+    margin-left: 2rem;
+    right: 0px;
+    width: 87%;
+}
 
 .buttonColor {
     background: #459212!important;

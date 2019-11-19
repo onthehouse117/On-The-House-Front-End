@@ -8,6 +8,7 @@ import "./posts.css";
 import axios from "axios";
 import * as actionMethods from "../store/actions/index";
 import { Link } from "react-router-dom";
+import './PostTable.css';
 
 var imgStyle = {
   width: "130px"
@@ -105,6 +106,7 @@ class PostTable extends Component {
                   type="text"
                   name="title"
                   id="exampleFormControlTextarea1"
+                  className="modalTextField"
                   onChange={this.onChange}
                 />
               </div>
@@ -112,6 +114,7 @@ class PostTable extends Component {
                 <label htmlFor="exampleFormControlTextarea2">Description</label>
                 <textarea
                   id="exampleFormControlTextarea2"
+                  className="modalTextField"
                   name="description"
                   rows="3"
                   onChange={this.onChange}
