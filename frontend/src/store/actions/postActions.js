@@ -24,7 +24,7 @@ export const deletePost = (postId, userToken) => dispatch => {
 }
 
 //Create new post
-export const createNewPost = ( { id, title, description, community }, { _id, firstName, lastName }, userToken) => dispatch => {
+export const createNewPost = ( { title, description, community }, userToken) => dispatch => {
 console.log("Preparing to create new post");
 
 const config = {
@@ -37,12 +37,10 @@ const config = {
 };
 
 //Request Body
-let body1 = JSON.stringify({id, title, description, community});
-let body2 = JSON.stringify({_id, firstName, lastName});
-const fullBody = JSON.stringify(Object.assign({}, { id, title, description, community }, { _id, firstName, lastName }));
-console.log(`body is ${fullBody})`);
+let body = JSON.stringify({title, description, community });
+console.log(`body is ${body})`);
 
-axios.post('/posts', fullBody, config)
+axios.post('/posts', body, config)
 .then(res => {
   dispatch({
       type: NEW_POST_SUCCESS,

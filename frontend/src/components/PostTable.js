@@ -16,11 +16,9 @@ var imgStyle = {
 class PostTable extends Component {
   state = {
     posts: [],
-    id: null,
-    title: "Park Place Single Bed",
-    description:
-      "This place is not very well maintainted but I need money anyway",
-    community: "Park Place",
+    title: "Trap House in Costa Mesa",
+    description: "Selling bricks and subleasing storage room. Total: $2500 per month",
+    community: "Arroyo Vista",
     showModal: false
   };
 
@@ -74,18 +72,8 @@ class PostTable extends Component {
       community
     };
 
-    const { _id, firstName, lastName } = this.props.user;
-    const currentUser = {
-      _id,
-      firstName,
-      lastName
-    };
     console.log(`This.props.user is ${JSON.stringify(this.props.user)}`);
-    this.props.handleCreateNewPost(
-      newPostObject,
-      currentUser,
-      this.props.token
-    );
+    this.props.handleCreateNewPost(newPostObject, this.props.token);
     this.setState({ showModal: false });
   };
 
