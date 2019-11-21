@@ -17,3 +17,7 @@ export {
     createNewPost,
     deletePost
 } from './postActions'
+
+export {
+    createNewComment
+} from './commentActions'
