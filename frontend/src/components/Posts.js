@@ -45,7 +45,7 @@ class Posts extends Component {
     };
 
   handleCommentButton = e => {
-    const { content } = this.state;
+    // const { content } = this.state;
     this.props.createNewComment(
       this.props.postData._id,
       this.props.user._id,
@@ -53,7 +53,7 @@ class Posts extends Component {
       this.props.token
     );
     this.CommentsToState();
-
+    this.setState({content: ''});
   }
 
   componentDidMount() {
@@ -122,6 +122,7 @@ class Posts extends Component {
                         className="modalTextField"
                         name="content"
                         rows="3"
+                        value={this.state.content}
                         onChange={this.onChange}
                       ></textarea>
                       <Button
