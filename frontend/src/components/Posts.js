@@ -2,17 +2,17 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import image from "../images/image.jpg";
 import "./posts.css";
-// import { BrowserRouter as Router, Link } from "react-router-dom";
 import { Media, Button, Table, Row, Col, Container } from "reactstrap";
 import axios from "axios";
+import * as actionMethods from "../store/actions/index";
 
 class Posts extends Component {
   state = {
-    comments: []
+    comments: [],
+    content: ""
   };
 
-  clickedComment() {
-    //Do all axios calls in the postActions!!
+  CommentsToState() {
     const config = {
       headers: {
         crossDomain: true,
@@ -33,8 +33,31 @@ class Posts extends Component {
     }
   }
 
+  onChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
+  requiredFieldsFilled() {
+    const { content } = this.state;
+    return (
+        content.length > 0
+      );
+    };
+
+  handleCommentButton = e => {
+    const { content } = this.state;
+    this.props.createNewComment(
+      this.props.postData._id,
+      this.props.user._id,
+      this.state.content,
+      this.props.token
+    );
+    this.CommentsToState();
+
+  }
+
   componentDidMount() {
-    this.clickedComment();
+    this.CommentsToState();
   }
 
   render() {
@@ -79,7 +102,6 @@ class Posts extends Component {
                         <p>Comment</p>
                       </Button>
                     </div>
-                    {this.state.comments && console.log(this.state.comments)}
                   </div>
                 </div>
               </Col>
@@ -93,6 +115,24 @@ class Posts extends Component {
                         <td className='message'>{content}</td>
                       </tr>
                     ))}
+                    <div className="comment-box">
+                      <label htmlFor="exampleFormControlTextarea">Description</label>
+                      <textarea
+                        id="exampleFormControlTextarea"
+                        className="modalTextField"
+                        name="content"
+                        rows="3"
+                        onChange={this.onChange}
+                      ></textarea>
+                      <Button
+                        className="deletePost"
+                        onClick={() => {
+                          this.handleCommentButton();
+                        }}
+                      >
+                        Post Comment
+                      </Button>
+                    </div>
                   </tbody>
                 </Table>
                 </div>
@@ -108,13 +148,15 @@ class Posts extends Component {
 
 const mapStatetoProps = state => ({
   token: state.auth.token,
+  user: state.auth.user,
   postData: state.post.postData
 });
 
-const mapDispatchToProps = state => ({
-  // TEMPLATE
-  // dispatchName: Parameter =>
-  //   dispatch({ type: "ActionName", Parameter }),
-});
+const mapDispatchToProps = dispatch => {
+  return {
+    createNewComment: (postId, currUser, comment, localToken) =>
+    dispatch(actionMethods.createNewComment(postId, currUser, comment, localToken))
+  };
+};
 
 export default connect(mapStatetoProps, mapDispatchToProps)(Posts);
