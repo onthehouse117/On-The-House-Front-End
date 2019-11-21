@@ -117,11 +117,12 @@ class PostTable extends Component {
     const valid = this.validateCases();
 
     if(valid) {
-      const { title, description, community } = this.state;
+      const { title, description, community, price } = this.state;
       const newPostObject = {
         title,
         description,
-        community
+        community,
+        price
       };
       this.props.handleCreateNewPost(newPostObject, this.props.token);
       this.setState({ showModal: false });

@@ -24,7 +24,7 @@ export const deletePost = (postId, userToken) => dispatch => {
 }
 
 //Create new post
-export const createNewPost = ( { title, description, community }, userToken) => dispatch => {
+export const createNewPost = ( { title, description, community, price }, userToken) => dispatch => {
 console.log("Preparing to create new post");
 
 const config = {
@@ -37,7 +37,7 @@ const config = {
 };
 
 //Request Body
-let body = JSON.stringify({title, description, community });
+let body = JSON.stringify({title, description, community, price });
 console.log(`body is ${body})`);
 
 axios.post('/posts', body, config)
