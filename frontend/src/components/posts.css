@@ -23,24 +23,18 @@
     margin: 5em 0 0 0;
 }
 
-.HM {
-width: 485px;;
-margin-top: 100px;
+.commentsWrapper {
+width: 485px;
+margin-top: 70px;
+margin-left: -150px;
 }
 
 .author {
-  /* width: 100%; */
-  /* position: relative; */
   font-weight: 600;
   color: rgb(17, 45, 105);
   position: absolute;
-
 }
 
-
-.row {
-  /* background-color: red; */
-}
 
 .message {
   position: relative;
@@ -77,8 +71,8 @@ header {
 
 #wrapper {
   background-color: #fff;
-  width: 97%;
-  margin: 100px 400px 100px 0px;
+  width: 100vh;
+  margin: 80px 400px 100px 70px;
   border: 1px solid #D0D1D5;
   border-top: 0;
   border-radius: 2px;
@@ -131,8 +125,9 @@ main .status {
 
 .img-content {
   /* width: 50em; */
-  width: 100%;
+  width: 80vh;
   margin-bottom: 11px;
+  margin-left: 5vh;
   border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
@@ -165,7 +160,6 @@ main .status {
 
 .like p,
 .comment p,
-
 .cf:before,
 .cf:after {
   content: "";
@@ -176,6 +170,20 @@ main .status {
   clear: both;
 }
 
+.DescriptionLabel {
+  /* margin-right: 100px; */
+}
 
-.deletePost {
+.commentTextField {
+  border-radius: 10px;
+  background: #f2f3f5;
+  border-color: #ccd0d4;
+  outline: none;
+  color: #1c1d20;
+  font-size: 13px;
+  height: 10vh;
+}
+
+.postComment {
+  
 }

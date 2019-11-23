@@ -8,7 +8,8 @@ import "./posts.css";
 import axios from "axios";
 import * as actionMethods from "../store/actions/index";
 import { Link } from "react-router-dom";
-import './PostTable.css';
+import "./PostTable.css";
+import Moment from "react-moment";
 
 var imgStyle = {
   width: "130px"
@@ -26,26 +27,26 @@ class PostTable extends Component {
     showModal: false
   };
 
-    //Checks if all required fields have inputs. If so, then the submit button will be enabled.
-    requiredFieldsFilled() {
+  //Checks if all required fields have inputs. If so, then the submit button will be enabled.
+  requiredFieldsFilled() {
     const { title, description, community } = this.state;
     return (
-        title.length > 0 &&
-        description.length > 0 &&
-        community.length > 0 &&
-        community != "Communities..."
-      );
-    };
-  
-    validateCases() {
-      // console.log(`this.state.price is ${this.state.price}`);
-      // console.log(`type is ${typeof(this.state.price)}`);
-      if(this.state.price <= 0 || this.state.price > 10000) {
-        this.setState({errmsg: "The price range must be within $0 and $10000"});
-        return false;
-      }
-      return true;
+      title.length > 0 &&
+      description.length > 0 &&
+      community.length > 0 &&
+      community != "Communities..."
+    );
+  }
+
+  validateCases() {
+    // console.log(`this.state.price is ${this.state.price}`);
+    // console.log(`type is ${typeof(this.state.price)}`);
+    if (this.state.price <= 0 || this.state.price > 10000) {
+      this.setState({ errmsg: "The price range must be within $0 and $10000" });
+      return false;
     }
+    return true;
+  }
 
   getPostData(postID) {
     return this.state.posts.filter(item => item._id === postID);
@@ -92,7 +93,7 @@ class PostTable extends Component {
 
   priceOnChange = e => {
     this.setState({ [e.target.name]: Number(e.target.value) });
-  }
+  };
 
   //When user activates modal
   handleNewPostOnClick = e => {
@@ -107,7 +108,7 @@ class PostTable extends Component {
     e.preventDefault();
 
     //clear errors
-    this.setState({ 
+    this.setState({
       price: null,
       showInvalidPriceWarning: false,
       errmsg: ""
@@ -116,7 +117,7 @@ class PostTable extends Component {
     //Check to see if fields are valid
     const valid = this.validateCases();
 
-    if(valid) {
+    if (valid) {
       const { title, description, community, price } = this.state;
       const newPostObject = {
         title,
@@ -145,7 +146,7 @@ class PostTable extends Component {
             canConfirm
           >
             {this.state.errmsg && (
-            <Alert color="danger">{this.state.errmsg}</Alert>
+              <Alert color="danger">{this.state.errmsg}</Alert>
             )}
 
             <form>
@@ -169,7 +170,7 @@ class PostTable extends Component {
                   min="0.00"
                   max="10000.00"
                   step="0.01"
-                  placeholder = "0.00"
+                  placeholder="0.00"
                   onChange={this.priceOnChange}
                 ></input>
               </div>
@@ -235,17 +236,23 @@ class PostTable extends Component {
                 <Link to="/post">
                   <Media
                     key={item["_id"]}
+                    className="PostTitle"
                     onClick={() =>
                       this.props.handleUpdatePostData(
                         this.getPostData(item["_id"])[0]
                       )
                     }
                     heading
+                    style={{ textDecoration: "none" }}
                   >
-                  {`[${item["community"]}] ${item["title"]}`}
+                    <span className="postDate">
+                      {<Moment format="MMM D">{item["updatedAt"]}</Moment>}
+                    </span>{" "}
+                    {item["title"]}
                   </Media>
                 </Link>
-                posted by:  <strong>{item["name"]}</strong>
+                <span className="postPrice">{`$${item["price"].$numberDecimal}`}</span>{" "}
+                <span className="postCommunity">{`(${item["community"]})`}</span>
                 {this.props.user["_id"] === item["author"] && (
                   <p>
                     <Button
@@ -264,7 +271,7 @@ class PostTable extends Component {
                         }
                       }}
                     >
-                      Delete Post
+                      DELETE
                     </Button>
                   </p>
                 )}
