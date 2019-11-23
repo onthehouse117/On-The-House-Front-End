@@ -4,16 +4,11 @@ import { Media, Alert, Button } from "reactstrap";
 import ModalBackground from "./ModalBackground";
 import NewPostModal from "./NewPostModal";
 import image from "../images/image.jpg";
-import "./posts.css";
 import axios from "axios";
 import * as actionMethods from "../store/actions/index";
 import { Link } from "react-router-dom";
 import "./PostTable.css";
 import Moment from "react-moment";
-
-var imgStyle = {
-  width: "130px"
-};
 
 class PostTable extends Component {
   state = {
@@ -225,7 +220,6 @@ class PostTable extends Component {
             <Media className="Post" key={item["_id"]}>
               <Media left>
                 <Media
-                  style={imgStyle}
                   object
                   src={image}
                   alt="No Image"

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import image from "../images/image.jpg";
-import "./posts.css";
+import "./Posts.css";
 import { Media, Button, Table, Row, Col, Container } from "reactstrap";
 import axios from "axios";
 import * as actionMethods from "../store/actions/index";
@@ -44,7 +44,6 @@ class Posts extends Component {
   }
 
   handleCommentButton = e => {
-    // const { content } = this.state;
     this.props.createNewComment(
       this.props.postData._id,
       this.props.user._id,
@@ -61,78 +60,75 @@ class Posts extends Component {
 
   render() {
     return (
-      <div className="outer">
-        <Container fluid={true}>
-          <Row>
-            <Col sm="8">
-              <div id="wrapper">
-                <header class="cf">
-                  <h1 class="name">
-                    {this.props.postData != null
-                      ? this.props.postData.title
-                      : null}
-                  </h1>
-                  <p class="date">
-                    {
-                      <Moment
-                        date={this.props.postData["updatedAt"]}
-                        durationFromNow
-                      />
-                    }{" "}
-                    Ago
-                  </p>
-                </header>
-
-                <p class="status">
+      <Container fluid={true} id = "wholePostWrapper">
+        <Row>
+          <Col sm="8">
+            <div id="postWrapper">
+              <header>
+                <h1 id="title">
                   {this.props.postData != null
-                    ? this.props.postData.description
+                    ? this.props.postData.title
                     : null}
+                </h1>
+                <p id="poster">
+                  {this.props.postData != null
+                      ? this.props.postData.name
+                      : null}
                 </p>
-                <img class="img-content" src={image}></img>
-              </div>
-            </Col>
-            <Col sm="4">
-              <div className="commentsWrapper">
-                <Table responsive="md" borderless variant="true">
-                  <tbody>
-                    {this.state.comments &&
-                      this.state.comments.map(({ name, content }, index) => (
-                        <tr key={index} className="row adjustSize">
-                          <td className="author">{name}</td>
-                          <td className="message">{content}</td>
-                        </tr>
-                      ))}
-                    <div className="comment-box">
-                      <label
-                        className="DescriptionLabel"
-                        htmlFor="exampleFormControlTextarea"
-                      >
-                        Description
-                      </label>
-                      <textarea
-                        id="exampleFormControlTextarea"
-                        className="commentTextField"
-                        name="content"
-                        rows="3"
-                        value={this.state.content}
-                        onChange={this.onChange}
-                      ></textarea>
-                      <Button
-                        className="postComment"
-                        onClick={() => {
-                          this.handleCommentButton();
-                        }}
-                      >
-                        Post Comment
-                      </Button>
-                    </div>
-                  </tbody>
-                </Table>
-              </div>
-            </Col>
-          </Row>
-        </Container>
-      </div>
+                <p id="date">
+                  {
+                    <Moment
+                      date={this.props.postData["updatedAt"]}
+                      durationFromNow
+                    />
+                  }{" "}
+                  Ago
+                </p>
+              </header>
+
+              <p id="description">
+                {this.props.postData != null
+                  ? this.props.postData.description
+                  : null}
+              </p>
+              <img id="postPicture" src={image}></img>
+            </div>
+          </Col>
+          <Col sm="4">
+            <div id="commentWrapper">
+              <Table responsive="md" borderless variant="true">
+                <tbody id="commentBody">
+                  {this.state.comments &&
+                    this.state.comments.map(({ name, content }, index) => (
+                      <tr key={index}>
+                        <td id="author">{name}</td> 
+                        <td id="comment">{content}</td>
+                      </tr>
+                    ))}
+                </tbody>
+              </Table>
+              
+              <div id="commentTextBox">
+                <textarea
+                  id="commentTextField"
+                  name="content"
+                  rows="3"
+                  value={this.state.content}
+                  onChange={this.onChange}>
+                </textarea>
+              </div>       
+
+              <Button
+                id = "postCommentButton"
+                onClick={() => {
+                  this.handleCommentButton();
+                }}>
+                Post Comment
+              </Button>    
+            </div>
+          </Col>
+        </Row>
+      </Container>
     );
   }
 }
