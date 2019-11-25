@@ -1,5 +1,6 @@
 #wholePostWrapper {
     margin-top: 5em;
+    font-family: sans-serif;
 }
 
 .row {
@@ -9,11 +10,6 @@
 .row > [class*='col-'] {
   padding-right:0;
   padding-left:0;
-}
-
-/* Does nothing atm */
-* {
-  font-family: sans-serif;
 }
 
 /* Left Side Post Wrapper */
@@ -65,6 +61,11 @@
 }
 
 /* Comment Content */
+#commentBody {
+  height:80em;  
+  overflow:scroll;
+}
+
 #author {
   margin:0;
   padding:.50em;
@@ -78,9 +79,9 @@
 }
 
 #commentTextField {
-  color: #1c1d20;
   height: 5em;
-  width: 100%;
+  width: 75%;
+  margin-bottom: 1em;
 }
 
 #postCommentButton {

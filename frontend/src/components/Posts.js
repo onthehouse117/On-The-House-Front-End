@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import image from "../images/image.jpg";
 import "./Posts.css";
-import { Media, Button, Table, Row, Col, Container } from "reactstrap";
+import { Button, Table, Row, Col, Container } from "reactstrap";
 import axios from "axios";
 import * as actionMethods from "../store/actions/index";
 import Moment from "react-moment";

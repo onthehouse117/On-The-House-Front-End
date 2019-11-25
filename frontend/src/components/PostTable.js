@@ -34,8 +34,6 @@ class PostTable extends Component {
   }
 
   validateCases() {
-    // console.log(`this.state.price is ${this.state.price}`);
-    // console.log(`type is ${typeof(this.state.price)}`);
     if (this.state.price <= 0 || this.state.price > 10000) {
       this.setState({ errmsg: "The price range must be within $0 and $10000" });
       return false;
@@ -146,11 +144,11 @@ class PostTable extends Component {
 
             <form>
               <div className="form-styles">
-                <label htmlFor="exampleFormControlTextarea1">Title</label>
+                <label htmlFor="titleText">Title</label>
                 <input
                   type="text"
                   name="title"
-                  id="exampleFormControlTextarea1"
+                  id="titleText"
                   className="modalTextField"
                   onChange={this.onChange}
                 />
@@ -170,9 +168,9 @@ class PostTable extends Component {
                 ></input>
               </div>
               <div className="form-styles">
-                <label htmlFor="exampleFormControlTextarea2">Description</label>
+                <label htmlFor="descriptionText">Description</label>
                 <textarea
-                  id="exampleFormControlTextarea2"
+                  id="descriptionText"
                   className="modalTextField"
                   name="description"
                   rows="3"
@@ -181,14 +179,12 @@ class PostTable extends Component {
               </div>
               <div className="form-styles">
                 <label
-                  className="my-1 mr-2"
-                  htmlFor="inlineFormCustomSelectPref"
+                  htmlFor="selectCommunity"
                 >
                   Select Community
                 </label>
                 <select
-                  className="custom-select my-1 mr-sm-2"
-                  id="inlineFormCustomSelectPref"
+                  id="selectCommunity"
                   name="community"
                   onChange={this.onChange}
                 >
@@ -215,9 +211,9 @@ class PostTable extends Component {
           </NewPostModal>
         )}
         <div className="PostDiv">
-          <Button onClick={this.handleNewPostOnClick}>New Post</Button>
+          <Button id="createPost" onClick={this.handleNewPostOnClick}>New Post</Button>
           {this.state.posts.map(item => (
-            <Media className="Post" key={item["_id"]}>
+            <Media id="Post" key={item["_id"]}>
               <Media left>
                 <Media
                   object
@@ -226,31 +222,31 @@ class PostTable extends Component {
                   id="thumbnail"
                 />
               </Media>
-              <Media body className="Post-Text">
-                <Link to="/post">
-                  <Media
-                    key={item["_id"]}
-                    className="PostTitle"
-                    onClick={() =>
-                      this.props.handleUpdatePostData(
-                        this.getPostData(item["_id"])[0]
-                      )
-                    }
-                    heading
-                    style={{ textDecoration: "none" }}
-                  >
-                    <span className="postDate">
-                      {<Moment format="MMM D">{item["updatedAt"]}</Moment>}
-                    </span>{" "}
+              <Media body id="postText">
+                <Media
+                  key={item["_id"]}
+                  id="postTitle"
+                  onClick={() =>
+                    this.props.handleUpdatePostData(
+                      this.getPostData(item["_id"])[0]
+                    )
+                  }
+                  heading
+                  style={{ textDecoration: "none" }}
+                >
+                  <span id= "postDate">
+                    {<Moment format="MMM D">{item["updatedAt"]}</Moment>}
+                  </span>{" "}
+                  <Link to="/post">
                     {item["title"]}
-                  </Media>
-                </Link>
-                <span className="postPrice">{`$${item["price"].$numberDecimal}`}</span>{" "}
-                <span className="postCommunity">{`(${item["community"]})`}</span>
+                  </Link>
+                </Media>
+                <span id="postPrice">{`$${item["price"].$numberDecimal}`}</span>{" "}
+                <span id="postCommunity">{`(${item["community"]})`}</span>
                 {this.props.user["_id"] === item["author"] && (
                   <p>
                     <Button
-                      className="deletePost"
+                      id="deletePost"
                       onClick={() => {
                         if (
                           window.confirm(
@@ -266,6 +262,24 @@ class PostTable extends Component {
                       }}
                     >
                       DELETE
+                    </Button>
+                    <Button
+                      id="editPost"
+                      onClick={() => {
+                        if (
+                          window.confirm(
+                            "Are you sure you wish to delete your housing post?"
+                          )
+                        ) {
+                          this.props.handleDeletePost(
+                            item["_id"],
+                            this.props.token
+                          );
+                          this.updatePosts(item["_id"]);
+                        }
+                      }}
+                    >
+                      EDIT
                     </Button>
                   </p>
                 )}
