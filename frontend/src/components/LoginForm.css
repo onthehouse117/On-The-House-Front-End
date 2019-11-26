@@ -1,10 +1,4 @@
-/* html {
-  background: url("https://mdbootstrap.com/img/Photos/Others/img%20(42).jpg")no-repeat center center;
-  background-size: cover;
-}
- */
-
-#idH2 {
+#signInHeader {
   display: block;
   text-align: center;
   font-size: 1.5rem;
@@ -13,7 +7,7 @@
   margin: 2rem 5rem;
 }
 
-.pageBackground {
+#pageBackground {
   position: absolute;
   top: 0;
   right: 0;
@@ -21,20 +15,15 @@
   left: 0;
   background: url("../images/bg-login.jpg")
   no-repeat center center;
- background-size: cover;
-}
-
-.styles {
-  margin-top: 100px;
+  background-size: cover;
 }
 
 .errorMessage {
   color: red;
 }
 
-.LoginContain {
+#loginCol {
   position: relative;
-  padding: 40px;
   background-color: #ffffff60;
   border: 1px solid #d8dee2;
   border-radius: 8px;
@@ -42,8 +31,11 @@
   box-shadow: 1px 1px 4px -1px rgba(0, 0, 0, 0.76);
 }
 
+#formSubmit {
+  margin: .5em;
+}
 
 .login {
-  background-color: rgba(7, 7, 7, 0.555)!important;
-  
+  display: block;
+  background-color: rgba(7, 7, 7, 0.555);
 }

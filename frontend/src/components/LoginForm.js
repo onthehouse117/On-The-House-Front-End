@@ -76,17 +76,17 @@ class LoginForm extends Component {
   render() {
     // const submitButtonEnable = this.requiredFieldsFilled();
     return (
-      <div className="pageBackground">
+      <div id="pageBackground">
         <div className="styles">
           <Container>
             <div className="row">
               <Col md="4"></Col>
-              <Col md="4" className="LoginContain">
-              <h1 id="idH2">Sign in</h1>
+              <Col md="4" id="loginCol">
+              <h1 id="signInHeader">Sign in</h1>
                 {this.state.msg ? (
                   <Alert color="danger">{this.state.msg}</Alert>
                 ) : null}
-                <Form onSubmit={this.onSubmit}>
+                <Form onSubmit={this.onSubmit} id="formSubmit">
                   <FormGroup row>
                     <Col>
                       <Input

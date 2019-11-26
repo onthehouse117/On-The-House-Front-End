@@ -13,9 +13,10 @@ export {
 } from './errorActions'
 
 export {
-    UpdatePostData,
+    addPostData,
     createNewPost,
-    deletePost
+    deletePost,
+    updatePost
 } from './postActions'
 
 export {

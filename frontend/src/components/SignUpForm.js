@@ -46,9 +46,6 @@ class SignUpForm extends Component {
         if (error.msg.name === "MongoError") {
           this.setState({ msg: "User already exists!" });
         }
-        // else {
-        //   this.setState({msg: error.msg.message});
-        // }
       }
     }
   }
@@ -116,8 +113,6 @@ class SignUpForm extends Component {
 
   onChangeDate = e => {
     const d = new Date(e.target.value);
-    // console.log(`d is ${typeof(d)}`);
-    // console.log(e.target.name);
     this.setState({ [e.target.name]: d });
   };
 

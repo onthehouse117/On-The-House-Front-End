@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Media, Alert, Button } from "reactstrap";
 import ModalBackground from "./ModalBackground";
 import NewPostModal from "./NewPostModal";
+import UpdatePostModal from "./UpdateModal";
 import image from "../images/image.jpg";
 import axios from "axios";
 import * as actionMethods from "../store/actions/index";
@@ -13,13 +14,15 @@ import Moment from "react-moment";
 class PostTable extends Component {
   state = {
     posts: [],
+    postId: "",
     title: "",
     description: "",
     community: "",
     price: null,
     showInvalidPriceWarning: false,
     errmsg: "",
-    showModal: false
+    showPostModal: false,
+    showUpdateModal: false
   };
 
   //Checks if all required fields have inputs. If so, then the submit button will be enabled.
@@ -34,8 +37,8 @@ class PostTable extends Component {
   }
 
   validateCases() {
-    if (this.state.price <= 0 || this.state.price > 10000) {
-      this.setState({ errmsg: "The price range must be within $0 and $10000" });
+    if (this.state.price <= 100 || this.state.price > 10000) {
+      this.setState({ errmsg: "The price range must be within $100 and $10000" });
       return false;
     }
     return true;
@@ -50,7 +53,6 @@ class PostTable extends Component {
   }
 
   PostsToState() {
-    console.log("ABOUT TO MAKE A API CALL");
     const config = {
       headers: {
         "Content-type": "application/json",
@@ -66,10 +68,8 @@ class PostTable extends Component {
         this.setState({
           posts: res.data
         });
-        console.log("UPDATED STATE:", this.state.posts);
       });
     } catch (e) {
-      console.log(e);
     }
   }
 
@@ -88,15 +88,15 @@ class PostTable extends Component {
     this.setState({ [e.target.name]: Number(e.target.value) });
   };
 
-  //When user activates modal
+  //When user activates new post modal
   handleNewPostOnClick = e => {
-    this.setState({ showModal: true });
+    this.setState({ showPostModal: true });
   };
 
-  //User here cancels the modal
-  handleCancelButton = e => this.setState({ showModal: false });
+  //User here cancels the new post modal
+  handleCancelButton = e => this.setState({ showPostModal: false });
 
-  //User clicks post to the modal
+  //User clicks post to the new post modal
   handlePostButton = e => {
     e.preventDefault();
 
@@ -119,7 +119,43 @@ class PostTable extends Component {
         price
       };
       this.props.handleCreateNewPost(newPostObject, this.props.token);
-      this.setState({ showModal: false });
+      this.setState({ showPostModal: false });
+      this.PostsToState();
+    }
+  };
+
+  //When user activates update post modal
+  handleUpdatePostOnClick = e => {
+    this.setState({ showUpdateModal: true });
+  };
+
+  //User here cancels the update post modal
+  handleUpdateCancelButton = e => this.setState({ showUpdateModal: false });
+
+  //User clicks post to the update post modal
+  handleUpdateButton = e => {
+    e.preventDefault();
+
+    //clear errors
+    this.setState({
+      price: null,
+      showInvalidPriceWarning: false,
+      errmsg: ""
+    });
+
+    //Check to see if fields are valid
+    const valid = this.validateCases();
+
+    if (valid) {
+      const { title, description, community, price } = this.state;
+      const newPostObject = {
+        title,
+        description,
+        community,
+        price
+      };
+      this.props.handleUpdatePost(newPostObject, this.state.postId, this.props.token);
+      this.setState({ showUpdateModal: false });
       this.PostsToState();
     }
   };
@@ -128,8 +164,8 @@ class PostTable extends Component {
     const createPostButtonEnable = this.requiredFieldsFilled();
     return (
       <React.Fragment>
-        {this.state.showModal && <ModalBackground />}
-        {this.state.showModal && (
+        {this.state.showPostModal && <ModalBackground />}
+        {this.state.showPostModal && (
           <NewPostModal
             title="Create a Post"
             handleClickPost={this.handlePostButton}
@@ -160,10 +196,10 @@ class PostTable extends Component {
                   name="price"
                   id="priceForm"
                   className="modalTextField"
-                  min="0.00"
+                  min="100.00"
                   max="10000.00"
-                  step="0.01"
-                  placeholder="0.00"
+                  step="1.00"
+                  placeholder="100.00"
                   onChange={this.priceOnChange}
                 ></input>
               </div>
@@ -209,7 +245,97 @@ class PostTable extends Component {
               </div>
             </form>
           </NewPostModal>
-        )}
+        )}    
+
+
+
+        {this.state.showUpdateModal && <ModalBackground />}
+        {this.state.showUpdateModal && (
+          <UpdatePostModal
+            title="Update a Post"
+            handleClickPost={this.handleUpdateButton}
+            handleCancel={this.handleUpdateCancelButton}
+            handleDisabled={!createPostButtonEnable}
+            canCancel
+            canConfirm
+          >
+            {this.state.errmsg && (
+              <Alert color="danger">{this.state.errmsg}</Alert>
+            )}
+
+            <form>
+              <div className="form-styles">
+                <label htmlFor="titleText">Title</label>
+                <input
+                  type="text"
+                  name="title"
+                  id="titleText"
+                  className="modalTextField"
+                  onChange={this.onChange}
+                  defaultValue = {this.state.title}>
+                </input>
+              </div>
+              <div className="form-styles">
+                <label htmlFor="priceForm">Price</label>
+                <input
+                  type="number"
+                  name="price"
+                  id="priceForm"
+                  className="modalTextField"
+                  min="100.00"
+                  max="10000.00"
+                  step="1.00"
+                  onChange={this.priceOnChange}
+                  defaultValue = {this.state.price}>
+                </input>
+              </div>
+              <div className="form-styles">
+                <label htmlFor="descriptionText">Description</label>
+                <textarea
+                  id="descriptionText"
+                  className="modalTextField"
+                  name="description"
+                  rows="3"
+                  onChange={this.onChange}
+                  defaultValue = {this.state.description}
+                ></textarea>
+              </div>
+              <div className="form-styles">
+                <label
+                  htmlFor="selectCommunity"
+                >
+                  Select Community
+                </label>
+                <select
+                  id="selectCommunity"
+                  name="community"
+                  onChange={this.onChange}
+                  defaultValue = {this.state.community}
+                >
+                  <option>Ambrose</option>
+                  <option>Arroyo Vista</option>
+                  <option>Berkeley Court</option>
+                  <option>Camino Del Sol</option>
+                  <option>Campus Village</option>
+                  <option>Columbia Court</option>
+                  <option>Cornell Court</option>
+                  <option>Dartmouth Court</option>
+                  <option>Harvard Court</option>
+                  <option>Palo Verde</option>
+                  <option>Plaza Verde</option>
+                  <option>Puerta del Sol</option>
+                  <option>Stanford Court</option>
+                  <option>Verano Place</option>
+                  <option>Vista Del Campo</option>
+                  <option>Vista Del Campo Norte</option>
+                </select>
+              </div>
+            </form>
+          </UpdatePostModal>
+        )}    
+
+
+
         <div className="PostDiv">
           <Button id="createPost" onClick={this.handleNewPostOnClick}>New Post</Button>
           {this.state.posts.map(item => (
@@ -227,7 +353,7 @@ class PostTable extends Component {
                   key={item["_id"]}
                   id="postTitle"
                   onClick={() =>
-                    this.props.handleUpdatePostData(
+                    this.props.handleaddPostData(
                       this.getPostData(item["_id"])[0]
                     )
                   }
@@ -263,22 +389,14 @@ class PostTable extends Component {
                     >
                       DELETE
                     </Button>
-                    <Button
-                      id="editPost"
-                      onClick={() => {
-                        if (
-                          window.confirm(
-                            "Are you sure you wish to delete your housing post?"
-                          )
-                        ) {
-                          this.props.handleDeletePost(
-                            item["_id"],
-                            this.props.token
-                          );
-                          this.updatePosts(item["_id"]);
-                        }
-                      }}
-                    >
+                    <Button id="updatePost" onClick={() => {
+                        this.state.postId = item["_id"]
+                        this.state.title = item["title"]
+                        this.state.description = item["description"]
+                        this.state.community = item["community"]
+                        this.state.price = item["price"].$numberDecimal
+                        this.handleUpdatePostOnClick()
+                      }}>
                       EDIT
                     </Button>
                   </p>
@@ -299,10 +417,12 @@ const mapStatetoProps = state => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    handleUpdatePostData: postContent =>
-      dispatch(actionMethods.UpdatePostData(postContent)),
-    handleCreateNewPost: (theNewPost, currUser, localToken) =>
-      dispatch(actionMethods.createNewPost(theNewPost, currUser, localToken)),
+    handleaddPostData: postContent =>
+      dispatch(actionMethods.addPostData(postContent)),
+    handleCreateNewPost: (theNewPost, localToken) =>
+      dispatch(actionMethods.createNewPost(theNewPost, localToken)),
+    handleUpdatePost: (theUpdatedPost, currPost, localToken) =>
+      dispatch(actionMethods.updatePost(theUpdatedPost, currPost, localToken)),
     handleDeletePost: (postId, localToken) =>
       dispatch(actionMethods.deletePost(postId, localToken))
   };
