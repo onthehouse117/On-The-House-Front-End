@@ -114,7 +114,8 @@ class Posts extends Component {
                   name="content"
                   rows="3"
                   value={this.state.content}
-                  onChange={this.onChange}>
+                  onChange={this.onChange}
+                  maxlength="200">
                 </textarea>
               </div>       
 
