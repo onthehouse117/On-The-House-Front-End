@@ -65,9 +65,8 @@ class PostTable extends Component {
     const body = JSON.stringify({});
     try {
       axios.post("/posts/getPosts", body, config).then(res => {
-        // var data = res.data.sort((a,b) =>  new Date(a.createdAt) - new Date(b.createdAt));
         this.setState({
-          posts: data
+          posts: res.data.sort((a,b) =>  new Date(b.createdAt) - new Date(a.createdAt))
         });
       });
     } catch (e) {
