@@ -369,7 +369,7 @@ class PostTable extends Component {
                 </Media>
                 <span id="postPrice">{`$${item["price"].$numberDecimal}`}</span>{" "}
                 <span id="postCommunity">{`(${item["community"]})`}</span>
-                {this.props.user["_id"] === item["author"] && (
+                {this.props.user["_id"] === item["author"] || (this.props.user["admin"]) && (
                   <p>
                     <Button
                       id="deletePost"
