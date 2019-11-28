@@ -94,7 +94,16 @@ class PostTable extends Component {
   };
 
   //User here cancels the new post modal
-  handleCancelButton = e => this.setState({ showPostModal: false });
+  handleCancelButton = e => this.setStatethis.setState({     
+    postId: "",
+    title: "",
+    description: "",
+    community: "",
+    price: null,
+    showInvalidPriceWarning: false,
+    errmsg: "",
+    showUpdateModal: false
+  });
 
   //User clicks post to the new post modal
   handlePostButton = e => {
@@ -130,7 +139,16 @@ class PostTable extends Component {
   };
 
   //User here cancels the update post modal
-  handleUpdateCancelButton = e => this.setState({ showUpdateModal: false });
+  handleUpdateCancelButton = e => this.setStatethis.setState({     
+    postId: "",
+    title: "",
+    description: "",
+    community: "",
+    price: null,
+    showInvalidPriceWarning: false,
+    errmsg: "",
+    showUpdateModal: false
+  });
 
   //User clicks post to the update post modal
   handleUpdateButton = e => {
