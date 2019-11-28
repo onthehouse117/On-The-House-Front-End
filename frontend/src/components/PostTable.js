@@ -179,6 +179,8 @@ class PostTable extends Component {
   };
 
   render() {
+    console.log("This.state.post is " + JSON.stringify(this.state.posts));
+    console.log("User id is " + this.props.user["_id"]);
     const createPostButtonEnable = this.requiredFieldsFilled();
     return (
       <React.Fragment>
@@ -387,7 +389,7 @@ class PostTable extends Component {
                 </Media>
                 <span id="postPrice">{`$${item["price"].$numberDecimal}`}</span>{" "}
                 <span id="postCommunity">{`(${item["community"]})`}</span>
-                {this.props.user["_id"] === item["author"] || (this.props.user["admin"]) && (
+                {(this.props.user._id === item["author"] || this.props.user["admin"]) ? (
                   <p>
                     <Button
                       id="deletePost"
@@ -418,7 +420,7 @@ class PostTable extends Component {
                       EDIT
                     </Button>
                   </p>
-                )}
+                ): null}
               </Media>
             </Media>
           ))}
