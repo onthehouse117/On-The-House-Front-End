@@ -50,7 +50,11 @@ class Posts extends Component {
       this.state.content,
       this.props.token
     );
-    this.CommentsToState();
+
+    //FIX THIS TEMP WORKAROUND
+    //COMMENTS TO STATE GETS CALLED WHILE THE COMMENT ENTRY IS RUNNING    
+    setTimeout(() => { this.CommentsToState(); }, 250);
+    
     this.setState({ content: "" });
   };
 
@@ -77,12 +81,10 @@ class Posts extends Component {
                 </p>
                 <p id="date">
                   {
-                    <Moment
-                      date={this.props.postData["updatedAt"]}
-                      durationFromNow
-                    />
+                    <Moment fromNow>
+                      {this.props.postData["updatedAt"]}
+                    </Moment>
                   }{" "}
-                  Ago
                 </p>
               </header>
 

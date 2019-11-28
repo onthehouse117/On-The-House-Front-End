@@ -9,7 +9,6 @@ export const addPostData = (postData) => dispatch => {
 dispatch({type: ADD_POST_DATA, postData});
 }
 
-
 export const updatePost = ({ title, description, community, price }, postId, userToken) => dispatch => {
   const config = {
     headers: {
@@ -23,7 +22,10 @@ export const updatePost = ({ title, description, community, price }, postId, use
 
   axios.patch(`/posts/${postId}`, body, config)
   .then(res => {
-    dispatch({type: UPDATE_POST_SUCCESS,
+    console.log("UPDATE POST \n");
+    console.log(res);
+    dispatch({
+      type: UPDATE_POST_SUCCESS,
       payload: res.data});
   })
   .catch( err => {
@@ -42,13 +44,12 @@ export const deletePost = (postId, userToken) => dispatch => {
   };
   axios.delete(`/posts/${postId}`, config)
   .then(res => {
+    console.log("DELETE POST \n");
   })
 }
 
 //Create new post
 export const createNewPost = ( { title, description, community, price }, userToken) => dispatch => {
-console.log("Preparing to create new post");
-
 const config = {
   headers: {
       "Content-type": "application/json",
@@ -60,10 +61,12 @@ const config = {
 
 //Request Body
 let body = JSON.stringify({title, description, community, price });
-console.log(`body is ${body})`);
 
 axios.post('/posts', body, config)
 .then(res => {
+  console.log("CREATE POST \n");
+  console.log(res);
+
   dispatch({
       type: NEW_POST_SUCCESS,
       payload: res.data

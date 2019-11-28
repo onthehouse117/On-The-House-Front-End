@@ -32,7 +32,7 @@ class PostTable extends Component {
       title.length > 0 &&
       description.length > 0 &&
       community.length > 0 &&
-      community != "Communities..."
+      community != "Communities"
     );
   }
 
@@ -68,6 +68,8 @@ class PostTable extends Component {
         this.setState({
           posts: res.data.sort((a,b) =>  new Date(b.updatedAt) - new Date(a.updatedAt))
         });
+        console.log("POST TO STATE \n");
+        console.log(this.state.posts)      
       });
     } catch (e) {
     }
@@ -94,7 +96,7 @@ class PostTable extends Component {
   };
 
   //User here cancels the new post modal
-  handleCancelButton = e => this.setStatethis.setState({     
+  handleCancelButton = e => this.setState({     
     postId: "",
     title: "",
     description: "",
@@ -102,7 +104,7 @@ class PostTable extends Component {
     price: null,
     showInvalidPriceWarning: false,
     errmsg: "",
-    showUpdateModal: false
+    showPostModal: false
   });
 
   //User clicks post to the new post modal
@@ -139,7 +141,7 @@ class PostTable extends Component {
   };
 
   //User here cancels the update post modal
-  handleUpdateCancelButton = e => this.setStatethis.setState({     
+  handleUpdateCancelButton = e => this.setState({     
     postId: "",
     title: "",
     description: "",
@@ -174,13 +176,16 @@ class PostTable extends Component {
       };
       this.props.handleUpdatePost(newPostObject, this.state.postId, this.props.token);
       this.setState({ showUpdateModal: false });
+
+      //FIX THIS TEMP WORKAROUND
+      //POSTS TO STATE GETS CALLED WHILE THE PATCH IS RUNNING
+      setTimeout(() => {  this.PostsToState(); }, 250);
+
       this.PostsToState();
     }
   };
 
   render() {
-    console.log("This.state.post is " + JSON.stringify(this.state.posts));
-    console.log("User id is " + this.props.user["_id"]);
     const createPostButtonEnable = this.requiredFieldsFilled();
     return (
       <React.Fragment>
@@ -243,8 +248,9 @@ class PostTable extends Component {
                   id="selectCommunity"
                   name="community"
                   onChange={this.onChange}
+                  defaultValue = "Communities"
                 >
-                  <option selected>Communities...</option>
+                  <option>Communities</option>
                   <option>Ambrose</option>
                   <option>Arroyo Vista</option>
                   <option>Berkeley Court</option>
