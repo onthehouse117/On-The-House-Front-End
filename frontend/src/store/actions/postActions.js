@@ -9,7 +9,7 @@ export const addPostData = (postData) => dispatch => {
 dispatch({type: ADD_POST_DATA, postData});
 }
 
-export const updatePost = ({ title, description, community, price }, postId, userToken) => dispatch => {
+export const updatePost =  ({ title, description, community, price }, postId, userToken) => dispatch => {
   const config = {
     headers: {
         "Content-type": "application/json",
@@ -27,6 +27,7 @@ export const updatePost = ({ title, description, community, price }, postId, use
     dispatch({
       type: UPDATE_POST_SUCCESS,
       payload: res.data});
+    
   })
   .catch( err => {
     dispatch( {type: UPDATE_POST_FAIL} )
