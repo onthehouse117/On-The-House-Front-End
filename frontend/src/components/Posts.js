@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import image from "../images/image.jpg";
-import "./posts.css";
-import { Media, Button, Table, Row, Col, Container } from "reactstrap";
+import "./Posts.css";
+import { Button, Table, Row, Col, Container } from "reactstrap";
 import axios from "axios";
 import * as actionMethods from "../store/actions/index";
+import Moment from "react-moment";
 
 class Posts extends Component {
   state = {
@@ -39,22 +40,23 @@ class Posts extends Component {
 
   requiredFieldsFilled() {
     const { content } = this.state;
-    return (
-        content.length > 0
-      );
-    };
+    return content.length > 0;
+  }
 
   handleCommentButton = e => {
-    const { content } = this.state;
     this.props.createNewComment(
       this.props.postData._id,
       this.props.user._id,
       this.state.content,
       this.props.token
     );
-    this.CommentsToState();
 
-  }
+    //FIX THIS TEMP WORKAROUND
+    //COMMENTS TO STATE GETS CALLED WHILE THE COMMENT ENTRY IS RUNNING    
+    setTimeout(() => { this.CommentsToState(); }, 250);
+    
+    this.setState({ content: "" });
+  };
 
   componentDidMount() {
     this.CommentsToState();
@@ -86,56 +88,27 @@ class Posts extends Component {
                 </p>
               </header>
 
-                    <div class="comment">
-                      <Button color="link">
-                        <Media
-                          object
-                          src={
-                            "https://s0.wp.com/wp-content/themes/vip/facebook-groups/img/message_icon.png"
-                          }
-                        ></Media>
-                        <p>Comment</p>
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              </Col>
-              <Col sm="4">
-                <div className='HM'>
-                <Table responsive='md' borderless variant='true'>
-                  <tbody>
-                    {this.state.comments && this.state.comments.map(({ name, content}, index) => (
-                      <tr key={index} className='row adjustSize'>
-                        <td className='author'>{name}</td>
-                        <td className='message'>{content}</td>
+              <p id="description">
+                {this.props.postData != null
+                  ? this.props.postData.description
+                  : null}
+              </p>
+              <img id="postPicture" src={image}></img>
+            </div>
+          </Col>
+          <Col sm="4">
+            <div id="commentWrapper">
+              <Table responsive="md" borderless variant="true">
+                <tbody id="commentBody">
+                  {this.state.comments &&
+                    this.state.comments.map(({ name, content }, index) => (
+                      <tr key={index}>
+                        <td id="author">{name}</td> 
+                        <td id="comment">{content}</td>
                       </tr>
                     ))}
-                    <div className="comment-box">
-                      <label htmlFor="exampleFormControlTextarea">Description</label>
-                      <textarea
-                        id="exampleFormControlTextarea"
-                        className="modalTextField"
-                        name="content"
-                        rows="3"
-                        onChange={this.onChange}
-                      ></textarea>
-                      <Button
-                        className="deletePost"
-                        onClick={() => {
-                          this.handleCommentButton();
-                        }}
-                      >
-                        Post Comment
-                      </Button>
-                    </div>
-                  </tbody>
-                </Table>
-                </div>
-              </Col>
-            </Row>
-          </Container>
-      </div>
-
+                </tbody>
+              </Table>
               
               <div id="commentTextBox">
                 <textarea
@@ -172,7 +145,9 @@ const mapStatetoProps = state => ({
 const mapDispatchToProps = dispatch => {
   return {
     createNewComment: (postId, currUser, comment, localToken) =>
-    dispatch(actionMethods.createNewComment(postId, currUser, comment, localToken))
+      dispatch(
+        actionMethods.createNewComment(postId, currUser, comment, localToken)
+      )
   };
 };
 

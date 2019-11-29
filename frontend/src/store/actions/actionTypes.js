@@ -20,6 +20,8 @@ export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 export const ADD_POST_DATA = 'ADD_POST_DATA';
 export const NEW_POST_SUCCESS = 'NEW_POST_SUCCESS';
 export const NEW_POST_FAIL = 'NEW_POST_FAIL';
+export const UPDATE_POST_SUCCESS = 'UPDATE_POST_SUCCESS';
+export const UPDATE_POST_FAIL = 'UPDATE_POST_FAIL';
 
 //Comment actions
 export const NEW_COMMENT_SUCCESS = 'NEW_COMMENT_SUCCESS'
