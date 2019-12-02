@@ -38,7 +38,9 @@ class PostTable extends Component {
 
   validateCases() {
     if (this.state.price <= 100 || this.state.price > 10000) {
-      this.setState({ errmsg: "The price range must be within $100 and $10000" });
+      this.setState({
+        errmsg: "The price range must be within $100 and $10000"
+      });
       return false;
     }
     return true;
@@ -66,13 +68,14 @@ class PostTable extends Component {
     try {
       axios.post("/posts/getPosts", body, config).then(res => {
         this.setState({
-          posts: res.data.sort((a,b) =>  new Date(b.updatedAt) - new Date(a.updatedAt))
+          posts: res.data.sort(
+            (a, b) => new Date(b.updatedAt) - new Date(a.updatedAt)
+          )
         });
         console.log("POST TO STATE \n");
-        console.log(this.state.posts)      
+        console.log(this.state.posts);
       });
-    } catch (e) {
-    }
+    } catch (e) {}
   }
 
   updatePosts(postID) {
@@ -96,16 +99,17 @@ class PostTable extends Component {
   };
 
   //User here cancels the new post modal
-  handleCancelButton = e => this.setState({     
-    postId: "",
-    title: "",
-    description: "",
-    community: "",
-    price: null,
-    showInvalidPriceWarning: false,
-    errmsg: "",
-    showPostModal: false
-  });
+  handleCancelButton = e =>
+    this.setState({
+      postId: "",
+      title: "",
+      description: "",
+      community: "",
+      price: null,
+      showInvalidPriceWarning: false,
+      errmsg: "",
+      showPostModal: false
+    });
 
   //User clicks post to the new post modal
   handlePostButton = e => {
@@ -133,7 +137,10 @@ class PostTable extends Component {
       this.setState({ showPostModal: false });
       //FIX THIS TEMP WORKAROUND
       //POSTS TO STATE GETS CALLED WHILE THE PATCH IS RUNNING
-      setTimeout(() => {  this.PostsToState(); }, 500);    }
+      setTimeout(() => {
+        this.PostsToState();
+      }, 500);
+    }
   };
 
   //When user activates update post modal
@@ -142,16 +149,17 @@ class PostTable extends Component {
   };
 
   //User here cancels the update post modal
-  handleUpdateCancelButton = e => this.setState({     
-    postId: "",
-    title: "",
-    description: "",
-    community: "",
-    price: null,
-    showInvalidPriceWarning: false,
-    errmsg: "",
-    showUpdateModal: false
-  });
+  handleUpdateCancelButton = e =>
+    this.setState({
+      postId: "",
+      title: "",
+      description: "",
+      community: "",
+      price: null,
+      showInvalidPriceWarning: false,
+      errmsg: "",
+      showUpdateModal: false
+    });
 
   //User clicks post to the update post modal
   handleUpdateButton = e => {
@@ -175,11 +183,17 @@ class PostTable extends Component {
         community,
         price
       };
-      this.props.handleUpdatePost(newPostObject, this.state.postId, this.props.token);
+      this.props.handleUpdatePost(
+        newPostObject,
+        this.state.postId,
+        this.props.token
+      );
       this.setState({ showUpdateModal: false });
       //FIX THIS TEMP WORKAROUND
       //POSTS TO STATE GETS CALLED WHILE THE PATCH IS RUNNING
-      setTimeout(() => {  this.PostsToState(); }, 500);
+      setTimeout(() => {
+        this.PostsToState();
+      }, 500);
     }
   };
 
@@ -237,16 +251,12 @@ class PostTable extends Component {
                 ></textarea>
               </div>
               <div className="form-styles">
-                <label
-                  htmlFor="selectCommunity"
-                >
-                  Select Community
-                </label>
+                <label htmlFor="selectCommunity">Select Community</label>
                 <select
                   id="selectCommunity"
                   name="community"
                   onChange={this.onChange}
-                  defaultValue = "Communities"
+                  defaultValue="Communities"
                 >
                   <option>Communities</option>
                   <option>Ambrose</option>
@@ -269,9 +279,7 @@ class PostTable extends Component {
               </div>
             </form>
           </NewPostModal>
-        )}    
-
-
+        )}
 
         {this.state.showUpdateModal && <ModalBackground />}
         {this.state.showUpdateModal && (
@@ -296,8 +304,8 @@ class PostTable extends Component {
                   id="titleText"
                   className="modalTextField"
                   onChange={this.onChange}
-                  defaultValue = {this.state.title}>
-                </input>
+                  defaultValue={this.state.title}
+                ></input>
               </div>
               <div className="form-styles">
                 <label htmlFor="priceForm">Price</label>
@@ -310,8 +318,8 @@ class PostTable extends Component {
                   max="10000.00"
                   step="1.00"
                   onChange={this.priceOnChange}
-                  defaultValue = {this.state.price}>
-                </input>
+                  defaultValue={this.state.price}
+                ></input>
               </div>
               <div className="form-styles">
                 <label htmlFor="descriptionText">Description</label>
@@ -321,20 +329,16 @@ class PostTable extends Component {
                   name="description"
                   rows="3"
                   onChange={this.onChange}
-                  defaultValue = {this.state.description}
+                  defaultValue={this.state.description}
                 ></textarea>
               </div>
               <div className="form-styles">
-                <label
-                  htmlFor="selectCommunity"
-                >
-                  Select Community
-                </label>
+                <label htmlFor="selectCommunity">Select Community</label>
                 <select
                   id="selectCommunity"
                   name="community"
                   onChange={this.onChange}
-                  defaultValue = {this.state.community}
+                  defaultValue={this.state.community}
                 >
                   <option>Ambrose</option>
                   <option>Arroyo Vista</option>
@@ -356,21 +360,16 @@ class PostTable extends Component {
               </div>
             </form>
           </UpdatePostModal>
-        )}    
-
-
+        )}
 
         <div className="PostDiv">
-          <Button id="createPost" onClick={this.handleNewPostOnClick}>New Post</Button>
+          <Button id="createPost" onClick={this.handleNewPostOnClick}>
+            New Post
+          </Button>
           {this.state.posts.map(item => (
             <Media id="Post" key={item["_id"]}>
               <Media left>
-                <Media
-                  object
-                  src={image}
-                  alt="No Image"
-                  id="thumbnail"
-                />
+                <Media object src={image} alt="No Image" id="thumbnail" />
               </Media>
               <Media body id="postText">
                 <Media
@@ -384,16 +383,15 @@ class PostTable extends Component {
                   heading
                   style={{ textDecoration: "none" }}
                 >
-                  <span id= "postDate">
+                  <span id="postDate">
                     {<Moment format="MMM D">{item["updatedAt"]}</Moment>}
                   </span>{" "}
-                  <Link to="/post">
-                    {item["title"]}
-                  </Link>
+                  <Link to="/post">{item["title"]}</Link>
                 </Media>
                 <span id="postPrice">{`$${item["price"].$numberDecimal}`}</span>{" "}
                 <span id="postCommunity">{`(${item["community"]})`}</span>
-                {(this.props.user._id === item["author"] || this.props.user["admin"]) ? (
+                {this.props.user._id === item["author"] ||
+                this.props.user["admin"] ? (
                   <p>
                     <Button
                       id="deletePost"
@@ -413,18 +411,23 @@ class PostTable extends Component {
                     >
                       DELETE
                     </Button>
-                    <Button id="updatePost" onClick={() => {
-                        this.state.postId = item["_id"]
-                        this.state.title = item["title"]
-                        this.state.description = item["description"]
-                        this.state.community = item["community"]
-                        this.state.price = item["price"].$numberDecimal
-                        this.handleUpdatePostOnClick()
-                      }}>
-                      EDIT
-                    </Button>
+                    {this.props.user._id === item["author"] ? (
+                      <Button
+                        id="updatePost"
+                        onClick={() => {
+                          this.state.postId = item["_id"];
+                          this.state.title = item["title"];
+                          this.state.description = item["description"];
+                          this.state.community = item["community"];
+                          this.state.price = item["price"].$numberDecimal;
+                          this.handleUpdatePostOnClick();
+                        }}
+                      >
+                        EDIT
+                      </Button>
+                    ) : null}
                   </p>
-                ): null}
+                ) : null}
               </Media>
             </Media>
           ))}
