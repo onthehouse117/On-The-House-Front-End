@@ -13,6 +13,12 @@ export {
 } from './errorActions'
 
 export {
-    UpdatePostData,
-    createNewPost
+    addPostData,
+    createNewPost,
+    deletePost,
+    updatePost
 } from './postActions'
+
+export {
+    createNewComment
+} from './commentActions'

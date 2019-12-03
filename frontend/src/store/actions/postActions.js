@@ -1,16 +1,56 @@
-import  {UPDATE_POST_DATA,
+import  {ADD_POST_DATA,
   NEW_POST_SUCCESS,
-  NEW_POST_FAIL } from './actionTypes';
+  NEW_POST_FAIL,
+  UPDATE_POST_SUCCESS,
+  UPDATE_POST_FAIL} from './actionTypes';
 import axios from 'axios';
 
-export const UpdatePostData = (postData) => dispatch => {
-dispatch({type: UPDATE_POST_DATA, postData});
+export const addPostData = (postData) => dispatch => {
+dispatch({type: ADD_POST_DATA, postData});
+}
+
+export const updatePost =  ({ title, description, community, price }, postId, userToken) => dispatch => {
+  const config = {
+    headers: {
+        "Content-type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        crossDomain: true,
+        Authorization: `Bearer ${userToken}`
+      }
+  };
+  let body = JSON.stringify({title, description, community, price });
+
+  axios.patch(`/posts/${postId}`, body, config)
+  .then(res => {
+    console.log("UPDATE POST \n");
+    console.log(res);
+    dispatch({
+      type: UPDATE_POST_SUCCESS,
+      payload: res.data});
+    
+  })
+  .catch( err => {
+    dispatch( {type: UPDATE_POST_FAIL} )
+  })
+}
+
+export const deletePost = (postId, userToken) => dispatch => {
+  const config = {
+    headers: {
+        "Content-type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        crossDomain: true,
+        Authorization: `Bearer ${userToken}`
+      }
+  };
+  axios.delete(`/posts/${postId}`, config)
+  .then(res => {
+    console.log("DELETE POST \n");
+  })
 }
 
 //Create new post
-export const createNewPost = ( { id, title, description, community }, { _id, firstName, lastName }, userToken) => dispatch => {
-console.log("Preparing to create new post");
-
+export const createNewPost = ( { title, description, community, price }, userToken) => dispatch => {
 const config = {
   headers: {
       "Content-type": "application/json",
@@ -21,13 +61,13 @@ const config = {
 };
 
 //Request Body
-let body1 = JSON.stringify({id, title, description, community});
-let body2 = JSON.stringify({_id, firstName, lastName});
-const fullBody = JSON.stringify(Object.assign({}, { id, title, description, community }, { _id, firstName, lastName }));
-console.log(`body is ${fullBody})`);
+let body = JSON.stringify({title, description, community, price });
 
-axios.post('/posts', fullBody, config)
+axios.post('/posts', body, config)
 .then(res => {
+  console.log("CREATE POST \n");
+  console.log(res);
+
   dispatch({
       type: NEW_POST_SUCCESS,
       payload: res.data

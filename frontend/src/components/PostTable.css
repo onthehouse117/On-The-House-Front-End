@@ -1,0 +1,57 @@
+/* Post Table */
+.PostDiv {
+  margin: 5em 0 0 0;
+}
+
+#createPost {
+  margin: 1.25em 0 .5em .75em;
+}
+
+#Post {
+  margin: 1.25em 0 .5em .75em;
+}
+
+#postText {
+  text-align: left;
+  margin-left: 1.5em;
+}
+
+#postTitle {
+  font-size: 1.125em;
+}
+
+#postDate {
+  font-size: .8750em;
+  color: #808080;
+}
+
+#postPrice {
+  border: 1px solid #D0D1D5;
+  border-radius: 4px;
+  padding: 2px;
+}
+
+#deletePost {
+  border: 1px solid #3d3d3f;
+  margin-top: .6em;
+  padding: 3px;
+  font-size: .75em;
+  background: #d84d3e;
+}
+
+#updatePost {
+  margin-left: .65em;
+  border: 1px solid #3d3d3f;
+  margin-top: .6em;
+  padding: 3px;
+  font-size: .75em;
+  background: #3e55d8;
+}
+
+#thumbnail {
+  border: solid;
+  border-width: 1px;
+  max-width: 10em;
+  max-height: 12.5%;
+  margin: 0;
+}

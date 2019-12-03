@@ -14,17 +14,3 @@ code {
     monospace;
 }
 
-.form-styles label,
-.form-styles input
-.form-styles textarea {
-  width: 100%;
-  display: block;
-}
-
-.form-styles label {
-  margin-bottom: 0.5rem;
-}
-
-.form-styles {
-  margin-bottom: 1rem;
-}

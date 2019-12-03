@@ -52,7 +52,7 @@ export const register = ({ firstName, lastName, DOB, email, password})  => dispa
             type: REGISTER_SUCCESS,
             payload: res.data
         })
-        console.log(`data is  ${JSON.stringify(res.data)}`);
+        // console.log(`data is  ${JSON.stringify(res.data)}`);
         })
         .catch(err => {
             console.log(err);
@@ -82,7 +82,7 @@ export const login = ({ email, password})  => dispatch => {
             type: LOGIN_SUCCESS,
             payload: res.data
         })
-        console.log(`data is  ${JSON.stringify(res.data)}`);
+        // console.log(`data is  ${JSON.stringify(res.data)}`);
         })
         .catch(err => {
             console.log(err);
@@ -122,7 +122,7 @@ export const verify = (userToken) => dispatch => {
             type: VERIFICATION_SUCCESS,
             payload: res.data,
         })
-        console.log(`data is  ${JSON.stringify(res.data)}`);
+        // console.log(`data is  ${JSON.stringify(res.data)}`);
         })
         .catch(err => {
             console.log(err);
