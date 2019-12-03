@@ -54,6 +54,9 @@ class PostTable extends Component {
     this.PostsToState();
   }
 
+  componentDidUpdate(){
+    this.PostsToState();
+  }
   PostsToState() {
     const config = {
       headers: {
