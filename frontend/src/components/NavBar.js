@@ -2,6 +2,7 @@ import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import PropTypes from 'prop-types';
 import "./NavBar.css";
+import Logo from "../images/OnTheHouseLogo.png";
 import {
   Collapse,
   Navbar,
@@ -72,7 +73,9 @@ class NavBar extends Component {
     return (
       <div>
         <Navbar className={`navbar navbar-expand-lg navbar-light fixed-top ${this.state.color}`}>
-          <NavbarBrand className="navBrand" tag={Link} to='/'>Logo</NavbarBrand>
+          {/* <NavbarBrand className="navBrand" tag={Link} to='/'>Logo</NavbarBrand> */}
+          {/* <NavbarBrand className="navBrand" tag={Link} to='/'>Logo</NavbarBrand> */}
+          <img className="Logo" src= {Logo}></img>
           <NavbarToggler onClick={this.toggle}><span className="navbar-toggler-icon"></span></NavbarToggler>
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="mr-auto mt-2 mt-lg-0" navbar>
