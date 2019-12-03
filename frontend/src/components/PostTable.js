@@ -37,7 +37,7 @@ class PostTable extends Component {
   }
 
   validateCases() {
-    if (this.state.price <= 100 || this.state.price > 10000) {
+    if (this.state.price < 100 || this.state.price > 10000) {
       this.setState({
         errmsg: "The price range must be within $100 and $10000"
       });
