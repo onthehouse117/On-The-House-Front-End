@@ -140,11 +140,6 @@ class PostTable extends Component {
       };
       this.props.handleCreateNewPost(newPostObject, this.props.token);
       this.setState({ showPostModal: false });
-      //FIX THIS TEMP WORKAROUND
-      //POSTS TO STATE GETS CALLED WHILE THE PATCH IS RUNNING
-      setTimeout(() => {
-        this.PostsToState();
-      }, 500);
     }
   };
 
@@ -196,9 +191,6 @@ class PostTable extends Component {
       this.setState({ showUpdateModal: false });
       //FIX THIS TEMP WORKAROUND
       //POSTS TO STATE GETS CALLED WHILE THE PATCH IS RUNNING
-      setTimeout(() => {
-        this.PostsToState();
-      }, 500);
     }
   };
 

@@ -53,12 +53,15 @@ class Posts extends Component {
 
     //FIX THIS TEMP WORKAROUND
     //COMMENTS TO STATE GETS CALLED WHILE THE COMMENT ENTRY IS RUNNING    
-    setTimeout(() => { this.CommentsToState(); }, 250);
     
     this.setState({ content: "" });
   };
 
   componentDidMount() {
+    this.CommentsToState();
+  }
+
+  componentDidUpdate() {
     this.CommentsToState();
   }
 
