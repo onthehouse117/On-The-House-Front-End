@@ -64,6 +64,8 @@ class PostTable extends Component {
       }
     };
 
+    // TODO: Use API's sortBy.
+    // TODO: Handle 0 posts, errors gracefully.
     const body = JSON.stringify({});
     try {
       axios.post("/posts/getPosts", body, config).then(res => {
@@ -415,11 +417,13 @@ class PostTable extends Component {
                       <Button
                         id="updatePost"
                         onClick={() => {
-                          this.state.postId = item["_id"];
-                          this.state.title = item["title"];
-                          this.state.description = item["description"];
-                          this.state.community = item["community"];
-                          this.state.price = item["price"].$numberDecimal;
+                          this.setState({
+                            postId: item["_id"],
+                            title: item["title"],
+                            description: item["description"],
+                            community: item["community"],
+                            price: item["price"].$numberDecimal
+                          })
                           this.handleUpdatePostOnClick();
                         }}
                       >
