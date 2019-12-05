@@ -34,7 +34,7 @@
 }
 
 @media (min-width: 768px) {
-    .newPostModal{
+    .newUpdateModal{
         width: 30rem;
         max-width: 1000px;
         left: calc((100% - 30rem) / 2);
