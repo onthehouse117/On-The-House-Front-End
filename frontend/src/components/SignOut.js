@@ -2,14 +2,11 @@ import React, { Component } from "react";
 import "./SignOut.css";
 import * as actionMethods from '../store/actions/index';
 import { connect } from "react-redux";
-import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import { NavItem, NavLink } from "reactstrap";
+import { NavLink } from "reactstrap";
 
 export class SignOut extends Component {
-  static propTypes = {
-    logout: PropTypes.func.isRequired
-  };
+
   render() {
     return (
       <NavLink

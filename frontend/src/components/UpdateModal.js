@@ -15,6 +15,4 @@ const UpdatePostModal = props => (
 );
 
 
-
-
 export default UpdatePostModal;

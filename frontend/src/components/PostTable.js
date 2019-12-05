@@ -32,7 +32,7 @@ class PostTable extends Component {
       title.length > 0 &&
       description.length > 0 &&
       community.length > 0 &&
-      community != "Communities"
+      community !== "Communities"
     );
   }
 
@@ -77,8 +77,6 @@ class PostTable extends Component {
             (a, b) => new Date(b.updatedAt) - new Date(a.updatedAt)
           )
         });
-        console.log("POST TO STATE \n");
-        console.log(this.state.posts);
       });
     } catch (e) {}
   }

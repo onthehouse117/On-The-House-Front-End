@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actionMethods from "../store/actions/index";
 import "./LoginForm.css";
-import PropTypes from "prop-types";
 import {
   Form,
   FormGroup,
@@ -18,13 +17,6 @@ class LoginForm extends Component {
     email: "",
     password: "",
     msg: null
-  };
-
-  static propTypes = {
-    isAuthenticated: PropTypes.bool,
-    error: PropTypes.object.isRequired,
-    login: PropTypes.func.isRequired,
-    clearErrors: PropTypes.func.isRequired
   };
 
   componentDidUpdate(prevProps) {
@@ -82,7 +74,7 @@ class LoginForm extends Component {
             <div className="row">
               <Col md="4"></Col>
               <Col md="4" id="loginCol">
-              <h1 id="signInHeader">Sign in</h1>
+                <h1 id="signInHeader">Sign in</h1>
                 {this.state.msg ? (
                   <Alert color="danger">{this.state.msg}</Alert>
                 ) : null}
@@ -125,8 +117,6 @@ class LoginForm extends Component {
 }
 
 const mapStatetoProps = state => ({
-  // TEMPLATE
-  // propYouWantInserted : state.ItemName,
   authAction: state.auth,
   isAuthenticated: state.auth.isAuthenticated,
   error: state.error,
@@ -135,9 +125,6 @@ const mapStatetoProps = state => ({
 
 const mapDispatchToProps = dispatch => {
   {
-    // TEMPLATE
-    // dispatchName: Parameter =>
-    //   dispatch({ type: "ActionName", Parameter }),
     return {
       handleLoginUser: user => dispatch(actionMethods.login(user)),
       handleClearErrors: () => dispatch(actionMethods.clearErrors())

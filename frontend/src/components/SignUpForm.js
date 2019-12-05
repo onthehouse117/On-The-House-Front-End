@@ -1,7 +1,6 @@
 import React, { Component} from "react";
 import { connect } from "react-redux";
 import "./SignUpForm.css";
-import PropTypes from "prop-types";
 import {
   Form,
   FormGroup,
@@ -31,12 +30,6 @@ class SignUpForm extends Component {
     passwordErrorMessage: ""
   };
 
-  static propTypes = {
-    isAuthenticated: PropTypes.bool,
-    error: PropTypes.object.isRequired,
-    register: PropTypes.func.isRequired,
-    clearErrors: PropTypes.func.isRequired
-  };
 
   componentDidUpdate(prevProps) {
     const { error } = this.props;

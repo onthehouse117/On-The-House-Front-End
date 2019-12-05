@@ -73,7 +73,7 @@ class NavBar extends Component {
     return (
       <div>
         <Navbar className={`navbar navbar-expand-lg navbar-light fixed-top ${this.state.color}`}>
-          <NavbarBrand tag={Link} to='/'><img className="Logo" src={Logo}></img></NavbarBrand>
+          <NavbarBrand tag={Link} to='/'><img className="Logo" src={Logo} alt=''></img></NavbarBrand>
           <NavbarToggler onClick={this.toggle}><span className="navbar-toggler-icon"></span></NavbarToggler>
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="mr-auto mt-2 mt-lg-0" navbar>
@@ -95,13 +95,7 @@ const mapStateToProps = state => ({
     auth: state.auth
 });
 
-const mapDispatchToProps = state => ({
-    // TEMPLATE
-    // dispatchName: Parameter =>
-    //   dispatch({ type: "ActionName", Parameter }),
-});
 
 export default connect(
-  mapStateToProps,
-  // mapDispatchToProps
+  mapStateToProps
 )(NavBar);
