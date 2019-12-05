@@ -32,7 +32,7 @@ class LoginForm extends Component {
     //If user authenticated, redirect to posts page.  Else, keep the user at the home page.
     if (isAuthenticated && this.props.userObject.verified) {
       const { history } = this.props;
-      history.push("/PostTable");
+      history.push("/posttable");
     } else if (isAuthenticated) {
       const { history } = this.props;
       history.push("/");

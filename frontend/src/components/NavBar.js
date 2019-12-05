@@ -2,7 +2,6 @@ import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import PropTypes from 'prop-types';
 import "./NavBar.css";
-import Logo from "../images/OnTheHouseLogo.png";
 import {
   Collapse,
   Navbar,
@@ -73,13 +72,13 @@ class NavBar extends Component {
     return (
       <div>
         <Navbar className={`navbar navbar-expand-lg navbar-light fixed-top ${this.state.color}`}>
-          <NavbarBrand tag={Link} to='/'><img className="Logo" src={Logo} alt=''></img></NavbarBrand>
+          <NavbarBrand className="navBrand" tag={Link} to='/'>Logo</NavbarBrand>
           <NavbarToggler onClick={this.toggle}><span className="navbar-toggler-icon"></span></NavbarToggler>
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="mr-auto mt-2 mt-lg-0" navbar>
               <NavItem className="active"><NavLink className='nl' tag={Link} to='/'>Home</NavLink></NavItem>
               <NavItem><NavLink tag={Link} to='/About'>About</NavLink></NavItem>
-              <NavItem><NavLink tag={Link} to='/PostTable'>Posts</NavLink></NavItem>              
+              <NavItem><NavLink tag={Link} to='/posttable'>Posts</NavLink></NavItem>              
               { isAuthenticated ? userLinks : guestLinks}
             </Nav>
           </Collapse>
@@ -95,7 +94,13 @@ const mapStateToProps = state => ({
     auth: state.auth
 });
 
+const mapDispatchToProps = state => ({
+    // TEMPLATE
+    // dispatchName: Parameter =>
+    //   dispatch({ type: "ActionName", Parameter }),
+});
 
 export default connect(
-  mapStateToProps
+  mapStateToProps,
+  // mapDispatchToProps
 )(NavBar);
