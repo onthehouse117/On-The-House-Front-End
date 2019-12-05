@@ -15,6 +15,7 @@ import Posts from "../components/Posts";
 import About from "../components/About";
 import VerificationStatus from "../components/VerificationPage/VerificationStatus";
 import PrivateRoute from "./PrivateRoute";
+import HomeRoute from "./HomeRoute";
 
 class AllRouters extends Component {
   redirectToPostTable = e => {
@@ -28,11 +29,11 @@ class AllRouters extends Component {
           <NavBar></NavBar>
           <DocumentTitle title="On The House"></DocumentTitle>
           <Switch>
-            <Route exact path="/" component={Home} />
+            <HomeRoute exact path="/" component={Home} redirect="/posttable"/>
             <Route exact path="/about" component={About} />
             <Route path="/verify" component={VerificationStatus} />
             <Route exact path="/users/login" component={LoginForm} />
-            <PrivateRoute path="/posttable" component={PostTable} />
+            <PrivateRoute path="/posttable" component={PostTable}  redirect="/users/login"/>
             {this.props.user && <Route exact path="/post" component={Posts} />}
             <Redirect to="/" />
           </Switch>
