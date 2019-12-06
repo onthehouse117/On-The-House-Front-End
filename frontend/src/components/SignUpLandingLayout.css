@@ -1,4 +1,11 @@
+.nonFluidContainer {
+  margin-top:2rem;
+}
+
 #showVerifyWarningAlert {
+  position: fixed;
+  width: 100%;
+  margin-top: 3rem;
   text-align: center;
 }
 
@@ -14,11 +21,15 @@
 
 .pageBackground {
   position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
+  height: 100%;
   left: 0;
+  width: 100%;
   background: url("../images/bg-login.jpg")
   no-repeat center center;
   background-size: cover;
+}
+
+#SignUpLandingContainer
+{
+  overflow: hidden;
 }

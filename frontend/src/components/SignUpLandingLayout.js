@@ -11,7 +11,22 @@ class SignUpLandingLayout extends Component {
     return (
       <div className="pageBackground">
         <div id="SignUpLandingContainer" className="container-fluid">
-          <Container>
+          <Row>
+            <Col sm="12">
+            {this.props.authAction.showVerificationWarning ? (
+                <Alert
+                  id="showVerifyWarningAlert"
+                  onClick={this.props.handleOnClickShowVerifyMessage}
+                  color="warning"
+                >
+                  {
+                    "Check your email for a confirmation link. (click this to close)"
+                  }
+                </Alert>
+              ) : null}
+            </Col>
+          </Row>
+          <Container className="nonFluidContainer">
             <Row>
               <Col md="5">
                 <h1 id="othHeaderTitle">Built for Anteaters</h1>
@@ -48,21 +63,6 @@ class SignUpLandingLayout extends Component {
               <Col style={{ marginBottom: "2rem" }} md="12"></Col>
             </Row>
           </Container>
-          <Row>
-            <Col sm="12">
-              {this.props.authAction.showVerificationWarning ? (
-                <Alert
-                  id="showVerifyWarningAlert"
-                  onClick={this.props.handleOnClickShowVerifyMessage}
-                  color="warning"
-                >
-                  {
-                    "Check your email for a confirmation link. (click this to close)"
-                  }
-                </Alert>
-              ) : null}
-            </Col>
-          </Row>
         </div>
       </div>
     );
