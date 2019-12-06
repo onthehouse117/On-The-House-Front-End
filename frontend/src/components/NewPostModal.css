@@ -43,6 +43,12 @@
 
 div[class="form-styles"] label{
     margin-left: 2rem;
+    margin-top: 1rem;
+}
+
+div[class="form-styles community-styles"] label{
+    margin-left: 2rem;
+    margin-top: 1rem;
 }
 
 .modalTextField {

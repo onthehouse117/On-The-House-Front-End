@@ -239,11 +239,11 @@ class PostTable extends Component {
                   id="descriptionText"
                   className="modalTextField"
                   name="description"
-                  rows="3"
+                  rows="4"
                   onChange={this.onChange}
                 ></textarea>
               </div>
-              <div className="form-styles">
+              <div className="form-styles community-styles">
                 <label htmlFor="selectCommunity">Select Community</label>
                 <select
                   id="selectCommunity"
@@ -320,12 +320,12 @@ class PostTable extends Component {
                   id="descriptionText"
                   className="modalTextField"
                   name="description"
-                  rows="3"
+                  rows="4"
                   onChange={this.onChange}
                   defaultValue={this.state.description}
                 ></textarea>
               </div>
-              <div className="form-styles">
+              <div className="form-styles community-styles">
                 <label htmlFor="selectCommunity">Select Community</label>
                 <select
                   id="selectCommunity"
