@@ -24,8 +24,7 @@
   margin-right: 0px;
 }
 
-#dynamicUserGreeting
-{
+#dynamicUserGreeting {
   color: rgb(100, 6, 6);
   font-weight: 500;
 }
@@ -40,12 +39,12 @@
 .dropdown-menu-right {
   margin: 0;
   width: 100px;
-  color:rgba(0, 0, 0, 0.5)!important;
-  font-weight: 500!important; 
+  color: rgba(0, 0, 0, 0.5) !important;
+  font-weight: 500 !important;
 }
 
 .nav-link {
-  color: rgb(0, 0, 0)!important;
+  color: rgb(0, 0, 0) !important;
 }
 
 .nav-link:hover {
@@ -103,3 +102,21 @@
   width: 70px;
 }
 
+.button:active,
+button:active,
+.button:focus,
+button:focus,
+.button:hover,
+button:hover {
+  border: none !important;
+  outline: none !important;
+}
+
+#user {
+  cursor: default;
+}
+
+.dropdown-menu-right {
+  background-color: white !important;
+  outline: none !important;
+}
