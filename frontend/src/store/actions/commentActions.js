@@ -2,7 +2,7 @@ import  {NEW_COMMENT_SUCCESS, NEW_COMMENT_FAIL} from './actionTypes';
 import axios from 'axios';
 
 //Create new comment
-export const createNewComment = ( post, author, content, userToken) => dispatch => {
+export const createNewComment = ( post, content, userToken) => dispatch => {
 
 const config = {
   headers: {
@@ -12,7 +12,7 @@ const config = {
 };
 
 //Request Body
-let body = JSON.stringify({ post, author, content });
+let body = JSON.stringify({ post, content });
 
 axios.post('/comments/createComment', body, config)
 .then(res => {
@@ -36,7 +36,8 @@ export const deleteComment = (commentId, userToken) => dispatch => {
         Authorization: `Bearer ${userToken}`
       }
   };
-
+  console.log(commentId);
+  console.log(userToken);
   axios.delete(`/comments/${commentId}`, config)
   .then(res => {
   })

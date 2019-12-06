@@ -63,7 +63,6 @@ class Posts extends Component {
   handleCommentButton = e => {
     this.props.createNewComment(
       this.props.postData._id,
-      this.props.user._id,
       this.state.content,
       this.props.token
     );
