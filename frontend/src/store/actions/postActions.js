@@ -22,8 +22,6 @@ export const updatePost =  ({ title, description, community, price }, postId, us
 
   axios.patch(`/posts/${postId}`, body, config)
   .then(res => {
-    console.log("UPDATE POST \n");
-    console.log(res);
     dispatch({
       type: UPDATE_POST_SUCCESS,
       payload: res.data});
@@ -45,7 +43,6 @@ export const deletePost = (postId, userToken) => dispatch => {
   };
   axios.delete(`/posts/${postId}`, config)
   .then(res => {
-    console.log("DELETE POST \n");
   })
 }
 
@@ -65,8 +62,6 @@ let body = JSON.stringify({title, description, community, price });
 
 axios.post('/posts', body, config)
 .then(res => {
-  console.log("CREATE POST \n");
-  console.log(res);
 
   dispatch({
       type: NEW_POST_SUCCESS,

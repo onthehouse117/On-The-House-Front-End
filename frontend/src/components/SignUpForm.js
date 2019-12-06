@@ -46,7 +46,6 @@ class SignUpForm extends Component {
   //Checks if all required fields have inputs. If so, then the submit button will be enabled.
   requiredFieldsFilled() {
     const { firstName, lastName, DOB, email, password } = this.state;
-    // console.log(`fields filled is ${firstName.length > 0 && lastName.length > 0 && DOB.length > 0 && email.length > 0 && password.length > 0}, lengths are ${firstName.length} ${lastName.length} ${DOB.length} ${email.length } ${password.length}`);
     return (
       firstName.length > 0 &&
       lastName.length > 0 &&
@@ -100,7 +99,6 @@ class SignUpForm extends Component {
   }
 
   onChange = e => {
-    console.log(typeof e.target.value);
     this.setState({ [e.target.name]: e.target.value });
   };
 

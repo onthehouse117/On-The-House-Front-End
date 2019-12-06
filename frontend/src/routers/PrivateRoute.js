@@ -16,8 +16,6 @@ const PrivateRoute = ({ isAuthenticated, userObject, redirect, component:Compone
     <Route
         {...rest}
         render={props => {
-            console.log(`props.whatever is ${isAuthenticated}`);
-            console.log(`props.redirect is ${redirect}`);
             if (isAuthenticated)
             {
                 return (

@@ -5,7 +5,6 @@ import * as actionMethods from '../../store/actions/index';
 
 class VerificationStatus extends Component {
   componentDidMount() {
-    console.log(this.props);
     const userToken = this.props.location.search.split("=")[1];
     const tokenToRequest = "Bearer " + userToken;
     this.props.handleVerify(tokenToRequest);
@@ -20,9 +19,7 @@ class VerificationStatus extends Component {
         <Redirect to="/" />
       </div>
     );
-    console.log(
-      `After verification, isAuthenticated is now ${this.props.isAuthenticated}`
-    );
+
     return (
       <div style={styles}>
         {this.props.bypassVerify ? (

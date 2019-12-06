@@ -3,8 +3,6 @@ import axios from 'axios';
 
 //Create new comment
 export const createNewComment = ( post, author, content, userToken) => dispatch => {
-console.log("Preparing to create new comment");
-console.log(content);
 
 const config = {
   headers: {
@@ -15,7 +13,6 @@ const config = {
 
 //Request Body
 let body = JSON.stringify({ post, author, content });
-console.log(`body is ${body})`);
 
 axios.post('/comments/createComment', body, config)
 .then(res => {
@@ -42,6 +39,5 @@ export const deleteComment = (commentId, userToken) => dispatch => {
 
   axios.delete(`/comments/${commentId}`, config)
   .then(res => {
-    console.log("DELETE COMMENT \n");
   })
 }

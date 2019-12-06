@@ -40,7 +40,6 @@ class Posts extends Component {
         });
       });
     } catch (e) {
-      console.log(e);
     }
   }
 

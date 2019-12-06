@@ -43,7 +43,6 @@ export const register = ({
       });
     })
     .catch(err => {
-      console.log(err);
       dispatch(
         returnErrors(err.response.data, err.response.status, "REGISTER_FAIL")
       );
@@ -73,7 +72,6 @@ export const login = ({ email, password }) => dispatch => {
       });
     })
     .catch(err => {
-      console.log(err);
       dispatch(
         returnErrors(err.response.data, err.response.status, "LOGIN_FAIL")
       );
@@ -110,7 +108,6 @@ export const verify = userToken => dispatch => {
       });
     })
     .catch(err => {
-      console.log(err);
     });
 };
 

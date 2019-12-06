@@ -16,8 +16,6 @@ const HomeRoute = ({ isAuthenticated, userObject, redirect, component:Component,
     <Route
         {...rest}
         render={props => {
-            console.log(`props.whatever is ${isAuthenticated}`);
-            console.log(`props.redirect is ${redirect}`);
             if (!isAuthenticated)
             {
                 return (
