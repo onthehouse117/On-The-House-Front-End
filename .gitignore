@@ -10,3 +10,6 @@ node_modules
 
 #Bash profiles
 .bash_profile*
+
+# Local Netlify folder
+.netlify
