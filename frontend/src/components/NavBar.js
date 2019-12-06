@@ -17,7 +17,7 @@ import {
  } from 'reactstrap';
 import SignOut from './SignOut';
 import { Link } from 'react-router-dom';
-import { Logo } from '../images/OnTheHouseLogo.png'
+import Logo from '../images/OnTheHouseLogo.png'
 
 //Reactstrap implementation.  Can switch off to either props or class component depending on dynamic content.
 class NavBar extends Component { 
