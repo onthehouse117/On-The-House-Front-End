@@ -23,7 +23,7 @@ class LoginForm extends Component {
     const { error, isAuthenticated } = this.props;
     if (error !== prevProps.error) {
       if (error.id === "LOGIN_FAIL") {
-        this.setState({ msg: "Incorrect email or password" });
+        this.setState({ msg: "Incorrect email or password. If not verified, please check your email." });
       } else {
         this.setState({ msg: null });
       }
