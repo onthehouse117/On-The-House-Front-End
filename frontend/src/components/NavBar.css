@@ -34,7 +34,7 @@
   display: inline-block;
   position: absolute;
   right: 0px;
-  margin-right: -70px;
+  overflow: visible;
 }
 
 .dropdown-menu-right {
@@ -102,3 +102,4 @@
 .Logo {
   width: 70px;
 }
+

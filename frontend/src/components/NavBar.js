@@ -54,8 +54,8 @@ class NavBar extends Component {
         <div id="usrName">
           <UncontrolledDropdown nav inNavbar>
             <DropdownToggle nav caret><span id="signedInDropdown">My Account</span></DropdownToggle>
-              <DropdownMenu>
-                <DropdownItem className="dropdown-menu-right">Logged in as: <span id="dynamicUserGreeting">{user? `${user.email}` : ``}</span></DropdownItem>
+              <DropdownMenu className = "Dropdown">
+                <DropdownItem className="dropdown-menu-right">User: <span id="dynamicUserGreeting">{user? `${user.email}` : ``}</span></DropdownItem>
                 <DropdownItem className="dropdown-menu-right"><SignOut></SignOut></DropdownItem>
               </DropdownMenu>
           </UncontrolledDropdown>
