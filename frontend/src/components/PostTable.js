@@ -187,8 +187,6 @@ class PostTable extends Component {
         this.props.token
       );
       this.setState({ showUpdateModal: false });
-      //FIX THIS TEMP WORKAROUND
-      //POSTS TO STATE GETS CALLED WHILE THE PATCH IS RUNNING
     }
   };
 

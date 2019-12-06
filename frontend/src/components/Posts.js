@@ -2,18 +2,19 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import image from "../images/image.jpg";
 import "./Posts.css";
-import { Button, Table, Row, Col, Container, Alert } from "reactstrap";
+import { Button, Table, Row, Col, Container, Alert, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from "reactstrap";
 import axios from "axios";
 import * as actionMethods from "../store/actions/index";
 import Moment from "react-moment";
 import UpdatePostModal from "./UpdateModal";
 import ModalBackground from "./ModalBackground";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEllipsisV } from "@fortawesome/free-solid-svg-icons";
 
 class Posts extends Component {
   state = {
     comments: [],
     content: "",
-
     postId: "",
     title: "",
     description: "",
@@ -67,12 +68,8 @@ class Posts extends Component {
       this.state.content,
       this.props.token
     );
-    //FIX THIS TEMP WORKAROUND
-    //COMMENTS TO STATE GETS CALLED WHILE THE COMMENT ENTRY IS RUNNING
     this.setState({ content: "" });
   };
-
-
 
   //When user activates update post modal
   handleUpdatePostOnClick = e => {
@@ -137,12 +134,8 @@ class Posts extends Component {
       );
       this.setState({ showUpdateModal: false });
       this.props.history.push('/posttable');
-      //FIX THIS TEMP WORKAROUND
-      //POSTS TO STATE GETS CALLED WHILE THE PATCH IS RUNNING
     }
   };
-
-
 
   componentDidMount() {
     this.CommentsToState();
@@ -152,16 +145,15 @@ class Posts extends Component {
     this.CommentsToState();
   }
 
+  toggle = () => this.setState({isOpen: !this.state.isOpen, dropdownOpen: !this.state.dropdownOpen});
 
   render() {
     const createPostButtonEnable = this.requiredFieldsFilled();
     return (
       <React.Fragment>
-
-      
         <Container fluid={true} id="wholePostWrapper">
           <Row>
-            <Col sm="8">
+            <Col sm="6">
               <div id="postWrapper">
                 <header>
                   <h1 id="title">
@@ -233,15 +225,31 @@ class Posts extends Component {
                 <img id="postPicture" src={image} alt=''></img>
               </div>
             </Col>
-            <Col sm="4">
+            <Col sm="6">
               <div id="commentWrapper">
                 <Table responsive="md" borderless variant="true">
                   <tbody id="commentBody">
                     {this.state.comments &&
-                      this.state.comments.map(({ name, content }, index) => (
+                      this.state.comments.map(({ name, content, author, _id }, index) => ( 
                         <tr key={index}>
                           <td id="author">{name}</td>
                           <td id="comment">{content}</td>
+                          <td id="menu">
+                            {this.props.user._id === author ||
+                            this.props.user["admin"] ? (
+                              <UncontrolledDropdown>
+                                <DropdownToggle id="commentDropdown">
+                                  <FontAwesomeIcon icon={faEllipsisV} id="commentEllipsis"/>
+                                </DropdownToggle>
+                                <DropdownMenu>
+                                  <DropdownItem onClick = {() => 
+                                    {this.props.deleteComment(
+                                      _id, 
+                                      this.props.token)}}> Delete
+                                  </DropdownItem>
+                                </DropdownMenu>
+                              </UncontrolledDropdown>):null}
+                          </td>
                         </tr>
                       ))}
                   </tbody>
@@ -271,8 +279,6 @@ class Posts extends Component {
           </Row>
         </Container>
   
-
-
 
         {this.state.showUpdateModal && <ModalBackground />}
         {this.state.showUpdateModal && (
@@ -367,10 +373,10 @@ const mapStatetoProps = state => ({
 
 const mapDispatchToProps = dispatch => {
   return {
+    deleteComment: (currUser, localToken) =>
+      dispatch(actionMethods.deleteComment(currUser, localToken)),
     createNewComment: (postId, currUser, comment, localToken) =>
-      dispatch(
-        actionMethods.createNewComment(postId, currUser, comment, localToken)
-      ),
+      dispatch(actionMethods.createNewComment(postId, currUser, comment, localToken)),
     handleUpdatePost: (theUpdatedPost, currPost, localToken) =>
       dispatch(actionMethods.updatePost(theUpdatedPost, currPost, localToken)),
     handleDeletePost: (postId, localToken) =>

@@ -28,3 +28,20 @@ axios.post('/comments/createComment', body, config)
   dispatch( {type: NEW_COMMENT_FAIL} )
 })
 }
+
+//Delete comment
+export const deleteComment = (commentId, userToken) => dispatch => {
+  const config = {
+    headers: {
+        "Content-type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        crossDomain: true,
+        Authorization: `Bearer ${userToken}`
+      }
+  };
+
+  axios.delete(`/comments/${commentId}`, config)
+  .then(res => {
+    console.log("DELETE COMMENT \n");
+  })
+}

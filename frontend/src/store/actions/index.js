@@ -20,5 +20,6 @@ export {
 } from './postActions'
 
 export {
-    createNewComment
+    createNewComment,
+    deleteComment
 } from './commentActions'
