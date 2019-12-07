@@ -27,7 +27,8 @@
   background: url("../images/bg-login.jpg")
   no-repeat center center; 
   background-size: cover;
-  z-index:-100;
+  width:100%;
+  height: 100%;
 }
 
 #SignUpLandingContainer
