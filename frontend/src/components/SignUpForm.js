@@ -201,6 +201,7 @@ class SignUpForm extends Component {
                         type="date"
                         name="DOB"
                         id="enteredDate"
+                        max="9999-12-31"
                         onChange={this.onChangeDate}
                       />
                     </Col>
