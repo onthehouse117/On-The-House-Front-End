@@ -12,19 +12,15 @@ class SignUpLandingLayout extends Component {
       <div className="pageBackground">
         <div id="SignUpLandingContainer" className="container-fluid">
           <Row>
-            <Col sm="12">
-            {this.props.authAction.showVerificationWarning ? (
-                <Alert
-                  id="showVerifyWarningAlert"
-                  onClick={this.props.handleOnClickShowVerifyMessage}
-                  color="warning"
-                >
-                  {
-                    "Check your email for a confirmation link. (click this to close)"
-                  }
-                </Alert>
-              ) : null}
-            </Col>
+            <Alert
+              id="showVerifyWarningAlert"
+              onClick={this.props.handleOnClickShowVerifyMessage}
+              color="warning"
+            >
+              {
+                "Check your email for a confirmation link. (click this to close)"
+              }
+            </Alert>
           </Row>
           <Container className="nonFluidContainer">
             <Row>
