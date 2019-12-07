@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import "./SignUpLandingLayout.css";
 import { Container, Row, Col } from "reactstrap";
 import SignUpForm from "./SignUpForm.js";
-import { Alert } from "reactstrap";
+import { Alert, Button } from "reactstrap";
 import { USER_DISMISSED_VERIFICATION_WARNING } from "../store/actions/actionTypes";
 
 class SignUpLandingLayout extends Component {
@@ -21,6 +21,7 @@ class SignUpLandingLayout extends Component {
               {
                 "Check your email for a confirmation link. (click this to close)"
               }
+              <Button onClick={this.props.handleOnClickShowVerifyMessage}>X</Button>
             </Alert>
             ) : null}
           </Row>
