@@ -64,7 +64,7 @@ class NavBar extends Component {
               <DropdownItem className="dropdown-menu-right" id="user">
                 User:{" "}
                 <span id="dynamicUserGreeting">
-                  {user ? `${user.email}` : ``}
+                  {user ? `${user.email.split('@')[0]}` : ``}
                 </span>
               </DropdownItem>
               <DropdownItem className="dropdown-menu-right">
