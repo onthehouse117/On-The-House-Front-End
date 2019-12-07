@@ -21,7 +21,6 @@ class SignUpLandingLayout extends Component {
               {
                 "Check your email for a confirmation link. (click this to close)"
               }
-              <Button onClick={this.props.handleOnClickShowVerifyMessage}>X</Button>
             </Alert>
             ) : null}
           </Row>
