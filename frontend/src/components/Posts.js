@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import image from "../images/image.jpg";
-import "./posts.css";
+import "./Posts.css";
 import { Button, Table, Row, Col, Container, Alert, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from "reactstrap";
 import axios from "axios";
 import * as actionMethods from "../store/actions/index";

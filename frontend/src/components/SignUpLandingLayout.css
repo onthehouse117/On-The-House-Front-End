@@ -3,7 +3,7 @@
 }
 
 #showVerifyWarningAlert {
-  position: fixed;
+  /* position: fixed; */
   width: 100%;
   margin-top: 4rem;
   text-align: center;
