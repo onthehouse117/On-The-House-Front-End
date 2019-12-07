@@ -49,7 +49,7 @@ export default function(state = initialState, action) {
       return {
         ...state,
         ...action.payload,
-        isAuthenticated: true,
+        // isAuthenticated: true,
         isLoading: false,
         bypassVerify: null,
         showVerificationWarning: true

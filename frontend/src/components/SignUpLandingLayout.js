@@ -12,6 +12,7 @@ class SignUpLandingLayout extends Component {
       <div className="pageBackground">
         <div id="SignUpLandingContainer" className="container-fluid">
           <Row>
+            {this.props.authAction.showVerificationWarning ? (
             <Alert
               id="showVerifyWarningAlert"
               onClick={this.props.handleOnClickShowVerifyMessage}
@@ -21,6 +22,7 @@ class SignUpLandingLayout extends Component {
                 "Check your email for a confirmation link. (click this to close)"
               }
             </Alert>
+            ) : null}
           </Row>
           <Container className="nonFluidContainer">
             <Row>
